@@ -1,0 +1,1 @@
+﻿insert into dbo.users (username,password,type) values ('lekarz','password','lekarz');
