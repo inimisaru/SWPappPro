@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult AktualizujSwojProfil()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AktualizujSwojProfilZatwierdz()
+        {
+            return View("AktualizujSwojProfilWynik");
+        }
     }
 }

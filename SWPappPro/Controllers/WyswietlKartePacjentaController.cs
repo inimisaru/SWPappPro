@@ -13,5 +13,18 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult WyswietlKartePacjenta()
+        {
+            return View("WyswietlKartePacjenta");
+        }
+        [HttpPost]
+        public ActionResult WyswietlKartePacjentaZatwierdz()
+        {
+            return View("WyswietlKartePacjentaWynik");
+        }
+            public ActionResult WyswietlKartePacjentaWynik()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "WystawOpinie";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Wystaw opinie lekarzowi:</h2>
+
+@using (Html.BeginForm("WystawOpinieZatwierdz", "WystawOpinie", FormMethod.Post))
+{
+    @Html.Label("Lekarz:")  @Html.TextBox("Lekarz", "Wybierz lekarza z listy", new { @class = "form-control" })
+    @Html.Label("Tresc:")  @Html.TextBox("Tresc", "Tresc", new { @class = "form-control" })
+    @Html.Label("Ocena:")  @Html.TextBox("Ocena", "Ocena", new { @class = "form-control" })
+    <button type="submit">Wystaw opinie</button>
+}

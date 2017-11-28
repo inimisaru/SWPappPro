@@ -13,5 +13,15 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult OdpowiedzNaWezwanieDoWizytyDomowej()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult OdpowiedzNaWezwanieDoWizytyDomowejZatwierdz()
+        {
+            return View("OdpowiedzNaWezwanieDoWizytyDomowejWynik");
+        }
+
     }
 }

@@ -159,7 +159,7 @@
     <Compile Include="Controllers\OdczytajPowiadomienieController.cs" />
     <Compile Include="Controllers\OdpowiedzNaWezwanieDoWizytyDomowejController.cs" />
     <Compile Include="Controllers\PacjentController.cs" />
-    <Compile Include="Controllers\PodejrzyjSwojaKartePacjentaFormController.cs" />
+    <Compile Include="Controllers\PodejrzyjSwojaKartePacjentaController.cs" />
     <Compile Include="Controllers\PodepnijWynikiDoKartyPacjentaController.cs" />
     <Compile Include="Controllers\PowiadomOStatusieWizytyController.cs" />
     <Compile Include="Controllers\PrzeplanujWizyteController.cs" />
@@ -224,7 +224,6 @@
     <Content Include="Models\UserModel.edmx.diagram">
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\SWPapp - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\SWPappPro - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -264,28 +263,48 @@
     <Content Include="Views\Pacjent\Wizyty.cshtml" />
     <Content Include="Views\Pacjent\Konsultacje.cshtml" />
     <Content Include="Views\Pacjent\Profil.cshtml" />
+    <Content Include="Views\WyswietlKartePacjenta\WyswietlKartePacjenta.cshtml" />
+    <Content Include="Views\PodepnijWynikiDoKartyPacjenta\PodepnijWynikiDoKartyPacjenta.cshtml" />
+    <Content Include="Views\WyswietlKartePacjenta\WyswietlKartePacjentaWynik.cshtml" />
+    <Content Include="Views\PodepnijWynikiDoKartyPacjenta\PodepnijWynikiDoKartyPacjentaWynik.cshtml" />
+    <Content Include="Views\DodajWolnyTerminWizyty\DodajWolnyTerminWizyty.cshtml" />
+    <Content Include="Views\DodajWolnyTerminWizyty\DodajWolnyTerminWizytyWynik.cshtml" />
+    <Content Include="Views\OdpowiedzNaWezwanieDoWizytyDomowej\OdpowiedzNaWezwanieDoWizytyDomowej.cshtml" />
+    <Content Include="Views\OdpowiedzNaWezwanieDoWizytyDomowej\OdpowiedzNaWezwanieDoWizytyDomowejWynik.cshtml" />
+    <Content Include="Views\PowiadomOStatusieWizyty\PowiadomOStatusieWizyty.cshtml" />
+    <Content Include="Views\PowiadomOStatusieWizyty\PowiadomOStatusieWizytyWynik.cshtml" />
+    <Content Include="Views\UmowWizyte\UmowWizyte.cshtml" />
+    <Content Include="Views\UmowWizyte\UmowWizyteWynik.cshtml" />
+    <Content Include="Views\WyswietlOpinie\WyswietlOpinie.cshtml" />
+    <Content Include="Views\WyswietlOpinie\WyswietlOpinieWynik.cshtml" />
+    <Content Include="Views\AktualizujSwojProfil\AktualizujSwojProfil.cshtml" />
+    <Content Include="Views\AktualizujSwojProfil\AktualizujSwojProfilWynik.cshtml" />
+    <Content Include="Views\OcenLekarza\OcenLekarza.cshtml" />
+    <Content Include="Views\OcenLekarza\OcenLekarzaWynik.cshtml" />
+    <Content Include="Views\OdczytajPowiadomienie\OdczytajPowiadomienie.cshtml" />
+    <Content Include="Views\OdczytajPowiadomienie\OdczytajPowiadomienieWynik.cshtml" />
+    <Content Include="Views\PrzeplanujWizyte\PrzeplanujWizyte.cshtml" />
+    <Content Include="Views\PrzeplanujWizyte\PrzeplanujWizyteWynik.cshtml" />
+    <Content Include="Views\WystawOpinie\WystawOpinie.cshtml" />
+    <Content Include="Views\WystawOpinie\WystawOpinieWynik.cshtml" />
+    <Content Include="Views\WyswietlHistorieWizyt\WyswietlHistorieWizyt.cshtml" />
+    <Content Include="Views\WyswietlHistorieWizyt\WyswietlHistorieWizytWynik.cshtml" />
+    <Content Include="Views\ZamowWizyteDomowa\ZamowWizyteDomowa.cshtml" />
+    <Content Include="Views\ZamowWizyteDomowa\ZamowWizyteDomowaWynik.cshtml" />
+    <Content Include="Views\ZamowWizyteKonsultacyjna\ZamowWizyteKonsultacyjnaWynik.cshtml" />
+    <Content Include="Views\UmowWizyte\UmowWizyteDom.cshtml" />
+    <Content Include="Views\UmowWizyte\UmowWizyteKon.cshtml" />
+    <Content Include="Views\WyswietlKalendarz\WyswietlKalendarz.cshtml" />
+    <Content Include="Views\AktualizujProfilPacjenta\AktualizujProfilPacjenta.cshtml" />
+    <Content Include="Views\AktualizujProfilPacjenta\AktualizujProfilPacjentaWynik.cshtml" />
+    <Content Include="Views\PodejrzyjSwojaKartePacjenta\PodejrzyjSwojaKartePacjenta.cshtml" />
+    <Content Include="Views\ZamowWizyteKonsultacyjna\ZamowWizyteKonsultacyjna.cshtml" />
+    <Content Include="Views\PrzeplanujWizyte\PrzeplanujWizyteFormularz.cshtml" />
+    <Content Include="Views\Pacjent\Lekarze.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AktualizujProfilPacjenta\" />
-    <Folder Include="Views\AktualizujSwojProfil\" />
-    <Folder Include="Views\DodajWolnyTerminWizyty\" />
-    <Folder Include="Views\OcenLekarza\" />
-    <Folder Include="Views\OdczytajPowiadomienie\" />
-    <Folder Include="Views\OdpowiedzNaWezwanieDoWizytyDomowej\" />
-    <Folder Include="Views\PodejrzyjSwojaKartePacjentaForm\" />
-    <Folder Include="Views\PodepnijWynikiDoKartyPacjenta\" />
-    <Folder Include="Views\PowiadomOStatusieWizyty\" />
-    <Folder Include="Views\PrzeplanujWizyte\" />
     <Folder Include="Views\PrzeprowadzKonsultacje\" />
-    <Folder Include="Views\UmowWizyte\" />
-    <Folder Include="Views\WystawOpinie\" />
-    <Folder Include="Views\WyswietlHistorieWizyt\" />
-    <Folder Include="Views\WyswietlKalendarz\" />
-    <Folder Include="Views\WyswietlKartePacjenta\" />
-    <Folder Include="Views\WyswietlOpinie\" />
-    <Folder Include="Views\ZamowWizyteDomowa\" />
-    <Folder Include="Views\ZamowWizyteKonsultacyjna\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

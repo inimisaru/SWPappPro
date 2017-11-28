@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "OdczytajPowiadomienie";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Odczytaj powiadomienie</h2>
+
+@using (Html.BeginForm("OdczytajPowiadomienieZatwierdz", "OdczytajPowiadomienie", FormMethod.Post))
+{
+    @Html.Label("Wybierz wiadomosc:")  @Html.TextBox("Powiadomienie", "Lista nieodczytanych powiadomien", new { @class = "form-control" })
+
+    <button type="submit">Odczytaj</button>
+}

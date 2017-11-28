@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult DodajWolnyTerminWizyty()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DodajWolnyTerminWizytyZatwierdz()
+        {
+            return View("DodajWolnyTerminWizytyWynik");
+        }
     }
 }

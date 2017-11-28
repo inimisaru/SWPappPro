@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "PowiadomOStatusieWizyty";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Powiadom o statusie wizyty:</h2>
+
+@using (Html.BeginForm("PowiadomOStatusieWizytyZatwierdz", "PowiadomOStatusieWizyty", FormMethod.Post))
+{
+    @Html.Label("Wybierz wizyte:")  @Html.TextBox("Pacjent", "Lista wizyt zalogowanego lekarza", new { @class = "form-control" })
+    @Html.Label("Status:")  @Html.TextBox("Status", "Wprowadz status", new { @class = "form-control" })
+    <button type="submit">Powiadom</button>
+}

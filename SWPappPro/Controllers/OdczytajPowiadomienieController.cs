@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult OdczytajPowiadomienie()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult OdczytajPowiadomienieZatwierdz()
+        {
+            return View("OdczytajPowiadomienieWynik");
+        }
     }
 }

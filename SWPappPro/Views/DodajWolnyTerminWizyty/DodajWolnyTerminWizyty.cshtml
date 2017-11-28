@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "DodajWolnyTerminWizyty";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>DodajWolnyTerminWizyty</h2>
+
+@using (Html.BeginForm("AktualizujSwojProfilZatwierdz", "AktualizujSwojProfil", FormMethod.Post))
+{
+@Html.Label("Podaj date i godzinę aby dodać wolny termin:")<br/>
+    @Html.Label("Data:")  @Html.TextBox("Data", "", new { @class = "form-control" })
+    @Html.Label("Godzina:")  @Html.TextBox("Godzina", "", new { @class = "form-control" })
+    <button type="submit">Dodaj</button>
+}

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "AktualizujSwojProfil";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Aktualizuj profil</h2>
+@using (Html.BeginForm("AktualizujSwojProfilZatwierdz", "AktualizujSwojProfil", FormMethod.Post))
+{
+    @Html.Label("Imie:")  @Html.TextBox("Imie", "Pobrany z profilu", new { @class = "form-control" })  
+@Html.Label("Nazwisko:")  @Html.TextBox("Nazwisko", "Pobrany z profilu", new { @class = "form-control" })  
+@Html.Label("Specjalizacja:")  @Html.TextBox("Specjalizacja", "Pobrany z profilu", new { @class = "form-control" })  
+@Html.Label("Data urodzenia:")  @Html.TextBox("Data urodzenia", "Pobrany z profilu", new { @class = "form-control" })  
+@Html.Label("Nr licencji:")  @Html.TextBox("Nr licencji", "Pobrany z profilu", new { @class = "form-control" })  
+<button type="submit">Aktualizuj</button>
+}

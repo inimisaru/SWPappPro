@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "UmowWizyteKon";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>UmowWizyteKon</h2>
+
+@using (Html.BeginForm("UmowWizyteKonZatwierdz", "UmowWizyte", FormMethod.Post))
+{
+    @Html.Label("Wybierz pacjenta:")  @Html.TextBox("Pacjent", "Lista pacjentow", new { @class = "form-control" })
+    @Html.Label("Wybierz date:")  @Html.TextBox("Data", "Lista dat", new { @class = "form-control" })
+    @Html.Label("Wybierz godzine:")  @Html.TextBox("Godzina", "Lista dostepnych godzin", new { @class = "form-control" })
+    @Html.Label("Cel:")  @Html.TextBox("Cel", "", new { @class = "form-control" })
+    @Html.Label("Dodatkowe uwagi:")  @Html.TextBox("Kodpocztowy", "", new { @class = "form-control" })
+    <button type="submit">Umow</button>
+}

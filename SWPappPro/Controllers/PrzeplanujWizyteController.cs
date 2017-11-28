@@ -13,5 +13,19 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult PrzeplanujWizyte()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PrzeplanujWizyteWybor()
+        {
+            return View("PrzeplanujWizyteFormularz");
+        }
+        [HttpPost]
+        public ActionResult PrzeplanujWizyteZatwierdz()
+        {
+            return View("PrzeplanujWizyteWynik");
+        }
     }
 }

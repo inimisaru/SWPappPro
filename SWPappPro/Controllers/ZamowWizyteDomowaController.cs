@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult ZamowWizyteDomowa()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ZamowWizyteDomowaZatwierdz()
+        {
+            return View("ZamowWizyteDomowaWynik");
+        }
     }
 }

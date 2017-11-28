@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "PrzeplanujWizyte";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Wybierz wizyte:</h2>
+
+@using (Html.BeginForm("PrzeplanujWizyteWybor", "PrzeplanujWizyte", FormMethod.Post))
+{
+    @Html.Label("Wybierz wizyte:")  @Html.TextBox("Wizyta", "Lista wizyt pacjenta", new { @class = "form-control" })  
+    <button type="submit">Wybierz</button>
+}

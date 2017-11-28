@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PrzeplanujWizyteFormularz";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Przeplanuj wizyte:</h2>
+
+@using (Html.BeginForm("PrzeplanujWizyteZatwierdz", "PrzeplanujWizyte", FormMethod.Post))
+{
+    @Html.Label("Wybierz nowa date:")  @Html.TextBox("Data", "Lista dat", new { @class = "form-control" })
+    @Html.Label("Wybierz nowa godzine:")  @Html.TextBox("Godzina", "Lista dostepnych godzin", new { @class = "form-control" })
+
+    <button type="submit">Przeplanuj</button>
+}

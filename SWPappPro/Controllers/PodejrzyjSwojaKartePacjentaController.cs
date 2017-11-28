@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
-    public class PodejrzyjSwojaKartePacjentaFormController : Controller
+    public class PodejrzyjSwojaKartePacjentaController : Controller
     {
         // GET: PodejrzyjSwojaKartePacjentaForm
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult PodejrzyjSwojaKartePacjenta()
         {
             return View();
         }

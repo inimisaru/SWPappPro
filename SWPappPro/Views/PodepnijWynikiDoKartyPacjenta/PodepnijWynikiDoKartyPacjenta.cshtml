@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "PodepnijWynikiDoKartyPacjenta";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Podepnij wyniki do karty pacjenta:</h2>
+
+
+@using (Html.BeginForm("PodepnijWynikiDoKartyPacjentaZatwierdz", "PodepnijWynikiDoKartyPacjenta", FormMethod.Post))
+{
+
+    @Html.Label("Wybierz z poniższej listy pacjenta")
+    @Html.TextBox("Pacjent", "Pacjent", new { @class = "form-control" })
+    <br /> <br />
+    @Html.Label("Wybierz wyniki:")
+    @Html.TextBox("Badanie", "Badanie", new { @class = "form-control" })
+    <br /> <br />
+    <button type="submit">Podepnij</button>
+}

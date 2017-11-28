@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "UmowWizyte";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>UmowWizyte</h2>
+Wybierz rodzaj wizyty:<br/>
+@Html.ActionLink("Konsultacyjna", "UmowWizyteKon", "UmowWizyte", new { @class = "btn btn-primary", @style = "color:white" })<br />
+@Html.ActionLink("Domowa", "UmowWizyteDom", "UmowWizyte", new { @class = "btn btn-primary", @style = "color:white" })<br />

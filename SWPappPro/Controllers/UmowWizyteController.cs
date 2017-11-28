@@ -13,5 +13,28 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult UmowWizyte()
+        {
+            return View();
+        }
+        public ActionResult UmowWizyteKon()
+        {
+            return View();
+        }
+        public ActionResult UmowWizyteDom()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UmowWizyteKonZatwierdz()
+        {
+            return View("UmowWizyteWynik");
+        }
+        [HttpPost]
+        public ActionResult UmowWizyteDomZatwierdz()
+        {
+            return View("UmowWizyteWynik");
+        }
     }
 }

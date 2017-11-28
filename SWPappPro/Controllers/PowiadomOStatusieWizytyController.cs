@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult PowiadomOStatusieWizyty()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PowiadomOStatusieWizytyZatwierdz()
+        {
+            return View("PowiadomOStatusieWizytyWynik");
+        }
     }
 }

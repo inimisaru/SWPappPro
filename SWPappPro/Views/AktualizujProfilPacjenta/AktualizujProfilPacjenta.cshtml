@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "AktualizujProfilPacjenta";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Aktualizuj profil</h2>
+
+@using (Html.BeginForm("AktualizujProfilPacjentaZatwierdz", "AktualizujProfilPacjenta", FormMethod.Post))
+{
+  
+    @Html.Label("Ulica zamieszkania:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Nr domu:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Miejscowosc:")  @Html.TextBox("Miejscowosc", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Adres e-mail:")  @Html.TextBox("Adres e-mail:", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Nr telefonu:")  @Html.TextBox("Nr telefonu:", "Pobrany z profilu", new { @class = "form-control" })
+    <button type="submit">Aktualizuj</button>
+}

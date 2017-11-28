@@ -13,5 +13,13 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult AktualizujProfilPacjenta()
+        {
+            return View();
+        }
+        public ActionResult AktualizujProfilPacjentaZatwierdz()
+        {
+            return View("AktualizujProfilPacjentaWynik");
+        }
     }
 }

@@ -13,5 +13,9 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult WyswietlHistorieWizyt()
+        {
+            return View();
+        }
     }
 }

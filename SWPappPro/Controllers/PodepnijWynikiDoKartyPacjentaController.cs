@@ -13,5 +13,18 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult PodepnijWynikiDoKartyPacjenta()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PodepnijWynikiDoKartyPacjentaZatwierdz()
+        {
+            return View("PodepnijWynikiDoKartyPacjentaWynik");
+        }
+        public ActionResult PodepnijWynikiDoKartyPacjentaWynik()
+        {
+            return View();
+        }
     }
 }

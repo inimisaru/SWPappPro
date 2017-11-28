@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "OdpowiedzNaWezwanieDoWizytyDomowej";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>OdpowiedzNaWezwanieDoWizytyDomowej</h2>
+
+@using (Html.BeginForm("OdpowiedzNaWezwanieDoWizytyDomowejZatwierdz", "OdpowiedzNaWezwanieDoWizytyDomowej", FormMethod.Post))
+{
+    @Html.Label("Wybierz wizyte:")  @Html.TextBox("WizytaDomowa", "Lista wizyt domowych", new { @class = "form-control" })
+    @Html.Label("Odpowiedź:")  @Html.TextBox("Odp", "Odpowiedz lekarza", new { @class = "form-control" })
+    <button type="submit">Odpowiedz</button>
+}

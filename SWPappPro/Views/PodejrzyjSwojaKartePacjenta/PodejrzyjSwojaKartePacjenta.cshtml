@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PodejrzyjSwojaKartePacjenta";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<h2>Karta pacjenta:</h2>
+
+
+    @Html.Label("Numer karty:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Data zalozenia:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Prowadzacy:")  @Html.TextBox("Miejscowosc", "Pobrany z profilu", new { @class = "form-control" })
+    @Html.Label("Wyniki:")  @Html.TextBox("Nr telefonu:", "Pobrany z profilu", new { @class = "form-control" })
+<br />
+<b>@Html.Label("ID | DATA | RODZAJ | WYNIK | LEKARZ ZLECACY")</b>

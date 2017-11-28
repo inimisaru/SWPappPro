@@ -10,7 +10,7 @@ namespace SWPappPro.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {  
+        {
             if (Session["login"] == null)
             {
                 return View("Login");
@@ -19,7 +19,7 @@ namespace SWPappPro.Controllers
             {
                 return View("Home");
             }
-            
+
         }
 
         public ActionResult About()
@@ -47,44 +47,22 @@ namespace SWPappPro.Controllers
         [HttpPost]
         public ActionResult Login(users entity)
         {
-            var db = new SWPappDBEntities5();
-            var pass = db.users.Where(s => s.username == entity.username.Trim()).FirstOrDefault();
-            if (pass != null) { 
-            if (entity.password.Equals(pass.password.Trim()))
+            //Wywołanie metody sprawdzajacej dane logowania uzytkownika, metoda zwraca wartosc true/false 
+            //w zaleznosci od wyniku operacji walidacji.
+            if (entity.ValidateUser(entity, this.HttpContext))
             {
-                Session["login"] = pass.username;
-                Session["typ"] = pass.type;
-                if (pass.type.Trim().Equals("lekarz"))
-                    {        
+                if (Session["typ"].Equals("lekarz")) return RedirectToAction("Index", "Lekarz");
+                else return RedirectToAction("Index", "Pacjent");
+            }
 
-                        return RedirectToAction("Index", "Lekarz");
-
-                    }
-                    else
-                    {
-                        //return View("Pacjent/Home");
-                        return RedirectToAction("Index", "Pacjent");
-                    }
-                
-                
-            }
-            else
-            {
-                    ViewBag.Message = "Wprowadziles zle dane!";
-                    return View("Fail");
-                
-            }
-            }
-            else
-            {
-                ViewBag.Message = "Wprowadziles zle dane!";
-                    return View("Fail");
-            }
+            else return View("Fail");
         }
+
         public ActionResult Logout()
         {
             Session["login"] = null;
             return View("Login");
         }
+
     }
 }

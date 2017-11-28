@@ -13,5 +13,14 @@ namespace SWPappPro.Controllers
         {
             return View();
         }
+        public ActionResult WystawOpinie()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult WystawOpinieZatwierdz()
+        {
+            return View("WystawOpinieWynik");
+        }
     }
 }
