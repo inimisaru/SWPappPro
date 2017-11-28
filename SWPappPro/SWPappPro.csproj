@@ -150,7 +150,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AktualizujProfilPacjentaController.cs" />
+    <Compile Include="Controllers\AktualizujSwojProfilController.cs" />
+    <Compile Include="Controllers\DodajWolnyTerminWizytyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LekarzController.cs" />
+    <Compile Include="Controllers\OcenLekarzaController.cs" />
+    <Compile Include="Controllers\OdczytajPowiadomienieController.cs" />
+    <Compile Include="Controllers\OdpowiedzNaWezwanieDoWizytyDomowejController.cs" />
+    <Compile Include="Controllers\PacjentController.cs" />
+    <Compile Include="Controllers\PodejrzyjSwojaKartePacjentaFormController.cs" />
+    <Compile Include="Controllers\PodepnijWynikiDoKartyPacjentaController.cs" />
+    <Compile Include="Controllers\PowiadomOStatusieWizytyController.cs" />
+    <Compile Include="Controllers\PrzeplanujWizyteController.cs" />
+    <Compile Include="Controllers\PrzeprowadzKonsultacjeController.cs" />
+    <Compile Include="Controllers\UmowWizyteController.cs" />
+    <Compile Include="Controllers\WystawOpinieController.cs" />
+    <Compile Include="Controllers\WyswietlHistorieWizytController.cs" />
+    <Compile Include="Controllers\WyswietlKalendarzController.cs" />
+    <Compile Include="Controllers\WyswietlKartePacjentaController.cs" />
+    <Compile Include="Controllers\WyswietlOpinieController.cs" />
+    <Compile Include="Controllers\ZamowWizyteDomowaController.cs" />
+    <Compile Include="Controllers\ZamowWizyteKonsultacyjnaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,17 +248,44 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Fail.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
-    <Content Include="Views\Home\TerminarzView.cshtml" />
+    <Content Include="Views\Shared\_LekarzLayout.cshtml" />
+    <Content Include="Views\Shared\_PacjentLayout.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Lekarz\Index.cshtml" />
+    <Content Include="Views\Pacjent\Index.cshtml" />
+    <Content Include="Views\Lekarz\Wizyty.cshtml" />
+    <Content Include="Views\Lekarz\Pacjenci.cshtml" />
+    <Content Include="Views\Lekarz\Konsultacje.cshtml" />
+    <Content Include="Views\Lekarz\Profil.cshtml" />
+    <Content Include="Views\Pacjent\Wizyty.cshtml" />
+    <Content Include="Views\Pacjent\Konsultacje.cshtml" />
+    <Content Include="Views\Pacjent\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Lekarz\" />
-    <Folder Include="Views\Pacjent\" />
+    <Folder Include="Views\AktualizujProfilPacjenta\" />
+    <Folder Include="Views\AktualizujSwojProfil\" />
+    <Folder Include="Views\DodajWolnyTerminWizyty\" />
+    <Folder Include="Views\OcenLekarza\" />
+    <Folder Include="Views\OdczytajPowiadomienie\" />
+    <Folder Include="Views\OdpowiedzNaWezwanieDoWizytyDomowej\" />
+    <Folder Include="Views\PodejrzyjSwojaKartePacjentaForm\" />
+    <Folder Include="Views\PodepnijWynikiDoKartyPacjenta\" />
+    <Folder Include="Views\PowiadomOStatusieWizyty\" />
+    <Folder Include="Views\PrzeplanujWizyte\" />
+    <Folder Include="Views\PrzeprowadzKonsultacje\" />
+    <Folder Include="Views\UmowWizyte\" />
+    <Folder Include="Views\WystawOpinie\" />
+    <Folder Include="Views\WyswietlHistorieWizyt\" />
+    <Folder Include="Views\WyswietlKalendarz\" />
+    <Folder Include="Views\WyswietlKartePacjenta\" />
+    <Folder Include="Views\WyswietlOpinie\" />
+    <Folder Include="Views\ZamowWizyteDomowa\" />
+    <Folder Include="Views\ZamowWizyteKonsultacyjna\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

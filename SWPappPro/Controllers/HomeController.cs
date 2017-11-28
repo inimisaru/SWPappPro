@@ -47,7 +47,6 @@ namespace SWPappPro.Controllers
         [HttpPost]
         public ActionResult Login(users entity)
         {
-            
             var db = new SWPappDBEntities5();
             var pass = db.users.Where(s => s.username == entity.username.Trim()).FirstOrDefault();
             if (pass != null) { 
@@ -55,7 +54,18 @@ namespace SWPappPro.Controllers
             {
                 Session["login"] = pass.username;
                 Session["typ"] = pass.type;
-                return View("Home");
+                if (pass.type.Trim().Equals("lekarz"))
+                    {        
+
+                        return RedirectToAction("Index", "Lekarz");
+
+                    }
+                    else
+                    {
+                        //return View("Pacjent/Home");
+                        return RedirectToAction("Index", "Pacjent");
+                    }
+                
                 
             }
             else
