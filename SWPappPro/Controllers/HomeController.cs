@@ -7,10 +7,13 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Glowny kontroler, do nawigowania po otwarciu aplikacji.
+    /// </summary>
     public class HomeController : Controller
     {
         /// <summary>
-        /// metoda w zaleznosci od zmiennej sesji zwraca glowna strone Home lub jesli sesja nie istnieje to do strony Login na której
+        /// Metoda w zaleznosci od zmiennej sesji zwraca glowna strone Home lub jesli sesja nie istnieje to do strony Login na której
         /// użytkownik loguje się.
         /// </summary>
         /// <returns>Home</returns>
@@ -32,7 +35,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// metoda, która jest wywoływana po wprowadzeniu danych logowania i wyslaniu ich przy uzyciu POST. Nastepnie sprawdzane sa dane logowania.
+        /// Metoda, która jest wywoływana po wprowadzeniu danych logowania i wyslaniu ich przy uzyciu POST. Nastepnie sprawdzane sa dane logowania.
         /// W zaleznosci od wyniki uzytkownik przekierowany jest do menu Lekarza lub menu Pacjenta. Jesli wprowadzone zostaly zle dane uzytkownikowi wyswietlana jest strona 
         /// informujaca o blednych danych logowania.
         /// </summary>
@@ -52,7 +55,7 @@ namespace SWPappPro.Controllers
             else return View("Fail");
         }
         /// <summary>
-        /// metoda ktora wylogowuje uzytkownika a nastepnie przenosi go do strony logowania
+        /// Metoda ktora wylogowuje uzytkownika a nastepnie przenosi go do strony logowania
         /// </summary>
         /// <returns></returns>
         public ActionResult Logout()

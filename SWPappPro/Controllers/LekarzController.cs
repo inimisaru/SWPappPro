@@ -7,12 +7,12 @@ using System.Web.Mvc;
 namespace SWPappPro.Controllers
 {
     /// <summary>
-    /// Controller dla lekarza, to nawigowania pomiedzy roznymi menu
+    /// Controller dla lekarza, do nawigowania pomiedzy menu dostępnymi dla lekarza
     /// </summary>
     public class LekarzController : Controller
     {
         /// <summary>
-        /// Funkcja zwaraca widok strony z Index
+        /// Metoda zwraca widok strony z Index
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
@@ -20,7 +20,7 @@ namespace SWPappPro.Controllers
             return View("Index");
         }
         /// <summary>
-        /// Funkcja zwaraca widok strony z menu Wizyty
+        /// Metoda zwaraca widok strony z menu Wizyty
         /// </summary>
         /// <returns></returns>
         public ActionResult Wizyty()
@@ -28,7 +28,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja zwaraca widok strony z menu Konsultacje
+        /// Metoda zwaraca widok strony z menu Konsultacje
         /// </summary>
         /// <returns></returns>
         public ActionResult Konsultacje()
@@ -36,7 +36,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja zwaraca widok strony z menu Pacjenci
+        /// Metoda zwaraca widok strony z menu Pacjenci
         /// </summary>
         /// <returns></returns>
         public ActionResult Pacjenci()
@@ -44,7 +44,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja zwaraca widok strony z menu Profil
+        /// Metoda zwaraca widok strony z menu Profil
         /// </summary>
         /// <returns></returns>
         public ActionResult Profil()
@@ -52,7 +52,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera WyswietlKartePacjenta wyswietlajaca strone WyswietlKartePacjenta
+        /// Metoda przekierowujaca do metody kontrolera WyswietlKartePacjenta wyswietlajaca strone WyswietlKartePacjenta
         /// </summary>
         /// <returns></returns>
         public ActionResult WyswietlKartePacjenta()
@@ -60,7 +60,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("WyswietlKartePacjenta","WyswietlKartePacjenta");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera PodepnijWynikiDoKartyPacjenta wyswietlajaca strone PodepnijWynikiDoKartyPacjenta
+        /// Metoda przekierowujaca do metody kontrolera PodepnijWynikiDoKartyPacjenta wyswietlajaca strone PodepnijWynikiDoKartyPacjenta
         /// </summary>
         /// <returns></returns>
         public ActionResult PodepnijWynikiDoKartyPacjenta()
@@ -68,7 +68,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("PodepnijWynikiDoKartyPacjenta", "PodepnijWynikiDoKartyPacjenta");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera AktualizujSwojProfil wyswietlajaca strone AktualizujSwojProfil
+        /// Metoda przekierowujaca do metody kontrolera AktualizujSwojProfil wyswietlajaca strone AktualizujSwojProfil
         /// </summary>
         /// <returns></returns>
         public ActionResult AktualizujSwojProfil()
@@ -76,7 +76,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("AktualizujSwojProfil", "AktualizujSwojProfil");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera WyswietlOpinie wyswietlajaca strone WyswietlOpinie
+        /// Metoda przekierowujaca do metody kontrolera WyswietlOpinie wyswietlajaca strone WyswietlOpinie
         /// </summary>
         /// <returns></returns>
         public ActionResult WyswietlOpinie()
@@ -84,7 +84,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("WyswietlOpinie", "WyswietlOpinie");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera UmowWizyte wyswietlajaca strone UmowWizyte
+        /// Metoda przekierowujaca do metody kontrolera UmowWizyte wyswietlajaca strone UmowWizyte
         /// </summary>
         /// <returns></returns>
         public ActionResult UmowWizyte()
@@ -92,7 +92,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("UmowWizyte", "UmowWizyte");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera WyswietlKalendarz wyswietlajaca strone WyswietlKalendarz
+        /// Metoda przekierowujaca do metody kontrolera WyswietlKalendarz wyswietlajaca strone WyswietlKalendarz
         /// </summary>
         /// <returns></returns>
         public ActionResult WyswietlKalendarz()
@@ -100,7 +100,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("WyswietlKalendarz", "WyswietlKalendarz");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera DodajWolnyTerminWizyty wyswietlajaca strone DodajWolnyTerminWizyty
+        /// Metoda przekierowujaca do metody kontrolera DodajWolnyTerminWizyty wyswietlajaca strone DodajWolnyTerminWizyty
         /// </summary>
         /// <returns></returns>
         public ActionResult DodajWolnyTerminWizyty()
@@ -108,7 +108,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("DodajWolnyTerminWizyty", "DodajWolnyTerminWizyty");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera PowiadomOStatusieWizyty wyswietlajaca strone PowiadomOStatusieWizyty
+        /// Metoda przekierowujaca do metody kontrolera PowiadomOStatusieWizyty wyswietlajaca strone PowiadomOStatusieWizyty
         /// </summary>
         /// <returns></returns>
         public ActionResult PowiadomOStatusieWizyty()
@@ -116,7 +116,7 @@ namespace SWPappPro.Controllers
             return RedirectToAction("PowiadomOStatusieWizyty", "PowiadomOStatusieWizyty");
         }
         /// <summary>
-        /// Funkcja przekierowujaca do metody kontrolera OdpowiedzNaWezwanieDoWizytyDomowej wyswietlajaca strone OdpowiedzNaWezwanieDoWizytyDomowej
+        /// Metoda przekierowujaca do metody kontrolera OdpowiedzNaWezwanieDoWizytyDomowej wyswietlajaca strone OdpowiedzNaWezwanieDoWizytyDomowej
         /// </summary>
         /// <returns></returns>
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowej()
