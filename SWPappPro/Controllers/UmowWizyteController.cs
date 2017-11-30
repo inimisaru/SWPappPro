@@ -13,7 +13,7 @@ namespace SWPappPro.Controllers
     {
         // GET: UmowWizyte
         /// <summary>
-        /// Metoda służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony .
         /// </summary>
         /// <returns>widok strony UmowWizyte</returns>
         public ActionResult UmowWizyte()
