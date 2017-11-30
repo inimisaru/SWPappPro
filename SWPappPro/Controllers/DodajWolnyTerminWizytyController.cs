@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class DodajWolnyTerminWizytyController : Controller
     {
-        // GET: DodajWolnyTerminWizyty
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult DodajWolnyTerminWizyty()
         {
             return View();

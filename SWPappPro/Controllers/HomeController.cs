@@ -9,6 +9,12 @@ namespace SWPappPro.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// metoda w zaleznosci od zmiennej sesji zwraca glowna strone Home lub jesli sesja nie istnieje to do strony Login na której
+        /// użytkownik loguje się.
+        /// </summary>
+        /// <returns>Home</returns>
+        /// <returns>Login</returns>
         public ActionResult Index()
         {
             if (Session["login"] == null)
@@ -21,29 +27,17 @@ namespace SWPappPro.Controllers
             }
 
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-        public ActionResult TerminarzView()
-        {
-            return View();
-
-        }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Login()
         {
             return View();
         }
+        /// <summary>
+        /// metoda, która jest wywoływana po wprowadzeniu danych logowania i wyslaniu ich przy uzyciu POST. Nastepnie sprawdzane sa dane logowania.
+        /// W zaleznosci od wyniki uzytkownik przekierowany jest do menu Lekarza lub menu Pacjenta. Jesli wprowadzone zostaly zle dane uzytkownikowi wyswietlana jest strona 
+        /// informujaca o blednych danych logowania.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(users entity)
         {
@@ -57,7 +51,10 @@ namespace SWPappPro.Controllers
 
             else return View("Fail");
         }
-
+        /// <summary>
+        /// metoda ktora wylogowuje uzytkownika a nastepnie przenosi go do strony logowania
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Logout()
         {
             Session["login"] = null;

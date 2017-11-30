@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class PrzeplanujWizyteController : Controller
     {
-        // GET: PrzeplanujWizyte
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult PrzeplanujWizyte()
         {
             return View();

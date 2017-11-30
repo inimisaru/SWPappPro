@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlKartePacjentaController : Controller
     {
-        // GET: WyswietlKartePacjenta
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult WyswietlKartePacjenta()
         {
             return View("WyswietlKartePacjenta");

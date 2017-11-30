@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class PowiadomOStatusieWizytyController : Controller
     {
-        // GET: PowiadomOStatusieWizyty
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult PowiadomOStatusieWizyty()
         {
             return View();

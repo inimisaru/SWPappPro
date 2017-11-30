@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class PodepnijWynikiDoKartyPacjentaController : Controller
     {
-        // GET: PodepnijWynikiDoKartyPacjenta
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult PodepnijWynikiDoKartyPacjenta()
         {
             return View();

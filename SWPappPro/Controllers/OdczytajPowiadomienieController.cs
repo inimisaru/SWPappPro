@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class OdczytajPowiadomienieController : Controller
     {
-        // GET: OdczytajPowiadomienie
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult OdczytajPowiadomienie()
         {
             return View();

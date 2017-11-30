@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlKalendarzController : Controller
     {
-        // GET: WyswietlKalendarz
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult WyswietlKalendarz()
         {
             return View();

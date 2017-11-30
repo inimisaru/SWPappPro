@@ -9,10 +9,6 @@ namespace SWPappPro.Controllers
     public class UmowWizyteController : Controller
     {
         // GET: UmowWizyte
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult UmowWizyte()
         {
             return View();

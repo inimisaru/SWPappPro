@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlOpinieController : Controller
     {
-        // GET: WyswietlOpinie
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult WyswietlOpinie()
         {
             return View();

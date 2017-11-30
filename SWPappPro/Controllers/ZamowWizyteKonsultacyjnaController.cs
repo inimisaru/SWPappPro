@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class ZamowWizyteKonsultacyjnaController : Controller
     {
-        // GET: ZamowWizyteKonsultacyjna
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult ZamowWizyteKonsultacyjna()
         {
             return View();

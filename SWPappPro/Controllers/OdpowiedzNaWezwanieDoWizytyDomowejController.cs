@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class OdpowiedzNaWezwanieDoWizytyDomowejController : Controller
     {
-        // GET: OdpowiedzNaWezwanieDoWizytyDomowej
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowej()
         {
             return View();

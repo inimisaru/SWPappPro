@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlHistorieWizytController : Controller
     {
-        // GET: WyswietlHistorieWizyt
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult WyswietlHistorieWizyt()
         {
             return View();

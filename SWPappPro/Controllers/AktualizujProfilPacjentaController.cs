@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class AktualizujProfilPacjentaController : Controller
     {
-        // GET: AktualizujProfilPacjenta
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult AktualizujProfilPacjenta()
         {
             return View();

@@ -8,11 +8,6 @@ namespace SWPappPro.Controllers
 {
     public class AktualizujSwojProfilController : Controller
     {
-        // GET: AktualizujSwojProfil
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult AktualizujSwojProfil()
         {
             return View();
