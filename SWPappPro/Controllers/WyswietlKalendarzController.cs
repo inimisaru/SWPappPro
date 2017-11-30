@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Bartłomiej Balak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class WyswietlKalendarzController : Controller
     {
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony WyswietlKalendarz</returns>
         public ActionResult WyswietlKalendarz()

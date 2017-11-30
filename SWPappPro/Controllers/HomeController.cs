@@ -8,6 +8,7 @@ using System.Web.Mvc;
 namespace SWPappPro.Controllers
 {
     /// <summary>
+    /// Autor: Bartłomiej Balak
     /// Glowny kontroler, do nawigowania po otwarciu aplikacji.
     /// </summary>
     public class HomeController : Controller

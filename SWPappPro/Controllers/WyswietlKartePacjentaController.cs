@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Dawid Stefański
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class WyswietlKartePacjentaController : Controller
     {
         /// <summary>
-        /// Funkcja służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony WyswietlKartePacjenta</returns>
         public ActionResult WyswietlKartePacjenta()
@@ -17,7 +21,7 @@ namespace SWPappPro.Controllers
             return View("WyswietlKartePacjenta");
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony WyswietlKartePacjentaWynik</returns>
         [HttpPost]
@@ -26,7 +30,7 @@ namespace SWPappPro.Controllers
             return View("WyswietlKartePacjentaWynik");
         }
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony WyswietlKartePacjenta</returns>
         public ActionResult WyswietlKartePacjentaWynik()

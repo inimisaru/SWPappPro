@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class PrzeprowadzKonsultacjeController : Controller
     {
         // GET: PrzeprowadzKonsultacje
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony Index</returns>
         public ActionResult Index()

@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Bartosz Burak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class PrzeplanujWizyteController : Controller
     {
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony PrzeplanujWizyte</returns>
         public ActionResult PrzeplanujWizyte()
@@ -17,7 +21,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony PrzeplanujWizyteFormularz</returns>
         [HttpPost]
@@ -26,7 +30,7 @@ namespace SWPappPro.Controllers
             return View("PrzeplanujWizyteFormularz");
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony PrzeplanujWizyteWynik</returns>
         [HttpPost]

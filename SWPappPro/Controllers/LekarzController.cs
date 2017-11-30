@@ -7,6 +7,7 @@ using System.Web.Mvc;
 namespace SWPappPro.Controllers
 {
     /// <summary>
+    /// Autor: Bartłomiej Balak
     /// Controller dla lekarza, do nawigowania pomiedzy menu dostępnymi dla lekarza
     /// </summary>
     public class LekarzController : Controller

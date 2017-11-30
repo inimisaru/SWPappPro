@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
-{
+{/// <summary>
+/// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+/// </summary>
     public class OcenLekarzaController : Controller
     {
         // GET: OcenLekarza

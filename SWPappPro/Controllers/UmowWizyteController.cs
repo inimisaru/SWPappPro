@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
-{
+{/// <summary>
+/// Autor: Bartłomiej Balak
+/// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+/// </summary>
     public class UmowWizyteController : Controller
     {
         // GET: UmowWizyte
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony UmowWizyte</returns>
         public ActionResult UmowWizyte()
@@ -18,7 +21,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony UmowWizyteKon</returns>
         public ActionResult UmowWizyteKon()
@@ -26,7 +29,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony UmowWizyteDom</returns>
         public ActionResult UmowWizyteDom()
@@ -34,7 +37,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony UmowWizyteWynik</returns>
         [HttpPost]

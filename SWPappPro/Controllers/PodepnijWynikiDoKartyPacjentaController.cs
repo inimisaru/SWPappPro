@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Bartłomiej Balak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class PodepnijWynikiDoKartyPacjentaController : Controller
     {
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony PodepnijWynikiDoKartyPacjenta</returns>
         public ActionResult PodepnijWynikiDoKartyPacjenta()
@@ -17,7 +21,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony PodepnijWynikiDoKartyPacjentaWynik</returns>
         [HttpPost]
@@ -26,7 +30,7 @@ namespace SWPappPro.Controllers
             return View("PodepnijWynikiDoKartyPacjentaWynik");
         }
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony PodepnijWynikiDoKartyPacjentaWynik</returns>
         public ActionResult PodepnijWynikiDoKartyPacjentaWynik()

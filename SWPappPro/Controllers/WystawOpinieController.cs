@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Dawid Stefański
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class WystawOpinieController : Controller
     {
         /// <summary>
-        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony.
         /// </summary>
         /// <returns>widok strony WystawOpinie</returns>
         public ActionResult WystawOpinie()
@@ -17,7 +21,7 @@ namespace SWPappPro.Controllers
             return View();
         }
         /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
         /// </summary>
         /// <returns>widok strony WystawOpinieWynik</returns>
         [HttpPost]
