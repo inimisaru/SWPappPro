@@ -13,7 +13,7 @@ namespace SWPappPro.Controllers
     public class PowiadomOStatusieWizytyController : Controller
     {
         /// <summary>
-        /// Metoda służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony .
         /// </summary>
         /// <returns>widok strony PowiadomOStatusieWizyty</returns>
         public ActionResult PowiadomOStatusieWizyty()
