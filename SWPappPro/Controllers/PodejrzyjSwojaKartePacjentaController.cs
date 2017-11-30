@@ -8,6 +8,10 @@ namespace SWPappPro.Controllers
 {
     public class PodejrzyjSwojaKartePacjentaController : Controller
     {
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony PodejrzyjSwojaKartePacjenta</returns>
         public ActionResult PodejrzyjSwojaKartePacjenta()
         {
             return View();

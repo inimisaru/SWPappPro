@@ -8,16 +8,28 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlKartePacjentaController : Controller
     {
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku strony podanej w argumencie.
+        /// </summary>
+        /// <returns>widok strony WyswietlKartePacjenta</returns>
         public ActionResult WyswietlKartePacjenta()
         {
             return View("WyswietlKartePacjenta");
         }
+        /// <summary>
+        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// </summary>
+        /// <returns>widok strony WyswietlKartePacjentaWynik</returns>
         [HttpPost]
         public ActionResult WyswietlKartePacjentaZatwierdz()
         {
             return View("WyswietlKartePacjentaWynik");
         }
-            public ActionResult WyswietlKartePacjentaWynik()
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony WyswietlKartePacjenta</returns>
+        public ActionResult WyswietlKartePacjentaWynik()
         {
             return View();
         }

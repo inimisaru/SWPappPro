@@ -9,6 +9,10 @@ namespace SWPappPro.Controllers
     public class PrzeprowadzKonsultacjeController : Controller
     {
         // GET: PrzeprowadzKonsultacje
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony Index</returns>
         public ActionResult Index()
         {
             return View();

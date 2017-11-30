@@ -8,10 +8,18 @@ namespace SWPappPro.Controllers
 {
     public class PowiadomOStatusieWizytyController : Controller
     {
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony PowiadomOStatusieWizyty</returns>
         public ActionResult PowiadomOStatusieWizyty()
         {
             return View();
         }
+        /// <summary>
+        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// </summary>
+        /// <returns>widok strony PowiadomOStatusieWizytyWynik</returns>
         [HttpPost]
         public ActionResult PowiadomOStatusieWizytyZatwierdz()
         {

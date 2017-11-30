@@ -8,10 +8,18 @@ namespace SWPappPro.Controllers
 {
     public class ZamowWizyteDomowaController : Controller
     {
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony ZamowWizyteDomowa</returns>
         public ActionResult ZamowWizyteDomowa()
         {
             return View();
         }
+        /// <summary>
+        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// </summary>
+        /// <returns>widok strony ZamowWizyteDomowaWynik</returns>
         [HttpPost]
         public ActionResult ZamowWizyteDomowaZatwierdz()
         {

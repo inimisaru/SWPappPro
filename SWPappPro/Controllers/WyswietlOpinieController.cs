@@ -8,6 +8,10 @@ namespace SWPappPro.Controllers
 {
     public class WyswietlOpinieController : Controller
     {
+        /// <summary>
+        /// Funkcja służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony WyswietlOpinie</returns>
         public ActionResult WyswietlOpinie()
         {
             return View();
