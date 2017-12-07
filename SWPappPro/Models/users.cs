@@ -14,15 +14,31 @@ namespace SWPappPro.Models
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-
+    /// <summary>
+    /// Przyk³adowa klasa danych utworzona przy pomocy EntityFramework bêd¹ca obiektem zmapowanym na encje.
+    /// </summary>
     public partial class users
     {
+        /// <summary>
+        /// Nazwa uzytkownika
+        /// </summary>
         public string username { get; set; }
+        /// <summary>
+        /// Has³o uzytkownika
+        /// </summary>
         public string password { get; set; }
+        /// <summary>
+        /// Typ konta uzytkownika
+        /// </summary>
         public string type { get; set; }
 
-
-    //metoda do sprawdzania danych logowania
+    /// <summary>
+    /// Metoda porównuj¹ca parametry obiektu wejsciowego (entity) z pobranym z tablicy users.
+    /// Po porównaniu hase³ u¿ytkowników zwracany jest odpowiednia wartoœæ True lub False.
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="current"></param>
+    /// <returns>True, jeœli u¿ytkownik istnieje i has³a siê zgadzaj¹, False w przeciwnym razie.</returns>
     public bool ValidateUser(users entity, HttpContextBase current)
         {
 

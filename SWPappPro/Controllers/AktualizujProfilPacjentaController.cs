@@ -5,18 +5,27 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
-{
+{ 
+    /// <summary>
+    /// Autor: Michał Fijas
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class AktualizujProfilPacjentaController : Controller
     {
-        // GET: AktualizujProfilPacjenta
-        public ActionResult Index()
-        {
-            return View();
-        }
+        /// <summary>
+        /// Glowna metoda kontrolera zwracajaca strone z formularzem do aktualizacji danych pacjenta
+        /// </summary>
+        /// <returns>strona AktualizujProfilPacjenta</returns>
         public ActionResult AktualizujProfilPacjenta()
         {
             return View();
         }
+        /// <summary>
+        /// Metoda wywoływana metoda POST przez formularz na stronie AktualizujProfilPacjenta
+        /// W wyniku jej wykonania zostana zaktualizowane dane pacjenta w bazie danych.
+        /// Metoda zwraca strone AktualizujProfilPacjentaWynik na ktorej znajduje sie informacja o wyniku wykonania.
+        /// </summary>
+        /// <returns>strona AktualizujProfilPacjentaWynik</returns>
         public ActionResult AktualizujProfilPacjentaZatwierdz()
         {
             return View("AktualizujProfilPacjentaWynik");

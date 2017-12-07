@@ -6,13 +6,16 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Bartosz Burak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class WyswietlHistorieWizytController : Controller
     {
-        // GET: WyswietlHistorieWizyt
-        public ActionResult Index()
-        {
-            return View();
-        }
+        /// <summary>
+        /// Metoda służąca do zwracania widoku domyślnej strony.
+        /// </summary>
+        /// <returns>widok strony WyswietlHistorieWizyt</returns>
         public ActionResult WyswietlHistorieWizyt()
         {
             return View();

@@ -6,17 +6,24 @@ using System.Web.Mvc;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Autor: Bartłomiej Balak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class PowiadomOStatusieWizytyController : Controller
     {
-        // GET: PowiadomOStatusieWizyty
-        public ActionResult Index()
-        {
-            return View();
-        }
+        /// <summary>
+        /// Metoda służąca do zwracania widoku domyślnej strony .
+        /// </summary>
+        /// <returns>widok strony PowiadomOStatusieWizyty</returns>
         public ActionResult PowiadomOStatusieWizyty()
         {
             return View();
         }
+        /// <summary>
+        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// </summary>
+        /// <returns>widok strony PowiadomOStatusieWizytyWynik</returns>
         [HttpPost]
         public ActionResult PowiadomOStatusieWizytyZatwierdz()
         {
