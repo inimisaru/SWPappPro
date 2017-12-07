@@ -6,6 +6,8 @@
 }
 
 <h2>Aktualizuj profil</h2>
+
+
 @using (Html.BeginForm("AktualizujSwojProfilZatwierdz", "AktualizujSwojProfil", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -15,7 +17,11 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.LEKARZ_ID)
-
+        @Html.HiddenFor(model => model.IMIE)
+        @Html.HiddenFor(model => model.NAZWISKO)
+        @Html.HiddenFor(model => model.SPECJALIZACJA)
+        @Html.HiddenFor(model => model.PESEL)
+        @Html.HiddenFor(model => model.DATA_URODZENIA)
         <div class="form-group">
             @Html.LabelFor(model => model.SPECJALIZACJA, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
