@@ -19,7 +19,7 @@ namespace SWPappPro.Controllers
         /// <summary>
         /// Nowy obiekt SWPappDBEntities 
         /// </summary>
-        private SWPappDBEntities db = new SWPappDBEntities();
+        private SWPappDBEntities4 db = new SWPappDBEntities4();
         /// <summary>
         /// Metoda wyswietlajaca widok z formualarzem
         /// W formatkach znajduja sie dane pobrane z bazy danych odpowiadajace ID pobranemu ze zmiennych sesji

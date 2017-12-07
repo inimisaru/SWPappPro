@@ -1,15 +1,16 @@
 ﻿@model SWPappPro.Models.TERMINARZ
+
 @{
-    ViewBag.Title = "DodajWolnyTerminWizyty";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
 
-<h2>DodajWolnyTerminWizyty</h2>
+<h2>Create</h2>
 
-@using (Html.BeginForm("DodajWolnyTerminWizytyZatwierdz", "DodajWolnyTerminWizyty", FormMethod.Post))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>TERMINARZ</h4>
         <hr />
@@ -29,7 +30,9 @@
                 @Html.ValidationMessageFor(model => model.GODZINA, "", new { @class = "text-danger" })
             </div>
         </div>
+
         @Html.HiddenFor(model => model.LEKARZ_ID)
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -37,4 +40,7 @@
         </div>
     </div>
 }
-}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

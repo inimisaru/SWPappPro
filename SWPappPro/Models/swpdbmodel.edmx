@@ -135,18 +135,11 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <Property Name="WIZYTA_DOMOWA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PACJENT_ID" Type="int" />
           <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="TERMINARZ_ID" Type="int" />
           <Property Name="ULICA" Type="char" MaxLength="30" />
           <Property Name="KOD_POCZTOWY" Type="char" MaxLength="10" />
           <Property Name="NR_DOMU" Type="char" MaxLength="5" />
           <Property Name="MIEJSCOWOSC" Type="char" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="WIZYTA_DOMOWA_X_TERMINARZ">
-          <Key>
-            <PropertyRef Name="WIZYTA_DOMOWA_ID" />
-            <PropertyRef Name="TERMINARZ_ID" />
-          </Key>
-          <Property Name="WIZYTA_DOMOWA_ID" Type="int" Nullable="false" />
-          <Property Name="TERMINARZ_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WIZYTA_KONSULTACYJNA">
           <Key>
@@ -156,16 +149,9 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <Property Name="PACJENT_ID" Type="int" />
           <Property Name="GABINET_ID" Type="int" />
           <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="TERMINARZ_ID" Type="int" />
           <Property Name="CEL" Type="char" MaxLength="200" />
           <Property Name="DODATKOWE_UWAGI" Type="char" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
-          <Key>
-            <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
-            <PropertyRef Name="TERMINARZ_ID" />
-          </Key>
-          <Property Name="WIZYTA_KONSULTACYJNA_ID" Type="int" Nullable="false" />
-          <Property Name="TERMINARZ_ID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="BADANIE_KARTA_PACJENTA_FK">
           <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="0..1" />
@@ -311,54 +297,6 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="WIZYTA DOMOWA_TERMINARZ_FK">
-          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="1" />
-          <End Role="WIZYTA_DOMOWA_X_TERMINARZ" Type="Self.WIZYTA_DOMOWA_X_TERMINARZ" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WIZYTA_DOMOWA">
-              <PropertyRef Name="WIZYTA_DOMOWA_ID" />
-            </Principal>
-            <Dependent Role="WIZYTA_DOMOWA_X_TERMINARZ">
-              <PropertyRef Name="WIZYTA_DOMOWA_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WIZYTA DOMOWA_TERMINARZ_FK1">
-          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="1" />
-          <End Role="WIZYTA_DOMOWA_X_TERMINARZ" Type="Self.WIZYTA_DOMOWA_X_TERMINARZ" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TERMINARZ">
-              <PropertyRef Name="TERMINARZ_ID" />
-            </Principal>
-            <Dependent Role="WIZYTA_DOMOWA_X_TERMINARZ">
-              <PropertyRef Name="TERMINARZ_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK">
-          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="1" />
-          <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Type="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WIZYTA_KONSULTACYJNA">
-              <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
-            </Principal>
-            <Dependent Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
-              <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK1">
-          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="1" />
-          <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Type="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TERMINARZ">
-              <PropertyRef Name="TERMINARZ_ID" />
-            </Principal>
-            <Dependent Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
-              <PropertyRef Name="TERMINARZ_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="WIZYTA_DOMOWA_LEKARZ_FK">
           <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
           <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
@@ -380,6 +318,18 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             </Principal>
             <Dependent Role="WIZYTA_DOMOWA">
               <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_TERMINARZ_FK">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="TERMINARZ_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -419,6 +369,18 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_TERMINARZ_FK">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SWPappDBModel1StoreContainer">
           <EntitySet Name="BADANIE" EntityType="Self.BADANIE" Schema="swpdb" store:Type="Tables" />
           <EntitySet Name="GABINET" EntityType="Self.GABINET" Schema="swpdb" store:Type="Tables" />
@@ -431,9 +393,7 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <EntitySet Name="POWIADOMIENIE" EntityType="Self.POWIADOMIENIE" Schema="swpdb" store:Type="Tables" />
           <EntitySet Name="TERMINARZ" EntityType="Self.TERMINARZ" Schema="swpdb" store:Type="Tables" />
           <EntitySet Name="WIZYTA_DOMOWA" EntityType="Self.WIZYTA_DOMOWA" Schema="swpdb" store:Type="Tables" />
-          <EntitySet Name="WIZYTA_DOMOWA_X_TERMINARZ" EntityType="Self.WIZYTA_DOMOWA_X_TERMINARZ" Schema="swpdb" store:Type="Tables" />
           <EntitySet Name="WIZYTA_KONSULTACYJNA" EntityType="Self.WIZYTA_KONSULTACYJNA" Schema="swpdb" store:Type="Tables" />
-          <EntitySet Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntityType="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Schema="swpdb" store:Type="Tables" />
           <AssociationSet Name="BADANIE_KARTA_PACJENTA_FK" Association="Self.BADANIE_KARTA_PACJENTA_FK">
             <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
             <End Role="BADANIE" EntitySet="BADANIE" />
@@ -482,28 +442,16 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             <End Role="LEKARZ" EntitySet="LEKARZ" />
             <End Role="TERMINARZ" EntitySet="TERMINARZ" />
           </AssociationSet>
-          <AssociationSet Name="WIZYTA DOMOWA_TERMINARZ_FK" Association="Self.WIZYTA DOMOWA_TERMINARZ_FK">
-            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
-            <End Role="WIZYTA_DOMOWA_X_TERMINARZ" EntitySet="WIZYTA_DOMOWA_X_TERMINARZ" />
-          </AssociationSet>
-          <AssociationSet Name="WIZYTA DOMOWA_TERMINARZ_FK1" Association="Self.WIZYTA DOMOWA_TERMINARZ_FK1">
-            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
-            <End Role="WIZYTA_DOMOWA_X_TERMINARZ" EntitySet="WIZYTA_DOMOWA_X_TERMINARZ" />
-          </AssociationSet>
-          <AssociationSet Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK" Association="Self.WIZYTA KONSULTACYJNA_TERMINARZ_FK">
-            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
-            <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ" />
-          </AssociationSet>
-          <AssociationSet Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK1" Association="Self.WIZYTA KONSULTACYJNA_TERMINARZ_FK1">
-            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
-            <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ" />
-          </AssociationSet>
           <AssociationSet Name="WIZYTA_DOMOWA_LEKARZ_FK" Association="Self.WIZYTA_DOMOWA_LEKARZ_FK">
             <End Role="LEKARZ" EntitySet="LEKARZ" />
             <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
           </AssociationSet>
           <AssociationSet Name="WIZYTA_DOMOWA_PACJENT_FK" Association="Self.WIZYTA_DOMOWA_PACJENT_FK">
             <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_TERMINARZ_FK" Association="Self.WIZYTA_DOMOWA_TERMINARZ_FK">
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
             <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
           </AssociationSet>
           <AssociationSet Name="WIZYTA_KONSULTACYJNA_GABINET_FK" Association="Self.WIZYTA_KONSULTACYJNA_GABINET_FK">
@@ -516,6 +464,10 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           </AssociationSet>
           <AssociationSet Name="WIZYTA_KONSULTACYJNA_PACJENT_FK" Association="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK">
             <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_TERMINARZ_FK" Association="Self.WIZYTA_KONSULTACYJNA_TERMINARZ_FK">
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
             <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
           </AssociationSet>
         </EntityContainer>
@@ -666,8 +618,8 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <Property Name="GODZINA" Type="Time" Precision="7" />
           <Property Name="LEKARZ_ID" Type="Int32" />
           <NavigationProperty Name="LEKARZ" Relationship="Self.TERMINARZ_LEKARZ_FK" FromRole="TERMINARZ" ToRole="LEKARZ" />
-          <NavigationProperty Name="WIZYTA_DOMOWA" Relationship="Self.WIZYTA_DOMOWA_X_TERMINARZ" FromRole="TERMINARZ" ToRole="WIZYTA_DOMOWA" />
-          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" FromRole="TERMINARZ" ToRole="WIZYTA_KONSULTACYJNA" />
+          <NavigationProperty Name="WIZYTA_DOMOWA" Relationship="Self.WIZYTA_DOMOWA_TERMINARZ_FK" FromRole="TERMINARZ" ToRole="WIZYTA_DOMOWA" />
+          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_TERMINARZ_FK" FromRole="TERMINARZ" ToRole="WIZYTA_KONSULTACYJNA" />
         </EntityType>
         <EntityType Name="WIZYTA_DOMOWA">
           <Key>
@@ -676,13 +628,14 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <Property Name="WIZYTA_DOMOWA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PACJENT_ID" Type="Int32" />
           <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="TERMINARZ_ID" Type="Int32" />
           <Property Name="ULICA" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
           <Property Name="KOD_POCZTOWY" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="NR_DOMU" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="MIEJSCOWOSC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="LEKARZ" Relationship="Self.WIZYTA_DOMOWA_LEKARZ_FK" FromRole="WIZYTA_DOMOWA" ToRole="LEKARZ" />
           <NavigationProperty Name="PACJENT" Relationship="Self.WIZYTA_DOMOWA_PACJENT_FK" FromRole="WIZYTA_DOMOWA" ToRole="PACJENT" />
-          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_DOMOWA_X_TERMINARZ" FromRole="WIZYTA_DOMOWA" ToRole="TERMINARZ" />
+          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_DOMOWA_TERMINARZ_FK" FromRole="WIZYTA_DOMOWA" ToRole="TERMINARZ" />
         </EntityType>
         <EntityType Name="WIZYTA_KONSULTACYJNA">
           <Key>
@@ -692,12 +645,13 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           <Property Name="PACJENT_ID" Type="Int32" />
           <Property Name="GABINET_ID" Type="Int32" />
           <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="TERMINARZ_ID" Type="Int32" />
           <Property Name="CEL" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
           <Property Name="DODATKOWE_UWAGI" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="GABINET" Relationship="Self.WIZYTA_KONSULTACYJNA_GABINET_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="GABINET" />
           <NavigationProperty Name="LEKARZ" Relationship="Self.WIZYTA_KONSULTACYJNA_LEKARZ_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="LEKARZ" />
           <NavigationProperty Name="PACJENT" Relationship="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="PACJENT" />
-          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" FromRole="WIZYTA_KONSULTACYJNA" ToRole="TERMINARZ" />
+          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_KONSULTACYJNA_TERMINARZ_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="TERMINARZ" />
         </EntityType>
         <Association Name="BADANIE_KARTA_PACJENTA_FK">
           <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="0..1" />
@@ -903,15 +857,31 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="WIZYTA_DOMOWA_X_TERMINARZ">
+        <Association Name="WIZYTA_DOMOWA_TERMINARZ_FK">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="0..1" />
           <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
-          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+        <Association Name="WIZYTA_KONSULTACYJNA_TERMINARZ_FK">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="0..1" />
           <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
-          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SWPappDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SWPappDBEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BADANIE" EntityType="Self.BADANIE" />
           <EntitySet Name="GABINET" EntityType="Self.GABINET" />
           <EntitySet Name="KARTA_PACJENTA" EntityType="Self.KARTA_PACJENTA" />
@@ -992,13 +962,13 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
             <End Role="PACJENT" EntitySet="PACJENT" />
             <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
           </AssociationSet>
-          <AssociationSet Name="WIZYTA_DOMOWA_X_TERMINARZ" Association="Self.WIZYTA_DOMOWA_X_TERMINARZ">
+          <AssociationSet Name="WIZYTA_DOMOWA_TERMINARZ_FK" Association="Self.WIZYTA_DOMOWA_TERMINARZ_FK">
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
             <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
-            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
           </AssociationSet>
-          <AssociationSet Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Association="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ">
-            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_TERMINARZ_FK" Association="Self.WIZYTA_KONSULTACYJNA_TERMINARZ_FK">
             <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1006,7 +976,7 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SWPappDBModel1StoreContainer" CdmEntityContainer="SWPappDBEntities">
+        <EntityContainerMapping StorageEntityContainer="SWPappDBModel1StoreContainer" CdmEntityContainer="SWPappDBEntities4">
           <EntitySetMapping Name="BADANIE">
             <EntityTypeMapping TypeName="SWPappDBModel1.BADANIE">
               <MappingFragment StoreEntitySet="BADANIE">
@@ -1137,6 +1107,7 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
                 <ScalarProperty Name="WIZYTA_DOMOWA_ID" ColumnName="WIZYTA_DOMOWA_ID" />
                 <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
                 <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
                 <ScalarProperty Name="ULICA" ColumnName="ULICA" />
                 <ScalarProperty Name="KOD_POCZTOWY" ColumnName="KOD_POCZTOWY" />
                 <ScalarProperty Name="NR_DOMU" ColumnName="NR_DOMU" />
@@ -1151,27 +1122,12 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
                 <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
                 <ScalarProperty Name="GABINET_ID" ColumnName="GABINET_ID" />
                 <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
                 <ScalarProperty Name="CEL" ColumnName="CEL" />
                 <ScalarProperty Name="DODATKOWE_UWAGI" ColumnName="DODATKOWE_UWAGI" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="WIZYTA_DOMOWA_X_TERMINARZ" TypeName="SWPappDBModel1.WIZYTA_DOMOWA_X_TERMINARZ" StoreEntitySet="WIZYTA_DOMOWA_X_TERMINARZ">
-            <EndProperty Name="WIZYTA_DOMOWA">
-              <ScalarProperty Name="WIZYTA_DOMOWA_ID" ColumnName="WIZYTA_DOMOWA_ID" />
-            </EndProperty>
-            <EndProperty Name="TERMINARZ">
-              <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" TypeName="SWPappDBModel1.WIZYTA_KONSULTACYJNA_X_TERMINARZ" StoreEntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
-            <EndProperty Name="WIZYTA_KONSULTACYJNA">
-              <ScalarProperty Name="WIZYTA_KONSULTACYJNA_ID" ColumnName="WIZYTA_KONSULTACYJNA_ID" />
-            </EndProperty>
-            <EndProperty Name="TERMINARZ">
-              <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

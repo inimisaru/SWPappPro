@@ -13,10 +13,10 @@ namespace SWPappPro.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SWPappDBEntities : DbContext
+    public partial class SWPappDBEntities4 : DbContext
     {
-        public SWPappDBEntities()
-            : base("name=SWPappDBEntities")
+        public SWPappDBEntities4()
+            : base("name=SWPappDBEntities4")
         {
         }
     

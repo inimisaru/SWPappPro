@@ -8,109 +8,114 @@ using System.Web;
 using System.Web.Mvc;
 using SWPappPro.Models;
 
-namespace SWPappPro.Controllers
+namespace SWPappPro.Controllers.Wygenerowane
 {
-    public class LEKARZsController : Controller
+    public class TERMINARZsController : Controller
     {
         private SWPappDBEntities4 db = new SWPappDBEntities4();
 
-        // GET: LEKARZs
+        // GET: TERMINARZs
         public ActionResult Index()
         {
-            return View(db.LEKARZ.ToList());
+            var tERMINARZ = db.TERMINARZ.Include(t => t.LEKARZ);
+            return View(tERMINARZ.ToList());
         }
 
-        // GET: LEKARZs/Details/5
+        // GET: TERMINARZs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            TERMINARZ tERMINARZ = db.TERMINARZ.Find(id);
+            if (tERMINARZ == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            return View(tERMINARZ);
         }
 
-        // GET: LEKARZs/Create
+        // GET: TERMINARZs/Create
         public ActionResult Create()
         {
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE");
             return View();
         }
 
-        // POST: LEKARZs/Create
+        // POST: TERMINARZs/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LEKARZ_ID,IMIE,NAZWISKO,SPECJALIZACJA,PESEL,DATA_URODZENIA,NR_LICENCJI,HASLO")] LEKARZ lEKARZ)
+        public ActionResult Create([Bind(Include = "TERMINARZ_ID,DATA,GODZINA,LEKARZ_ID")] TERMINARZ tERMINARZ)
         {
             if (ModelState.IsValid)
             {
-                db.LEKARZ.Add(lEKARZ);
+                db.TERMINARZ.Add(tERMINARZ);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", tERMINARZ.LEKARZ_ID);
+            return View(tERMINARZ);
         }
 
-        // GET: LEKARZs/Edit/5
+        // GET: TERMINARZs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            TERMINARZ tERMINARZ = db.TERMINARZ.Find(id);
+            if (tERMINARZ == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", tERMINARZ.LEKARZ_ID);
+            return View(tERMINARZ);
         }
 
-        // POST: LEKARZs/Edit/5
+        // POST: TERMINARZs/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LEKARZ_ID,IMIE,NAZWISKO,SPECJALIZACJA,PESEL,DATA_URODZENIA,NR_LICENCJI,HASLO")] LEKARZ lEKARZ)
+        public ActionResult Edit([Bind(Include = "TERMINARZ_ID,DATA,GODZINA,LEKARZ_ID")] TERMINARZ tERMINARZ)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lEKARZ).State = EntityState.Modified;
+                db.Entry(tERMINARZ).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", tERMINARZ.LEKARZ_ID);
+            return View(tERMINARZ);
         }
 
-        // GET: LEKARZs/Delete/5
+        // GET: TERMINARZs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            TERMINARZ tERMINARZ = db.TERMINARZ.Find(id);
+            if (tERMINARZ == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            return View(tERMINARZ);
         }
 
-        // POST: LEKARZs/Delete/5
+        // POST: TERMINARZs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            db.LEKARZ.Remove(lEKARZ);
+            TERMINARZ tERMINARZ = db.TERMINARZ.Find(id);
+            db.TERMINARZ.Remove(tERMINARZ);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

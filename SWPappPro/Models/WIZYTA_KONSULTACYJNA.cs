@@ -14,23 +14,17 @@ namespace SWPappPro.Models
     
     public partial class WIZYTA_KONSULTACYJNA
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WIZYTA_KONSULTACYJNA()
-        {
-            this.TERMINARZ = new HashSet<TERMINARZ>();
-        }
-    
         public int WIZYTA_KONSULTACYJNA_ID { get; set; }
         public Nullable<int> PACJENT_ID { get; set; }
         public Nullable<int> GABINET_ID { get; set; }
         public Nullable<int> LEKARZ_ID { get; set; }
+        public Nullable<int> TERMINARZ_ID { get; set; }
         public string CEL { get; set; }
         public string DODATKOWE_UWAGI { get; set; }
     
         public virtual GABINET GABINET { get; set; }
         public virtual LEKARZ LEKARZ { get; set; }
         public virtual PACJENT PACJENT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TERMINARZ> TERMINARZ { get; set; }
+        public virtual TERMINARZ TERMINARZ { get; set; }
     }
 }

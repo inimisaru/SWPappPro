@@ -167,6 +167,8 @@
     <Compile Include="Controllers\PrzeplanujWizyteController.cs" />
     <Compile Include="Controllers\PrzeprowadzKonsultacjeController.cs" />
     <Compile Include="Controllers\UmowWizyteController.cs" />
+    <Compile Include="Controllers\Wygenerowane\OPINIAsController.cs" />
+    <Compile Include="Controllers\Wygenerowane\TERMINARZsController.cs" />
     <Compile Include="Controllers\WystawOpinieController.cs" />
     <Compile Include="Controllers\WyswietlHistorieWizytController.cs" />
     <Compile Include="Controllers\WyswietlKalendarzController.cs" />
@@ -178,49 +180,50 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BADANIE.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GABINET.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KalendarzModel.cs" />
     <Compile Include="Models\KARTA_PACJENTA.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KONSULTACJA_ONLINE.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KONSULTANT.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LEKARZ.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OPINIA.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PACJENT.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\POWIADOMIENIE.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\swpdb.Context.cs">
+    <Compile Include="Models\swpdbmodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>swpdb.Context.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\swpdb.cs">
+    <Compile Include="Models\swpdbmodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\swpdb.Designer.cs">
+    <Compile Include="Models\swpdbmodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>swpdb.edmx</DependentUpon>
+      <DependentUpon>swpdbmodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TERMINARZ.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -241,10 +244,10 @@
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WIZYTA_DOMOWA.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WIZYTA_KONSULTACYJNA.cs">
-      <DependentUpon>swpdb.tt</DependentUpon>
+      <DependentUpon>swpdbmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -255,15 +258,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\swpdb.Context.tt">
+    <Content Include="Models\swpdbmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>swpdb.edmx</DependentUpon>
-      <LastGenOutput>swpdb.Context.cs</LastGenOutput>
+      <DependentUpon>swpdbmodel.edmx</DependentUpon>
+      <LastGenOutput>swpdbmodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\swpdb.tt">
+    <Content Include="Models\swpdbmodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>swpdb.edmx</DependentUpon>
-      <LastGenOutput>swpdb.cs</LastGenOutput>
+      <DependentUpon>swpdbmodel.edmx</DependentUpon>
+      <LastGenOutput>swpdbmodel.cs</LastGenOutput>
     </Content>
     <Content Include="Models\UserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -287,12 +290,12 @@
     <Content Include="Models\UserModel.edmx.diagram">
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\swpdb.edmx">
+    <EntityDeploy Include="Models\swpdbmodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>swpdb.Designer.cs</LastGenOutput>
+      <LastGenOutput>swpdbmodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\swpdb.edmx.diagram">
-      <DependentUpon>swpdb.edmx</DependentUpon>
+    <Content Include="Models\swpdbmodel.edmx.diagram">
+      <DependentUpon>swpdbmodel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\SWPappPro - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -377,6 +380,17 @@
     <Content Include="Views\LEKARZs\Details.cshtml" />
     <Content Include="Views\LEKARZs\Edit.cshtml" />
     <Content Include="Views\LEKARZs\Index.cshtml" />
+    <Content Include="Views\OPINIAs\Create.cshtml" />
+    <Content Include="Views\OPINIAs\Delete.cshtml" />
+    <Content Include="Views\OPINIAs\Details.cshtml" />
+    <Content Include="Views\OPINIAs\Edit.cshtml" />
+    <Content Include="Views\OPINIAs\Index.cshtml" />
+    <Content Include="Views\TERMINARZs\Create.cshtml" />
+    <Content Include="Views\TERMINARZs\Delete.cshtml" />
+    <Content Include="Views\TERMINARZs\Details.cshtml" />
+    <Content Include="Views\TERMINARZs\Edit.cshtml" />
+    <Content Include="Views\TERMINARZs\Index.cshtml" />
+    <Content Include="Views\WyswietlUmowioneWizyty\WyswietlUmowioneWizyty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

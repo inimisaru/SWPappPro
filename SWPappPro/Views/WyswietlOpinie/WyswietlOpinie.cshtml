@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SWPappPro.Models.OPINIA>
 @{
     ViewBag.Title = "WyswietlOpinie";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
@@ -6,4 +6,45 @@
 
 <h2>WyswietlOpinie</h2>
 
-Lista opinii:
+Twoja lista opinii:
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMER_OPINII)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRESC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OCENA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACJENT.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACJENT.NAZWISKO)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NUMER_OPINII)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRESC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OCENA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PACJENT.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PACJENT.NAZWISKO)
+            </td>
+        </tr>
+    }
+
+</table>

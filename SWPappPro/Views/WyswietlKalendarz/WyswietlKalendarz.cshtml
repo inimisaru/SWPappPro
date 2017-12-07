@@ -1,12 +1,97 @@
-﻿
+﻿@model SWPappPro.Models.KalendarzModel
 @{
     ViewBag.Title = "WyswietlKalendarz";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
+<div>
+    <h2>Lista wolnych terminów:</h2>
 
-<h2>Lista umowionych wizyt:</h2>
+    Strona wyświetla wstawione przez lekarza terminy w formie tabeli:
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Gabinet / Nr budynku
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
 
-Strona wyświetla umówione wizyty lekarza w formie tabeli:
-<br />
-<br />
-Data | Godzina | Rodzaj Wizyty | Pacjent | Cel | Uwagi
+        @foreach (var item in Model.Terminarz)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GODZINA)
+                </td>
+                <td>
+                    @if(Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID) != null) { 
+                    foreach (var item_w in Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID==item.TERMINARZ_ID))
+                    {
+                        @item_w.GABINET.NR;
+                        @:/
+                        @item_w.GABINET.BUDYNEK;
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "WyswietlKalendarz", new { wybor = item.TERMINARZ_ID })
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
+@if (Model.Wizyta_konsultacyjna != null)
+{
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Imię:
+            </th>
+            <th>
+                Nazwisko:
+            </th>
+            <th>
+                PESEL:
+            </th>
+            <th>
+                Cel wizyty:
+            </th>
+            <th>
+                Dodatkowe uwagi:
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Wizyta_konsultacyjna)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PACJENT.IMIE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PACJENT.NAZWISKO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PACJENT.PESEL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CEL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DODATKOWE_UWAGI)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+}

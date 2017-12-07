@@ -11,9 +11,8 @@ namespace SWPappPro.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Generic;
-    using System.Web;
     using System.Linq;
+    using System.Web;
 
     public partial class PACJENT
     {
@@ -57,7 +56,7 @@ namespace SWPappPro.Models
         public bool ZalogujPacjent(PACJENT entity, HttpContextBase current)
         {
 
-            var db = new SWPappDBEntities();
+            var db = new SWPappDBEntities4();
             //pobranie z bazy danych rekordu o nazwie uzytkownika takiej jak podanej w entity(czyli danych z formularza)
             var pass = db.PACJENT.Where(s => s.PESEL == entity.PESEL.Trim()).FirstOrDefault();
             //jesli rekord istnieje
@@ -80,7 +79,6 @@ namespace SWPappPro.Models
             }
 
         }
-
 
 
     }

@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="beea5912f0c4438e86077db785bd9ec9" Name="Diagram1">
-        <EntityTypeShape EntityType="SWPappDBModel1.BADANIE" Width="1.5" PointX="3.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.GABINET" Width="1.5" PointX="3.375" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.KARTA_PACJENTA" Width="1.5" PointX="5.125" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.KONSULTACJA_ONLINE" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.KONSULTANT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.LEKARZ" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.OPINIA" Width="1.5" PointX="2" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.PACJENT" Width="1.5" PointX="8.5" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.POWIADOMIENIE" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.TERMINARZ" Width="1.5" PointX="10.625" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.WIZYTA_DOMOWA" Width="1.5" PointX="7.875" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SWPappDBModel1.WIZYTA_KONSULTACYJNA" Width="1.5" PointX="6.125" PointY="8.75" IsExpanded="true" />
+      <Diagram DiagramId="2a6adfeb4a1049109937dddfcda90d8d" Name="Diagram1">
+        <EntityTypeShape EntityType="SWPappDBModel1.BADANIE" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.GABINET" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.KARTA_PACJENTA" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.KONSULTACJA_ONLINE" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.KONSULTANT" Width="1.5" PointX="3.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.LEKARZ" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.OPINIA" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.PACJENT" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.POWIADOMIENIE" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.TERMINARZ" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.WIZYTA_DOMOWA" Width="1.5" PointX="6.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SWPappDBModel1.WIZYTA_KONSULTACYJNA" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
         <AssociationConnector Association="SWPappDBModel1.BADANIE_KARTA_PACJENTA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="SWPappDBModel1.BADANIE_LEKARZ_FK" ManuallyRouted="false" />
         <AssociationConnector Association="SWPappDBModel1.GABINET_LEKARZ_FK" ManuallyRouted="false" />
@@ -34,8 +34,8 @@
         <AssociationConnector Association="SWPappDBModel1.POWIADOMIENIE_PACJENT_FK" ManuallyRouted="false" />
         <AssociationConnector Association="SWPappDBModel1.WIZYTA_DOMOWA_PACJENT_FK" ManuallyRouted="false" />
         <AssociationConnector Association="SWPappDBModel1.WIZYTA_KONSULTACYJNA_PACJENT_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="SWPappDBModel1.WIZYTA_DOMOWA_X_TERMINARZ" ManuallyRouted="false" />
-        <AssociationConnector Association="SWPappDBModel1.WIZYTA_KONSULTACYJNA_X_TERMINARZ" ManuallyRouted="false" />
+        <AssociationConnector Association="SWPappDBModel1.WIZYTA_DOMOWA_TERMINARZ_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="SWPappDBModel1.WIZYTA_KONSULTACYJNA_TERMINARZ_FK" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,109 +8,118 @@ using System.Web;
 using System.Web.Mvc;
 using SWPappPro.Models;
 
-namespace SWPappPro.Controllers
+namespace SWPappPro.Controllers.Wygenerowane
 {
-    public class LEKARZsController : Controller
+    public class OPINIAsController : Controller
     {
         private SWPappDBEntities4 db = new SWPappDBEntities4();
 
-        // GET: LEKARZs
+        // GET: OPINIAs
         public ActionResult Index()
         {
-            return View(db.LEKARZ.ToList());
+            var oPINIA = db.OPINIA.Include(o => o.LEKARZ).Include(o => o.PACJENT);
+            return View(oPINIA.ToList());
         }
 
-        // GET: LEKARZs/Details/5
+        // GET: OPINIAs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            OPINIA oPINIA = db.OPINIA.Find(id);
+            if (oPINIA == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            return View(oPINIA);
         }
 
-        // GET: LEKARZs/Create
+        // GET: OPINIAs/Create
         public ActionResult Create()
         {
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE");
+            ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE");
             return View();
         }
 
-        // POST: LEKARZs/Create
+        // POST: OPINIAs/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LEKARZ_ID,IMIE,NAZWISKO,SPECJALIZACJA,PESEL,DATA_URODZENIA,NR_LICENCJI,HASLO")] LEKARZ lEKARZ)
+        public ActionResult Create([Bind(Include = "OPINIA_ID,NUMER_OPINII,TRESC,OCENA,LEKARZ_ID,PACJENT_ID")] OPINIA oPINIA)
         {
             if (ModelState.IsValid)
             {
-                db.LEKARZ.Add(lEKARZ);
+                db.OPINIA.Add(oPINIA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", oPINIA.LEKARZ_ID);
+            ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", oPINIA.PACJENT_ID);
+            return View(oPINIA);
         }
 
-        // GET: LEKARZs/Edit/5
+        // GET: OPINIAs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            OPINIA oPINIA = db.OPINIA.Find(id);
+            if (oPINIA == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", oPINIA.LEKARZ_ID);
+            ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", oPINIA.PACJENT_ID);
+            return View(oPINIA);
         }
 
-        // POST: LEKARZs/Edit/5
+        // POST: OPINIAs/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LEKARZ_ID,IMIE,NAZWISKO,SPECJALIZACJA,PESEL,DATA_URODZENIA,NR_LICENCJI,HASLO")] LEKARZ lEKARZ)
+        public ActionResult Edit([Bind(Include = "OPINIA_ID,NUMER_OPINII,TRESC,OCENA,LEKARZ_ID,PACJENT_ID")] OPINIA oPINIA)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lEKARZ).State = EntityState.Modified;
+                db.Entry(oPINIA).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(lEKARZ);
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", oPINIA.LEKARZ_ID);
+            ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", oPINIA.PACJENT_ID);
+            return View(oPINIA);
         }
 
-        // GET: LEKARZs/Delete/5
+        // GET: OPINIAs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            if (lEKARZ == null)
+            OPINIA oPINIA = db.OPINIA.Find(id);
+            if (oPINIA == null)
             {
                 return HttpNotFound();
             }
-            return View(lEKARZ);
+            return View(oPINIA);
         }
 
-        // POST: LEKARZs/Delete/5
+        // POST: OPINIAs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            LEKARZ lEKARZ = db.LEKARZ.Find(id);
-            db.LEKARZ.Remove(lEKARZ);
+            OPINIA oPINIA = db.OPINIA.Find(id);
+            db.OPINIA.Remove(oPINIA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

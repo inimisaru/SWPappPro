@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using SWPappPro.Models;
 
 namespace SWPappPro.Controllers
 {
@@ -12,12 +18,14 @@ namespace SWPappPro.Controllers
     /// </summary>
     public class DodajWolnyTerminWizytyController : Controller
     {
+        private SWPappDBEntities4 db = new SWPappDBEntities4();
         /// <summary>
         /// Glowna metoda kontrolera zwracajaca strone z formularzem wprowadzenia nowego terminu wizyty dla lekarza.
         /// </summary>
         /// <returns>strona DodajWolnyTerminWizyty</returns>
         public ActionResult DodajWolnyTerminWizyty()
         {
+            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE");
             return View();
         }
         /// <summary>
@@ -27,9 +35,16 @@ namespace SWPappPro.Controllers
         /// </summary>
         /// <returns>strona DodajWolnyTerminWizytyWynik</returns>
         [HttpPost]
-        public ActionResult DodajWolnyTerminWizytyZatwierdz()
+        public ActionResult DodajWolnyTerminWizytyZatwierdz([Bind(Include = "TERMINARZ_ID,DATA,GODZINA,LEKARZ_ID")] TERMINARZ tERMINARZ)
         {
-            return View("DodajWolnyTerminWizytyWynik");
+            tERMINARZ.LEKARZ_ID = (int)Session["id"];
+            if (ModelState.IsValid)
+            {
+                db.TERMINARZ.Add(tERMINARZ);
+                db.SaveChanges();
+                return View("DodajWolnyTerminWizytyWynik");
+            }
+            return View("DodajWolnyTerminWizyty");
         }
     }
 }
