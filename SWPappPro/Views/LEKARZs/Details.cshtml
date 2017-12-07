@@ -1,0 +1,75 @@
+﻿@model SWPappPro.Models.LEKARZ
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LEKARZ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAZWISKO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPECJALIZACJA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPECJALIZACJA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PESEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATA_URODZENIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATA_URODZENIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NR_LICENCJI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NR_LICENCJI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HASLO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HASLO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LEKARZ_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

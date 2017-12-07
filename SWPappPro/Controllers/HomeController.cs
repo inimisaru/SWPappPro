@@ -11,57 +11,41 @@ namespace SWPappPro.Controllers
     {
         public ActionResult Index()
         {
-            if (Session["login"] == null)
-            {
-                return View("Login");
-            }
-            else
-            {
-                return View("Home");
-            }
-
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-        public ActionResult TerminarzView()
-        {
-            return View();
-
-        }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult LoginLekarz()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(users entity)
+        public ActionResult LoginLekarz(LEKARZ entity)
         {
-            //Wywołanie metody sprawdzajacej dane logowania uzytkownika, metoda zwraca wartosc true/false 
-            //w zaleznosci od wyniku operacji walidacji.
-            if (entity.ValidateUser(entity, this.HttpContext))
+            if (entity.ZalogujLekarz(entity, this.HttpContext))
             {
-                if (Session["typ"].Equals("lekarz")) return RedirectToAction("Index", "Lekarz");
-                else return RedirectToAction("Index", "Pacjent");
+                return RedirectToAction("Index", "Lekarz");
             }
 
             else return View("Fail");
         }
+        public ActionResult LoginPacjent()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LoginPacjent(PACJENT entity)
+        {
+            if (entity.ZalogujPacjent(entity, this.HttpContext))
+            {
+                return RedirectToAction("Index", "Pacjent");
+            }
 
+            else return View("Fail");
+        }
         public ActionResult Logout()
         {
             Session["login"] = null;
-            return View("Login");
+            return View("Index");
         }
 
     }

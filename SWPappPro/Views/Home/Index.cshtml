@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Logowanie pacjenta", "LoginPacjent", "Home", new { @class = "btn btn-primary", @style = "color:white" })
+@Html.ActionLink("Logowanie lekarz", "LoginLekarz", "Home", new { @class = "btn btn-primary", @style = "color:white" })

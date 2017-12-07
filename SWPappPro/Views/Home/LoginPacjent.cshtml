@@ -1,7 +1,7 @@
-﻿@model SWPappPro.Models.users
+﻿@model SWPappPro.Models.PACJENT
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "LoginPacjent";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@
     <title>Login</title>
 </head>
 <body>
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    @using (Html.BeginForm("LoginPacjent", "Home", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         
@@ -28,9 +28,9 @@
                 <br /><br />
             }
             
-            @Html.TextBoxFor(s => s.username, new { @placeholder = "Username" })
+            @Html.TextBoxFor(s => s.PESEL, new { @placeholder = "Username" })
             <br /> <br />
-            @Html.PasswordFor(s => s.password, new { @placeholder = "Password" })
+            @Html.PasswordFor(s => s.HASLO, new { @placeholder = "Password" })
             <br /> <br />
             <button type="submit">Login</button>
         </div>

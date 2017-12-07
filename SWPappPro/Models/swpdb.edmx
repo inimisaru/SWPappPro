@@ -1,0 +1,1198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SWPappDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ADRES">
+          <Property Name="ULICA" Type="char" MaxLength="20" />
+          <Property Name="NR_DOMU" Type="int" />
+          <Property Name="NR_MIESZKANIA" Type="int" />
+          <Property Name="KOD_POCZTOWY" Type="char" MaxLength="20" />
+          <Property Name="MIASTO" Type="char" MaxLength="20" />
+        </EntityType>-->
+        <EntityType Name="BADANIE">
+          <Key>
+            <PropertyRef Name="BADANIE_ID" />
+          </Key>
+          <Property Name="DATA_BADANIA" Type="datetime" />
+          <Property Name="RODZAJ" Type="char" MaxLength="50" />
+          <Property Name="WYNIK" Type="image" />
+          <Property Name="BADANIE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KARTA_PACJENTA_ID" Type="int" />
+          <Property Name="LEKARZ_ZLECAJACY" Type="int" />
+        </EntityType>
+        <EntityType Name="GABINET">
+          <Key>
+            <PropertyRef Name="GABINET_ID" />
+          </Key>
+          <Property Name="NR" Type="char" MaxLength="10" />
+          <Property Name="BUDYNEK" Type="char" MaxLength="10" />
+          <Property Name="RODZAJ" Type="char" MaxLength="30" />
+          <Property Name="GABINET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LEKARZ_ODPOWIEDZIALNY" Type="int" />
+        </EntityType>
+        <EntityType Name="KARTA_PACJENTA">
+          <Key>
+            <PropertyRef Name="KARTA_PACJENTA_ID" />
+          </Key>
+          <Property Name="KARTA_PACJENTA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMER_KARTY" Type="char" MaxLength="20" />
+          <Property Name="DATA_ZALOZENIA" Type="date" />
+          <Property Name="WLASCICIEL" Type="int" Nullable="false" />
+          <Property Name="PROWADZACY" Type="int" />
+        </EntityType>
+        <EntityType Name="KONSULTACJA_ONLINE">
+          <Key>
+            <PropertyRef Name="KONSULTACJA_ONLINE_ID" />
+          </Key>
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="OPIS" Type="char" MaxLength="200" />
+          <Property Name="KONSULTACJA_ONLINE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACJENT_ID" Type="int" />
+          <Property Name="KONSULTANT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="KONSULTANT">
+          <Key>
+            <PropertyRef Name="KONSULTANT_ID" />
+          </Key>
+          <Property Name="GODZINY_KONSULTACJI" Type="char" MaxLength="10" />
+          <Property Name="IMIE" Type="char" MaxLength="20" />
+          <Property Name="NAZWISKO" Type="char" MaxLength="20" />
+          <Property Name="SPECJALIZACJA" Type="char" MaxLength="10" />
+          <Property Name="NR_LICENCJI" Type="char" MaxLength="20" />
+          <Property Name="DATA_URODZENIA" Type="date" />
+          <Property Name="KONSULTANT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LEKARZ">
+          <Key>
+            <PropertyRef Name="LEKARZ_ID" />
+          </Key>
+          <Property Name="LEKARZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMIE" Type="char" MaxLength="20" />
+          <Property Name="NAZWISKO" Type="char" MaxLength="20" />
+          <Property Name="SPECJALIZACJA" Type="char" MaxLength="20" />
+          <Property Name="PESEL" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="DATA_URODZENIA" Type="date" />
+          <Property Name="NR_LICENCJI" Type="char" MaxLength="20" />
+          <Property Name="HASLO" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OPINIA">
+          <Key>
+            <PropertyRef Name="OPINIA_ID" />
+          </Key>
+          <Property Name="OPINIA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMER_OPINII" Type="int" />
+          <Property Name="TRESC" Type="char" MaxLength="200" />
+          <Property Name="OCENA" Type="int" />
+          <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="PACJENT_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PACJENT">
+          <Key>
+            <PropertyRef Name="PACJENT_ID" />
+          </Key>
+          <Property Name="PACJENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMIE" Type="char" MaxLength="20" />
+          <Property Name="NAZWISKO" Type="char" MaxLength="20" />
+          <Property Name="PESEL" Type="char" MaxLength="11" />
+          <Property Name="DATA_URODZENIA" Type="date" />
+          <Property Name="MIEJSCE_URODZENIA" Type="char" MaxLength="20" />
+          <Property Name="ULICA_ZAMIESZKANIA" Type="char" MaxLength="20" />
+          <Property Name="MIEJSCOWOSC" Type="char" MaxLength="20" />
+          <Property Name="KOD_POCZTOWY" Type="char" MaxLength="10" />
+          <Property Name="ADRES_E-MAIL" Type="char" MaxLength="30" />
+          <Property Name="NR_TELEFONU" Type="char" MaxLength="15" />
+          <Property Name="HASLO" Type="char" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POWIADOMIENIE">
+          <Key>
+            <PropertyRef Name="POWIADOMIENIE_ID" />
+          </Key>
+          <Property Name="POWIADOMIENIE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NUMER_POWIADOMIENIA" Type="int" />
+          <Property Name="TRESC" Type="char" MaxLength="500" />
+          <Property Name="PACJENT_ID" Type="int" />
+          <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="STATUS" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TERMINARZ">
+          <Key>
+            <PropertyRef Name="TERMINARZ_ID" />
+          </Key>
+          <Property Name="TERMINARZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DATA" Type="date" />
+          <Property Name="GODZINA" Type="time" Precision="7" />
+          <Property Name="LEKARZ_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="WIZYTA_DOMOWA">
+          <Key>
+            <PropertyRef Name="WIZYTA_DOMOWA_ID" />
+          </Key>
+          <Property Name="WIZYTA_DOMOWA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACJENT_ID" Type="int" />
+          <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="ULICA" Type="char" MaxLength="30" />
+          <Property Name="KOD_POCZTOWY" Type="char" MaxLength="10" />
+          <Property Name="NR_DOMU" Type="char" MaxLength="5" />
+          <Property Name="MIEJSCOWOSC" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WIZYTA_DOMOWA_X_TERMINARZ">
+          <Key>
+            <PropertyRef Name="WIZYTA_DOMOWA_ID" />
+            <PropertyRef Name="TERMINARZ_ID" />
+          </Key>
+          <Property Name="WIZYTA_DOMOWA_ID" Type="int" Nullable="false" />
+          <Property Name="TERMINARZ_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WIZYTA_KONSULTACYJNA">
+          <Key>
+            <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
+          </Key>
+          <Property Name="WIZYTA_KONSULTACYJNA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PACJENT_ID" Type="int" />
+          <Property Name="GABINET_ID" Type="int" />
+          <Property Name="LEKARZ_ID" Type="int" />
+          <Property Name="CEL" Type="char" MaxLength="200" />
+          <Property Name="DODATKOWE_UWAGI" Type="char" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+          <Key>
+            <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
+            <PropertyRef Name="TERMINARZ_ID" />
+          </Key>
+          <Property Name="WIZYTA_KONSULTACYJNA_ID" Type="int" Nullable="false" />
+          <Property Name="TERMINARZ_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="BADANIE_KARTA_PACJENTA_FK">
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="0..1" />
+          <End Role="BADANIE" Type="Self.BADANIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KARTA_PACJENTA">
+              <PropertyRef Name="KARTA_PACJENTA_ID" />
+            </Principal>
+            <Dependent Role="BADANIE">
+              <PropertyRef Name="KARTA_PACJENTA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BADANIE_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="BADANIE" Type="Self.BADANIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="BADANIE">
+              <PropertyRef Name="LEKARZ_ZLECAJACY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GABINET_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="GABINET" Type="Self.GABINET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="GABINET">
+              <PropertyRef Name="LEKARZ_ODPOWIEDZIALNY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KARTA_PACJENTA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="KARTA_PACJENTA">
+              <PropertyRef Name="PROWADZACY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KARTA_PACJENTA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="1" />
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="KARTA_PACJENTA">
+              <PropertyRef Name="WLASCICIEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KONSULTACJA_ONLINE_KONSULTANT_FK">
+          <End Role="KONSULTANT" Type="Self.KONSULTANT" Multiplicity="0..1" />
+          <End Role="KONSULTACJA_ONLINE" Type="Self.KONSULTACJA_ONLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KONSULTANT">
+              <PropertyRef Name="KONSULTANT_ID" />
+            </Principal>
+            <Dependent Role="KONSULTACJA_ONLINE">
+              <PropertyRef Name="KONSULTANT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KONSULTACJA_ONLINE_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="KONSULTACJA_ONLINE" Type="Self.KONSULTACJA_ONLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="KONSULTACJA_ONLINE">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OPINIA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="OPINIA" Type="Self.OPINIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="OPINIA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OPINIA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="OPINIA" Type="Self.OPINIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="OPINIA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POWIADOMIENIE_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="POWIADOMIENIE" Type="Self.POWIADOMIENIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="POWIADOMIENIE">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POWIADOMIENIE_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="POWIADOMIENIE" Type="Self.POWIADOMIENIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="POWIADOMIENIE">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TERMINARZ_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="TERMINARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA DOMOWA_TERMINARZ_FK">
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="1" />
+          <End Role="WIZYTA_DOMOWA_X_TERMINARZ" Type="Self.WIZYTA_DOMOWA_X_TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="WIZYTA_DOMOWA_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA_X_TERMINARZ">
+              <PropertyRef Name="WIZYTA_DOMOWA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA DOMOWA_TERMINARZ_FK1">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="1" />
+          <End Role="WIZYTA_DOMOWA_X_TERMINARZ" Type="Self.WIZYTA_DOMOWA_X_TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA_X_TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK">
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="1" />
+          <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Type="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+              <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK1">
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="1" />
+          <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Type="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+              <PropertyRef Name="TERMINARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_GABINET_FK">
+          <End Role="GABINET" Type="Self.GABINET" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GABINET">
+              <PropertyRef Name="GABINET_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="GABINET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SWPappDBModel1StoreContainer">
+          <EntitySet Name="BADANIE" EntityType="Self.BADANIE" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="GABINET" EntityType="Self.GABINET" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="KARTA_PACJENTA" EntityType="Self.KARTA_PACJENTA" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="KONSULTACJA_ONLINE" EntityType="Self.KONSULTACJA_ONLINE" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="KONSULTANT" EntityType="Self.KONSULTANT" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="LEKARZ" EntityType="Self.LEKARZ" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="OPINIA" EntityType="Self.OPINIA" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="PACJENT" EntityType="Self.PACJENT" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="POWIADOMIENIE" EntityType="Self.POWIADOMIENIE" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="TERMINARZ" EntityType="Self.TERMINARZ" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="WIZYTA_DOMOWA" EntityType="Self.WIZYTA_DOMOWA" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="WIZYTA_DOMOWA_X_TERMINARZ" EntityType="Self.WIZYTA_DOMOWA_X_TERMINARZ" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="WIZYTA_KONSULTACYJNA" EntityType="Self.WIZYTA_KONSULTACYJNA" Schema="swpdb" store:Type="Tables" />
+          <EntitySet Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntityType="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" Schema="swpdb" store:Type="Tables" />
+          <AssociationSet Name="BADANIE_KARTA_PACJENTA_FK" Association="Self.BADANIE_KARTA_PACJENTA_FK">
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+            <End Role="BADANIE" EntitySet="BADANIE" />
+          </AssociationSet>
+          <AssociationSet Name="BADANIE_LEKARZ_FK" Association="Self.BADANIE_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="BADANIE" EntitySet="BADANIE" />
+          </AssociationSet>
+          <AssociationSet Name="GABINET_LEKARZ_FK" Association="Self.GABINET_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="GABINET" EntitySet="GABINET" />
+          </AssociationSet>
+          <AssociationSet Name="KARTA_PACJENTA_LEKARZ_FK" Association="Self.KARTA_PACJENTA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+          </AssociationSet>
+          <AssociationSet Name="KARTA_PACJENTA_PACJENT_FK" Association="Self.KARTA_PACJENTA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+          </AssociationSet>
+          <AssociationSet Name="KONSULTACJA_ONLINE_KONSULTANT_FK" Association="Self.KONSULTACJA_ONLINE_KONSULTANT_FK">
+            <End Role="KONSULTANT" EntitySet="KONSULTANT" />
+            <End Role="KONSULTACJA_ONLINE" EntitySet="KONSULTACJA_ONLINE" />
+          </AssociationSet>
+          <AssociationSet Name="KONSULTACJA_ONLINE_PACJENT_FK" Association="Self.KONSULTACJA_ONLINE_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="KONSULTACJA_ONLINE" EntitySet="KONSULTACJA_ONLINE" />
+          </AssociationSet>
+          <AssociationSet Name="OPINIA_LEKARZ_FK" Association="Self.OPINIA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="OPINIA" EntitySet="OPINIA" />
+          </AssociationSet>
+          <AssociationSet Name="OPINIA_PACJENT_FK" Association="Self.OPINIA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="OPINIA" EntitySet="OPINIA" />
+          </AssociationSet>
+          <AssociationSet Name="POWIADOMIENIE_LEKARZ_FK" Association="Self.POWIADOMIENIE_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="POWIADOMIENIE" EntitySet="POWIADOMIENIE" />
+          </AssociationSet>
+          <AssociationSet Name="POWIADOMIENIE_PACJENT_FK" Association="Self.POWIADOMIENIE_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="POWIADOMIENIE" EntitySet="POWIADOMIENIE" />
+          </AssociationSet>
+          <AssociationSet Name="TERMINARZ_LEKARZ_FK" Association="Self.TERMINARZ_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA DOMOWA_TERMINARZ_FK" Association="Self.WIZYTA DOMOWA_TERMINARZ_FK">
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+            <End Role="WIZYTA_DOMOWA_X_TERMINARZ" EntitySet="WIZYTA_DOMOWA_X_TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA DOMOWA_TERMINARZ_FK1" Association="Self.WIZYTA DOMOWA_TERMINARZ_FK1">
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+            <End Role="WIZYTA_DOMOWA_X_TERMINARZ" EntitySet="WIZYTA_DOMOWA_X_TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK" Association="Self.WIZYTA KONSULTACYJNA_TERMINARZ_FK">
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+            <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA KONSULTACYJNA_TERMINARZ_FK1" Association="Self.WIZYTA KONSULTACYJNA_TERMINARZ_FK1">
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+            <End Role="WIZYTA_KONSULTACYJNA_X_TERMINARZ" EntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_LEKARZ_FK" Association="Self.WIZYTA_DOMOWA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_PACJENT_FK" Association="Self.WIZYTA_DOMOWA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_GABINET_FK" Association="Self.WIZYTA_KONSULTACYJNA_GABINET_FK">
+            <End Role="GABINET" EntitySet="GABINET" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_LEKARZ_FK" Association="Self.WIZYTA_KONSULTACYJNA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_PACJENT_FK" Association="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SWPappDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BADANIE">
+          <Key>
+            <PropertyRef Name="BADANIE_ID" />
+          </Key>
+          <Property Name="DATA_BADANIA" Type="DateTime" Precision="3" />
+          <Property Name="RODZAJ" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="WYNIK" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BADANIE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KARTA_PACJENTA_ID" Type="Int32" />
+          <Property Name="LEKARZ_ZLECAJACY" Type="Int32" />
+          <NavigationProperty Name="KARTA_PACJENTA" Relationship="Self.BADANIE_KARTA_PACJENTA_FK" FromRole="BADANIE" ToRole="KARTA_PACJENTA" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.BADANIE_LEKARZ_FK" FromRole="BADANIE" ToRole="LEKARZ" />
+        </EntityType>
+        <EntityType Name="GABINET">
+          <Key>
+            <PropertyRef Name="GABINET_ID" />
+          </Key>
+          <Property Name="NR" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="BUDYNEK" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="RODZAJ" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="GABINET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LEKARZ_ODPOWIEDZIALNY" Type="Int32" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.GABINET_LEKARZ_FK" FromRole="GABINET" ToRole="LEKARZ" />
+          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_GABINET_FK" FromRole="GABINET" ToRole="WIZYTA_KONSULTACYJNA" />
+        </EntityType>
+        <EntityType Name="KARTA_PACJENTA">
+          <Key>
+            <PropertyRef Name="KARTA_PACJENTA_ID" />
+          </Key>
+          <Property Name="KARTA_PACJENTA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMER_KARTY" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="DATA_ZALOZENIA" Type="DateTime" Precision="0" />
+          <Property Name="WLASCICIEL" Type="Int32" Nullable="false" />
+          <Property Name="PROWADZACY" Type="Int32" />
+          <NavigationProperty Name="BADANIE" Relationship="Self.BADANIE_KARTA_PACJENTA_FK" FromRole="KARTA_PACJENTA" ToRole="BADANIE" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.KARTA_PACJENTA_LEKARZ_FK" FromRole="KARTA_PACJENTA" ToRole="LEKARZ" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.KARTA_PACJENTA_PACJENT_FK" FromRole="KARTA_PACJENTA" ToRole="PACJENT" />
+        </EntityType>
+        <EntityType Name="KONSULTACJA_ONLINE">
+          <Key>
+            <PropertyRef Name="KONSULTACJA_ONLINE_ID" />
+          </Key>
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="OPIS" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+          <Property Name="KONSULTACJA_ONLINE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACJENT_ID" Type="Int32" />
+          <Property Name="KONSULTANT_ID" Type="Int32" />
+          <NavigationProperty Name="KONSULTANT" Relationship="Self.KONSULTACJA_ONLINE_KONSULTANT_FK" FromRole="KONSULTACJA_ONLINE" ToRole="KONSULTANT" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.KONSULTACJA_ONLINE_PACJENT_FK" FromRole="KONSULTACJA_ONLINE" ToRole="PACJENT" />
+        </EntityType>
+        <EntityType Name="KONSULTANT">
+          <Key>
+            <PropertyRef Name="KONSULTANT_ID" />
+          </Key>
+          <Property Name="GODZINY_KONSULTACJI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="IMIE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="NAZWISKO" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="SPECJALIZACJA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NR_LICENCJI" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="DATA_URODZENIA" Type="DateTime" Precision="0" />
+          <Property Name="KONSULTANT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="KONSULTACJA_ONLINE" Relationship="Self.KONSULTACJA_ONLINE_KONSULTANT_FK" FromRole="KONSULTANT" ToRole="KONSULTACJA_ONLINE" />
+        </EntityType>
+        <EntityType Name="LEKARZ">
+          <Key>
+            <PropertyRef Name="LEKARZ_ID" />
+          </Key>
+          <Property Name="LEKARZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMIE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="NAZWISKO" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="SPECJALIZACJA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DATA_URODZENIA" Type="DateTime" Precision="0" />
+          <Property Name="NR_LICENCJI" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="HASLO" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BADANIE" Relationship="Self.BADANIE_LEKARZ_FK" FromRole="LEKARZ" ToRole="BADANIE" />
+          <NavigationProperty Name="GABINET" Relationship="Self.GABINET_LEKARZ_FK" FromRole="LEKARZ" ToRole="GABINET" />
+          <NavigationProperty Name="KARTA_PACJENTA" Relationship="Self.KARTA_PACJENTA_LEKARZ_FK" FromRole="LEKARZ" ToRole="KARTA_PACJENTA" />
+          <NavigationProperty Name="OPINIA" Relationship="Self.OPINIA_LEKARZ_FK" FromRole="LEKARZ" ToRole="OPINIA" />
+          <NavigationProperty Name="POWIADOMIENIE" Relationship="Self.POWIADOMIENIE_LEKARZ_FK" FromRole="LEKARZ" ToRole="POWIADOMIENIE" />
+          <NavigationProperty Name="TERMINARZ" Relationship="Self.TERMINARZ_LEKARZ_FK" FromRole="LEKARZ" ToRole="TERMINARZ" />
+          <NavigationProperty Name="WIZYTA_DOMOWA" Relationship="Self.WIZYTA_DOMOWA_LEKARZ_FK" FromRole="LEKARZ" ToRole="WIZYTA_DOMOWA" />
+          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_LEKARZ_FK" FromRole="LEKARZ" ToRole="WIZYTA_KONSULTACYJNA" />
+        </EntityType>
+        <EntityType Name="OPINIA">
+          <Key>
+            <PropertyRef Name="OPINIA_ID" />
+          </Key>
+          <Property Name="OPINIA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMER_OPINII" Type="Int32" />
+          <Property Name="TRESC" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+          <Property Name="OCENA" Type="Int32" />
+          <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="PACJENT_ID" Type="Int32" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.OPINIA_LEKARZ_FK" FromRole="OPINIA" ToRole="LEKARZ" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.OPINIA_PACJENT_FK" FromRole="OPINIA" ToRole="PACJENT" />
+        </EntityType>
+        <EntityType Name="PACJENT">
+          <Key>
+            <PropertyRef Name="PACJENT_ID" />
+          </Key>
+          <Property Name="PACJENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMIE" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="NAZWISKO" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="DATA_URODZENIA" Type="DateTime" Precision="0" />
+          <Property Name="MIEJSCE_URODZENIA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="ULICA_ZAMIESZKANIA" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="MIEJSCOWOSC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="KOD_POCZTOWY" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="ADRES_E_MAIL" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="NR_TELEFONU" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="HASLO" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="KARTA_PACJENTA" Relationship="Self.KARTA_PACJENTA_PACJENT_FK" FromRole="PACJENT" ToRole="KARTA_PACJENTA" />
+          <NavigationProperty Name="KONSULTACJA_ONLINE" Relationship="Self.KONSULTACJA_ONLINE_PACJENT_FK" FromRole="PACJENT" ToRole="KONSULTACJA_ONLINE" />
+          <NavigationProperty Name="OPINIA" Relationship="Self.OPINIA_PACJENT_FK" FromRole="PACJENT" ToRole="OPINIA" />
+          <NavigationProperty Name="POWIADOMIENIE" Relationship="Self.POWIADOMIENIE_PACJENT_FK" FromRole="PACJENT" ToRole="POWIADOMIENIE" />
+          <NavigationProperty Name="WIZYTA_DOMOWA" Relationship="Self.WIZYTA_DOMOWA_PACJENT_FK" FromRole="PACJENT" ToRole="WIZYTA_DOMOWA" />
+          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK" FromRole="PACJENT" ToRole="WIZYTA_KONSULTACYJNA" />
+        </EntityType>
+        <EntityType Name="POWIADOMIENIE">
+          <Key>
+            <PropertyRef Name="POWIADOMIENIE_ID" />
+          </Key>
+          <Property Name="POWIADOMIENIE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NUMER_POWIADOMIENIA" Type="Int32" />
+          <Property Name="TRESC" Type="String" MaxLength="500" FixedLength="true" Unicode="false" />
+          <Property Name="PACJENT_ID" Type="Int32" />
+          <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.POWIADOMIENIE_LEKARZ_FK" FromRole="POWIADOMIENIE" ToRole="LEKARZ" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.POWIADOMIENIE_PACJENT_FK" FromRole="POWIADOMIENIE" ToRole="PACJENT" />
+        </EntityType>
+        <EntityType Name="TERMINARZ">
+          <Key>
+            <PropertyRef Name="TERMINARZ_ID" />
+          </Key>
+          <Property Name="TERMINARZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DATA" Type="DateTime" Precision="0" />
+          <Property Name="GODZINA" Type="Time" Precision="7" />
+          <Property Name="LEKARZ_ID" Type="Int32" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.TERMINARZ_LEKARZ_FK" FromRole="TERMINARZ" ToRole="LEKARZ" />
+          <NavigationProperty Name="WIZYTA_DOMOWA" Relationship="Self.WIZYTA_DOMOWA_X_TERMINARZ" FromRole="TERMINARZ" ToRole="WIZYTA_DOMOWA" />
+          <NavigationProperty Name="WIZYTA_KONSULTACYJNA" Relationship="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" FromRole="TERMINARZ" ToRole="WIZYTA_KONSULTACYJNA" />
+        </EntityType>
+        <EntityType Name="WIZYTA_DOMOWA">
+          <Key>
+            <PropertyRef Name="WIZYTA_DOMOWA_ID" />
+          </Key>
+          <Property Name="WIZYTA_DOMOWA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACJENT_ID" Type="Int32" />
+          <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="ULICA" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="KOD_POCZTOWY" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NR_DOMU" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="MIEJSCOWOSC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.WIZYTA_DOMOWA_LEKARZ_FK" FromRole="WIZYTA_DOMOWA" ToRole="LEKARZ" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.WIZYTA_DOMOWA_PACJENT_FK" FromRole="WIZYTA_DOMOWA" ToRole="PACJENT" />
+          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_DOMOWA_X_TERMINARZ" FromRole="WIZYTA_DOMOWA" ToRole="TERMINARZ" />
+        </EntityType>
+        <EntityType Name="WIZYTA_KONSULTACYJNA">
+          <Key>
+            <PropertyRef Name="WIZYTA_KONSULTACYJNA_ID" />
+          </Key>
+          <Property Name="WIZYTA_KONSULTACYJNA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PACJENT_ID" Type="Int32" />
+          <Property Name="GABINET_ID" Type="Int32" />
+          <Property Name="LEKARZ_ID" Type="Int32" />
+          <Property Name="CEL" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+          <Property Name="DODATKOWE_UWAGI" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GABINET" Relationship="Self.WIZYTA_KONSULTACYJNA_GABINET_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="GABINET" />
+          <NavigationProperty Name="LEKARZ" Relationship="Self.WIZYTA_KONSULTACYJNA_LEKARZ_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="LEKARZ" />
+          <NavigationProperty Name="PACJENT" Relationship="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK" FromRole="WIZYTA_KONSULTACYJNA" ToRole="PACJENT" />
+          <NavigationProperty Name="TERMINARZ" Relationship="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ" FromRole="WIZYTA_KONSULTACYJNA" ToRole="TERMINARZ" />
+        </EntityType>
+        <Association Name="BADANIE_KARTA_PACJENTA_FK">
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="0..1" />
+          <End Role="BADANIE" Type="Self.BADANIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KARTA_PACJENTA">
+              <PropertyRef Name="KARTA_PACJENTA_ID" />
+            </Principal>
+            <Dependent Role="BADANIE">
+              <PropertyRef Name="KARTA_PACJENTA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BADANIE_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="BADANIE" Type="Self.BADANIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="BADANIE">
+              <PropertyRef Name="LEKARZ_ZLECAJACY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GABINET_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="GABINET" Type="Self.GABINET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="GABINET">
+              <PropertyRef Name="LEKARZ_ODPOWIEDZIALNY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_GABINET_FK">
+          <End Role="GABINET" Type="Self.GABINET" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GABINET">
+              <PropertyRef Name="GABINET_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="GABINET_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KARTA_PACJENTA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="KARTA_PACJENTA">
+              <PropertyRef Name="PROWADZACY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KARTA_PACJENTA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="1" />
+          <End Role="KARTA_PACJENTA" Type="Self.KARTA_PACJENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="KARTA_PACJENTA">
+              <PropertyRef Name="WLASCICIEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KONSULTACJA_ONLINE_KONSULTANT_FK">
+          <End Role="KONSULTANT" Type="Self.KONSULTANT" Multiplicity="0..1" />
+          <End Role="KONSULTACJA_ONLINE" Type="Self.KONSULTACJA_ONLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KONSULTANT">
+              <PropertyRef Name="KONSULTANT_ID" />
+            </Principal>
+            <Dependent Role="KONSULTACJA_ONLINE">
+              <PropertyRef Name="KONSULTANT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KONSULTACJA_ONLINE_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="KONSULTACJA_ONLINE" Type="Self.KONSULTACJA_ONLINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="KONSULTACJA_ONLINE">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OPINIA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="OPINIA" Type="Self.OPINIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="OPINIA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POWIADOMIENIE_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="POWIADOMIENIE" Type="Self.POWIADOMIENIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="POWIADOMIENIE">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TERMINARZ_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="TERMINARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_LEKARZ_FK">
+          <End Role="LEKARZ" Type="Self.LEKARZ" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEKARZ">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="LEKARZ_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OPINIA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="OPINIA" Type="Self.OPINIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="OPINIA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POWIADOMIENIE_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="POWIADOMIENIE" Type="Self.POWIADOMIENIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="POWIADOMIENIE">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_DOMOWA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_PACJENT_FK">
+          <End Role="PACJENT" Type="Self.PACJENT" Multiplicity="0..1" />
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PACJENT">
+              <PropertyRef Name="PACJENT_ID" />
+            </Principal>
+            <Dependent Role="WIZYTA_KONSULTACYJNA">
+              <PropertyRef Name="PACJENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WIZYTA_DOMOWA_X_TERMINARZ">
+          <End Role="WIZYTA_DOMOWA" Type="Self.WIZYTA_DOMOWA" Multiplicity="*" />
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+        </Association>
+        <Association Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+          <End Role="WIZYTA_KONSULTACYJNA" Type="Self.WIZYTA_KONSULTACYJNA" Multiplicity="*" />
+          <End Role="TERMINARZ" Type="Self.TERMINARZ" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SWPappDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BADANIE" EntityType="Self.BADANIE" />
+          <EntitySet Name="GABINET" EntityType="Self.GABINET" />
+          <EntitySet Name="KARTA_PACJENTA" EntityType="Self.KARTA_PACJENTA" />
+          <EntitySet Name="KONSULTACJA_ONLINE" EntityType="Self.KONSULTACJA_ONLINE" />
+          <EntitySet Name="KONSULTANT" EntityType="Self.KONSULTANT" />
+          <EntitySet Name="LEKARZ" EntityType="Self.LEKARZ" />
+          <EntitySet Name="OPINIA" EntityType="Self.OPINIA" />
+          <EntitySet Name="PACJENT" EntityType="Self.PACJENT" />
+          <EntitySet Name="POWIADOMIENIE" EntityType="Self.POWIADOMIENIE" />
+          <EntitySet Name="TERMINARZ" EntityType="Self.TERMINARZ" />
+          <EntitySet Name="WIZYTA_DOMOWA" EntityType="Self.WIZYTA_DOMOWA" />
+          <EntitySet Name="WIZYTA_KONSULTACYJNA" EntityType="Self.WIZYTA_KONSULTACYJNA" />
+          <AssociationSet Name="BADANIE_KARTA_PACJENTA_FK" Association="Self.BADANIE_KARTA_PACJENTA_FK">
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+            <End Role="BADANIE" EntitySet="BADANIE" />
+          </AssociationSet>
+          <AssociationSet Name="BADANIE_LEKARZ_FK" Association="Self.BADANIE_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="BADANIE" EntitySet="BADANIE" />
+          </AssociationSet>
+          <AssociationSet Name="GABINET_LEKARZ_FK" Association="Self.GABINET_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="GABINET" EntitySet="GABINET" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_GABINET_FK" Association="Self.WIZYTA_KONSULTACYJNA_GABINET_FK">
+            <End Role="GABINET" EntitySet="GABINET" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="KARTA_PACJENTA_LEKARZ_FK" Association="Self.KARTA_PACJENTA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+          </AssociationSet>
+          <AssociationSet Name="KARTA_PACJENTA_PACJENT_FK" Association="Self.KARTA_PACJENTA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="KARTA_PACJENTA" EntitySet="KARTA_PACJENTA" />
+          </AssociationSet>
+          <AssociationSet Name="KONSULTACJA_ONLINE_KONSULTANT_FK" Association="Self.KONSULTACJA_ONLINE_KONSULTANT_FK">
+            <End Role="KONSULTANT" EntitySet="KONSULTANT" />
+            <End Role="KONSULTACJA_ONLINE" EntitySet="KONSULTACJA_ONLINE" />
+          </AssociationSet>
+          <AssociationSet Name="KONSULTACJA_ONLINE_PACJENT_FK" Association="Self.KONSULTACJA_ONLINE_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="KONSULTACJA_ONLINE" EntitySet="KONSULTACJA_ONLINE" />
+          </AssociationSet>
+          <AssociationSet Name="OPINIA_LEKARZ_FK" Association="Self.OPINIA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="OPINIA" EntitySet="OPINIA" />
+          </AssociationSet>
+          <AssociationSet Name="POWIADOMIENIE_LEKARZ_FK" Association="Self.POWIADOMIENIE_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="POWIADOMIENIE" EntitySet="POWIADOMIENIE" />
+          </AssociationSet>
+          <AssociationSet Name="TERMINARZ_LEKARZ_FK" Association="Self.TERMINARZ_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_LEKARZ_FK" Association="Self.WIZYTA_DOMOWA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_LEKARZ_FK" Association="Self.WIZYTA_KONSULTACYJNA_LEKARZ_FK">
+            <End Role="LEKARZ" EntitySet="LEKARZ" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="OPINIA_PACJENT_FK" Association="Self.OPINIA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="OPINIA" EntitySet="OPINIA" />
+          </AssociationSet>
+          <AssociationSet Name="POWIADOMIENIE_PACJENT_FK" Association="Self.POWIADOMIENIE_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="POWIADOMIENIE" EntitySet="POWIADOMIENIE" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_PACJENT_FK" Association="Self.WIZYTA_DOMOWA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_PACJENT_FK" Association="Self.WIZYTA_KONSULTACYJNA_PACJENT_FK">
+            <End Role="PACJENT" EntitySet="PACJENT" />
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_DOMOWA_X_TERMINARZ" Association="Self.WIZYTA_DOMOWA_X_TERMINARZ">
+            <End Role="WIZYTA_DOMOWA" EntitySet="WIZYTA_DOMOWA" />
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+          </AssociationSet>
+          <AssociationSet Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" Association="Self.WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+            <End Role="WIZYTA_KONSULTACYJNA" EntitySet="WIZYTA_KONSULTACYJNA" />
+            <End Role="TERMINARZ" EntitySet="TERMINARZ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SWPappDBModel1StoreContainer" CdmEntityContainer="SWPappDBEntities">
+          <EntitySetMapping Name="BADANIE">
+            <EntityTypeMapping TypeName="SWPappDBModel1.BADANIE">
+              <MappingFragment StoreEntitySet="BADANIE">
+                <ScalarProperty Name="DATA_BADANIA" ColumnName="DATA_BADANIA" />
+                <ScalarProperty Name="RODZAJ" ColumnName="RODZAJ" />
+                <ScalarProperty Name="WYNIK" ColumnName="WYNIK" />
+                <ScalarProperty Name="BADANIE_ID" ColumnName="BADANIE_ID" />
+                <ScalarProperty Name="KARTA_PACJENTA_ID" ColumnName="KARTA_PACJENTA_ID" />
+                <ScalarProperty Name="LEKARZ_ZLECAJACY" ColumnName="LEKARZ_ZLECAJACY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GABINET">
+            <EntityTypeMapping TypeName="SWPappDBModel1.GABINET">
+              <MappingFragment StoreEntitySet="GABINET">
+                <ScalarProperty Name="NR" ColumnName="NR" />
+                <ScalarProperty Name="BUDYNEK" ColumnName="BUDYNEK" />
+                <ScalarProperty Name="RODZAJ" ColumnName="RODZAJ" />
+                <ScalarProperty Name="GABINET_ID" ColumnName="GABINET_ID" />
+                <ScalarProperty Name="LEKARZ_ODPOWIEDZIALNY" ColumnName="LEKARZ_ODPOWIEDZIALNY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KARTA_PACJENTA">
+            <EntityTypeMapping TypeName="SWPappDBModel1.KARTA_PACJENTA">
+              <MappingFragment StoreEntitySet="KARTA_PACJENTA">
+                <ScalarProperty Name="KARTA_PACJENTA_ID" ColumnName="KARTA_PACJENTA_ID" />
+                <ScalarProperty Name="NUMER_KARTY" ColumnName="NUMER_KARTY" />
+                <ScalarProperty Name="DATA_ZALOZENIA" ColumnName="DATA_ZALOZENIA" />
+                <ScalarProperty Name="WLASCICIEL" ColumnName="WLASCICIEL" />
+                <ScalarProperty Name="PROWADZACY" ColumnName="PROWADZACY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KONSULTACJA_ONLINE">
+            <EntityTypeMapping TypeName="SWPappDBModel1.KONSULTACJA_ONLINE">
+              <MappingFragment StoreEntitySet="KONSULTACJA_ONLINE">
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="KONSULTACJA_ONLINE_ID" ColumnName="KONSULTACJA_ONLINE_ID" />
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+                <ScalarProperty Name="KONSULTANT_ID" ColumnName="KONSULTANT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KONSULTANT">
+            <EntityTypeMapping TypeName="SWPappDBModel1.KONSULTANT">
+              <MappingFragment StoreEntitySet="KONSULTANT">
+                <ScalarProperty Name="GODZINY_KONSULTACJI" ColumnName="GODZINY_KONSULTACJI" />
+                <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+                <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+                <ScalarProperty Name="SPECJALIZACJA" ColumnName="SPECJALIZACJA" />
+                <ScalarProperty Name="NR_LICENCJI" ColumnName="NR_LICENCJI" />
+                <ScalarProperty Name="DATA_URODZENIA" ColumnName="DATA_URODZENIA" />
+                <ScalarProperty Name="KONSULTANT_ID" ColumnName="KONSULTANT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEKARZ">
+            <EntityTypeMapping TypeName="SWPappDBModel1.LEKARZ">
+              <MappingFragment StoreEntitySet="LEKARZ">
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+                <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+                <ScalarProperty Name="SPECJALIZACJA" ColumnName="SPECJALIZACJA" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="DATA_URODZENIA" ColumnName="DATA_URODZENIA" />
+                <ScalarProperty Name="NR_LICENCJI" ColumnName="NR_LICENCJI" />
+                <ScalarProperty Name="HASLO" ColumnName="HASLO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPINIA">
+            <EntityTypeMapping TypeName="SWPappDBModel1.OPINIA">
+              <MappingFragment StoreEntitySet="OPINIA">
+                <ScalarProperty Name="OPINIA_ID" ColumnName="OPINIA_ID" />
+                <ScalarProperty Name="NUMER_OPINII" ColumnName="NUMER_OPINII" />
+                <ScalarProperty Name="TRESC" ColumnName="TRESC" />
+                <ScalarProperty Name="OCENA" ColumnName="OCENA" />
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PACJENT">
+            <EntityTypeMapping TypeName="SWPappDBModel1.PACJENT">
+              <MappingFragment StoreEntitySet="PACJENT">
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+                <ScalarProperty Name="IMIE" ColumnName="IMIE" />
+                <ScalarProperty Name="NAZWISKO" ColumnName="NAZWISKO" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="DATA_URODZENIA" ColumnName="DATA_URODZENIA" />
+                <ScalarProperty Name="MIEJSCE_URODZENIA" ColumnName="MIEJSCE_URODZENIA" />
+                <ScalarProperty Name="ULICA_ZAMIESZKANIA" ColumnName="ULICA_ZAMIESZKANIA" />
+                <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+                <ScalarProperty Name="KOD_POCZTOWY" ColumnName="KOD_POCZTOWY" />
+                <ScalarProperty Name="ADRES_E_MAIL" ColumnName="ADRES_E-MAIL" />
+                <ScalarProperty Name="NR_TELEFONU" ColumnName="NR_TELEFONU" />
+                <ScalarProperty Name="HASLO" ColumnName="HASLO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POWIADOMIENIE">
+            <EntityTypeMapping TypeName="SWPappDBModel1.POWIADOMIENIE">
+              <MappingFragment StoreEntitySet="POWIADOMIENIE">
+                <ScalarProperty Name="POWIADOMIENIE_ID" ColumnName="POWIADOMIENIE_ID" />
+                <ScalarProperty Name="NUMER_POWIADOMIENIA" ColumnName="NUMER_POWIADOMIENIA" />
+                <ScalarProperty Name="TRESC" ColumnName="TRESC" />
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TERMINARZ">
+            <EntityTypeMapping TypeName="SWPappDBModel1.TERMINARZ">
+              <MappingFragment StoreEntitySet="TERMINARZ">
+                <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="GODZINA" ColumnName="GODZINA" />
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WIZYTA_DOMOWA">
+            <EntityTypeMapping TypeName="SWPappDBModel1.WIZYTA_DOMOWA">
+              <MappingFragment StoreEntitySet="WIZYTA_DOMOWA">
+                <ScalarProperty Name="WIZYTA_DOMOWA_ID" ColumnName="WIZYTA_DOMOWA_ID" />
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+                <ScalarProperty Name="KOD_POCZTOWY" ColumnName="KOD_POCZTOWY" />
+                <ScalarProperty Name="NR_DOMU" ColumnName="NR_DOMU" />
+                <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WIZYTA_KONSULTACYJNA">
+            <EntityTypeMapping TypeName="SWPappDBModel1.WIZYTA_KONSULTACYJNA">
+              <MappingFragment StoreEntitySet="WIZYTA_KONSULTACYJNA">
+                <ScalarProperty Name="WIZYTA_KONSULTACYJNA_ID" ColumnName="WIZYTA_KONSULTACYJNA_ID" />
+                <ScalarProperty Name="PACJENT_ID" ColumnName="PACJENT_ID" />
+                <ScalarProperty Name="GABINET_ID" ColumnName="GABINET_ID" />
+                <ScalarProperty Name="LEKARZ_ID" ColumnName="LEKARZ_ID" />
+                <ScalarProperty Name="CEL" ColumnName="CEL" />
+                <ScalarProperty Name="DODATKOWE_UWAGI" ColumnName="DODATKOWE_UWAGI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="WIZYTA_DOMOWA_X_TERMINARZ" TypeName="SWPappDBModel1.WIZYTA_DOMOWA_X_TERMINARZ" StoreEntitySet="WIZYTA_DOMOWA_X_TERMINARZ">
+            <EndProperty Name="WIZYTA_DOMOWA">
+              <ScalarProperty Name="WIZYTA_DOMOWA_ID" ColumnName="WIZYTA_DOMOWA_ID" />
+            </EndProperty>
+            <EndProperty Name="TERMINARZ">
+              <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WIZYTA_KONSULTACYJNA_X_TERMINARZ" TypeName="SWPappDBModel1.WIZYTA_KONSULTACYJNA_X_TERMINARZ" StoreEntitySet="WIZYTA_KONSULTACYJNA_X_TERMINARZ">
+            <EndProperty Name="WIZYTA_KONSULTACYJNA">
+              <ScalarProperty Name="WIZYTA_KONSULTACYJNA_ID" ColumnName="WIZYTA_KONSULTACYJNA_ID" />
+            </EndProperty>
+            <EndProperty Name="TERMINARZ">
+              <ScalarProperty Name="TERMINARZ_ID" ColumnName="TERMINARZ_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
