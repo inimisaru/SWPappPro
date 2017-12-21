@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Net;
+using SWPappPro.Models;
 
 namespace SWPappPro.Controllers
 {
@@ -12,6 +15,7 @@ namespace SWPappPro.Controllers
     /// </summary>
     public class OdczytajPowiadomienieController : Controller
     {
+        private SWPappDBEntities4 db = new SWPappDBEntities4();
         /// <summary>
         /// Metoda zwraca strone z lista powiadomien pobrana z bazy danych.
         /// Wewnatrz metody zostanie wywolana metoda obiektu Models realizujaca dostęp do bazy danych.
@@ -20,8 +24,77 @@ namespace SWPappPro.Controllers
         /// <returns>strona OdczytajPowiadomienie</returns>
         public ActionResult OdczytajPowiadomienie()
         {
-            return View();
+            int id = (int)Session["id"];
+            var pOWIADOMIENIE = db.POWIADOMIENIE.Where(p=>p.PACJENT_ID==id).Include(p => p.LEKARZ).Include(p => p.PACJENT);
+            return View(pOWIADOMIENIE.ToList());
         }
+        public ActionResult OdczytajPowiadomienieSzczegoly(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            POWIADOMIENIE pOWIADOMIENIE = db.POWIADOMIENIE.Find(id);
+            Session["id_pow"] = id;
+            if (pOWIADOMIENIE == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pOWIADOMIENIE);
+        }
+        public ActionResult OdczytajPowiadomienieUsun(int? id)
+        {
+            POWIADOMIENIE pOWIADOMIENIE = db.POWIADOMIENIE.Find(id);
+            
+            if (pOWIADOMIENIE == null)
+            {
+                return HttpNotFound();
+            }
+            db.POWIADOMIENIE.Remove(pOWIADOMIENIE);
+            db.SaveChanges();
+            return RedirectToAction("OdczytajPowiadomienie");
+        }
+        public ActionResult OdczytajPowiadomienieSzczegolyWizyty(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //POWIADOMIENIE pOWIADOMIENIE = db.POWIADOMIENIE.Find(id);
+            //if (pOWIADOMIENIE == null)
+            //{
+            //     return HttpNotFound();
+            //}
+            POWIADOMIENIE pOWIADOMIENIE = db.POWIADOMIENIE.Find((int?)Session["id_pow"]);
+            string K = "K";
+            string status = pOWIADOMIENIE.STATUS;
+            int result = string.Compare(K, status, true);
+            Session["status"] = result;
+            if (result==1)
+            {
+                WIZYTA_DOMOWA wIZYTA_DOMOWA = db.WIZYTA_DOMOWA.Find(id);
+                return View("OdczytajPowiadomienieSzczegolyWizytyDom", wIZYTA_DOMOWA);
+
+            }
+            else
+                //(pOWIADOMIENIE.STATUS.ToString().Equals("D"))
+            {
+                
+                WIZYTA_KONSULTACYJNA wIZYTA_KONSULTACYJNA = db.WIZYTA_KONSULTACYJNA.Find(id);
+                return View("OdczytajPowiadomienieSzczegolyWizytyKon", wIZYTA_KONSULTACYJNA);
+            }
+            return View();
+            /*
+                WIZYTA_KONSULTACYJNA wIZYTA_KONSULTACYJNA = db.WIZYTA_KONSULTACYJNA.Find(id);
+            if (wIZYTA_KONSULTACYJNA == null)
+            {
+                WIZYTA_DOMOWA wIZYTA_DOMOWA = db.WIZYTA_DOMOWA.Find(id);
+                return View("OdczytajPowiadomienieSzczegolyWizytyDom", wIZYTA_DOMOWA);
+            }
+            return View("OdczytajPowiadomienieSzczegolyWizytyKon",wIZYTA_KONSULTACYJNA);
+            */
+        }
+
         /// <summary>
         /// Parametrem wejsciowym bedzie wybrany z listy przez uzytkownika obiekt Powiadomienia.
         /// Zwrocona zostanie strona z wypisana trescia powiadomienia.

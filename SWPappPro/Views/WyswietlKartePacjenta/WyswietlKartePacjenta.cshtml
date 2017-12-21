@@ -1,14 +1,40 @@
-﻿
+﻿@model IEnumerable<SWPappPro.Models.PACJENT>
 @{
     ViewBag.Title = "WyswieltKartePacjenta";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
 
-<h2>Wyswielt karte pacjenta</h2>
-Wybierz z poniższej listy pacjenta a następnie zatwierdz:
-@using (Html.BeginForm("WyswietlKartePacjentaZatwierdz", "WyswietlKartePacjenta", FormMethod.Post))
-{
-@Html.TextBox("Pacjent", "Pacjent", new { @class = "form-control" })  
-<br /> <br />
-<button type="submit">Wyswietl</button>
-}
+Wybierz z poniższej listy pacjenta:
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PESEL)
+            </td>
+            <td>
+                @Html.ActionLink("Wyswietl karte", "WyswietlKartePacjentaWynik", new { id = item.PACJENT_ID }) |
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ZamowWizyteKonsultacyjnaData";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+@model SWPappPro.Models.KalendarzModel
+
+<div>
+    <h2>Lista wolnych terminów:</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null)
+            {
+                if (Model.Wizyta_domowaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DATA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GODZINA)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Wybierz", "ZamowWizyteKonsultacyjnaGabinet", new { id = item.TERMINARZ_ID })
+                        </td>
+
+                    </tr>
+                }
+            }
+        }
+    </table>
+</div>

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SWPappPro.Models.PACJENT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA_URODZENIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIEJSCE_URODZENIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ULICA_ZAMIESZKANIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIEJSCOWOSC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KOD_POCZTOWY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADRES_E_MAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NR_TELEFONU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HASLO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMIE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAZWISKO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PESEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA_URODZENIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIEJSCE_URODZENIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ULICA_ZAMIESZKANIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIEJSCOWOSC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KOD_POCZTOWY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADRES_E_MAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NR_TELEFONU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HASLO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PACJENT_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PACJENT_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PACJENT_ID })
+        </td>
+    </tr>
+}
+
+</table>

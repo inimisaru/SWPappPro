@@ -60,6 +60,12 @@ namespace SWPappPro.Controllers
         {
             return RedirectToAction("WyswietlKartePacjenta","WyswietlKartePacjenta");
         }
+
+        public ActionResult WyswietlUmowioneWizyty()
+        {
+            return RedirectToAction("WyswietlUmowioneWizyty", "WyswietlUmowioneWizyty");
+        }
+
         /// <summary>
         /// Metoda przekierowujaca do metody kontrolera PodepnijWynikiDoKartyPacjenta wyswietlajaca strone PodepnijWynikiDoKartyPacjenta
         /// </summary>

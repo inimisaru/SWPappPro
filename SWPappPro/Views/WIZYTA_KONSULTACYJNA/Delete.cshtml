@@ -1,0 +1,73 @@
+﻿@model SWPappPro.Models.WIZYTA_KONSULTACYJNA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>WIZYTA_KONSULTACYJNA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DODATKOWE_UWAGI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DODATKOWE_UWAGI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GABINET.NR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GABINET.NR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.IMIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACJENT.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACJENT.IMIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TERMINARZ.TERMINARZ_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TERMINARZ.TERMINARZ_ID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

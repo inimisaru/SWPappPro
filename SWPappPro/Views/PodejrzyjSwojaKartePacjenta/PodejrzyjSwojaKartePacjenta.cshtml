@@ -1,15 +1,74 @@
-﻿
+﻿@model SWPappPro.Models.KartaBadanieModel
+
 @{
     ViewBag.Title = "PodejrzyjSwojaKartePacjenta";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
 
-<h2>Karta pacjenta:</h2>
+@foreach (var item in Model.Karta_pacjenta)
+{
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.NUMER_KARTY)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(modelItem => item.NUMER_KARTY)
+            </dd>
 
-    @Html.Label("Numer karty:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Data zalozenia:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Prowadzacy:")  @Html.TextBox("Miejscowosc", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Wyniki:")  @Html.TextBox("Nr telefonu:", "Pobrany z profilu", new { @class = "form-control" })
-<br />
-<b>@Html.Label("ID | DATA | RODZAJ | WYNIK | LEKARZ ZLECACY")</b>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.DATA_ZALOZENIA)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(modelItem => item.DATA_ZALOZENIA)
+            </dd>
+
+            <dt>
+                Lekarz prowadzący:
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.LEKARZ.IMIE)
+                @Html.DisplayFor(modelItem => item.LEKARZ.NAZWISKO)
+            </dd>
+        </dl>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Data badania
+        </th>
+        <th>
+            Rodzaj
+        </th>
+        <th>
+            Wynik
+        </th>
+        <th>
+            Lekarz zlecający
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Badanie)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATA_BADANIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RODZAJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WYNIK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LEKARZ.IMIE)
+                @Html.DisplayFor(modelItem => item.LEKARZ.NAZWISKO)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -16,7 +16,7 @@ namespace SWPappPro.Models
     {
         public Nullable<System.DateTime> DATA_BADANIA { get; set; }
         public string RODZAJ { get; set; }
-        public byte[] WYNIK { get; set; }
+        public string WYNIK { get; set; }
         public int BADANIE_ID { get; set; }
         public Nullable<int> KARTA_PACJENTA_ID { get; set; }
         public Nullable<int> LEKARZ_ZLECAJACY { get; set; }

@@ -1,0 +1,59 @@
+﻿@model SWPappPro.Models.BADANIE
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BADANIE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DATA_BADANIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATA_BADANIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RODZAJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RODZAJ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WYNIK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WYNIK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KARTA_PACJENTA.NUMER_KARTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KARTA_PACJENTA.NUMER_KARTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.IMIE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BADANIE_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

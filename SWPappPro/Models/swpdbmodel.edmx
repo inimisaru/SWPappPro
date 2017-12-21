@@ -20,7 +20,7 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           </Key>
           <Property Name="DATA_BADANIA" Type="datetime" />
           <Property Name="RODZAJ" Type="char" MaxLength="50" />
-          <Property Name="WYNIK" Type="image" />
+          <Property Name="WYNIK" Type="char" MaxLength="50" />
           <Property Name="BADANIE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KARTA_PACJENTA_ID" Type="int" />
           <Property Name="LEKARZ_ZLECAJACY" Type="int" />
@@ -482,7 +482,7 @@ warning 6013: The table/view 'SWPappDB.swpdb.ADRES' does not have a primary key 
           </Key>
           <Property Name="DATA_BADANIA" Type="DateTime" Precision="3" />
           <Property Name="RODZAJ" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="WYNIK" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="WYNIK" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
           <Property Name="BADANIE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KARTA_PACJENTA_ID" Type="Int32" />
           <Property Name="LEKARZ_ZLECAJACY" Type="Int32" />

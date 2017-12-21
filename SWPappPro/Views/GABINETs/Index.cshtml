@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SWPappPro.Models.GABINET>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BUDYNEK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RODZAJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BUDYNEK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RODZAJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LEKARZ.IMIE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GABINET_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GABINET_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GABINET_ID })
+        </td>
+    </tr>
+}
+
+</table>

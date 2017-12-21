@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SWPappPro.Models.LEKARZ>
 @{
     ViewBag.Title = "WystawOpinie";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
@@ -6,10 +6,45 @@
 
 <h2>Wystaw opinie lekarzowi:</h2>
 
-@using (Html.BeginForm("WystawOpinieZatwierdz", "WystawOpinie", FormMethod.Post))
-{
-    @Html.Label("Lekarz:")  @Html.TextBox("Lekarz", "Wybierz lekarza z listy", new { @class = "form-control" })
-    @Html.Label("Tresc:")  @Html.TextBox("Tresc", "Tresc", new { @class = "form-control" })
-    @Html.Label("Ocena:")  @Html.TextBox("Ocena", "Ocena", new { @class = "form-control" })
-    <button type="submit">Wystaw opinie</button>
-}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPECJALIZACJA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NR_LICENCJI)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SPECJALIZACJA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NR_LICENCJI)
+            </td>
+            <td>
+                @Html.ActionLink("Wystaw opinie", "WystawOpinieFormularz", new { id = item.LEKARZ_ID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -10,9 +10,6 @@ Twoja lista opinii:
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NUMER_OPINII)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TRESC)
         </th>
         <th>
@@ -29,9 +26,6 @@ Twoja lista opinii:
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NUMER_OPINII)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TRESC)
             </td>

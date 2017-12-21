@@ -4,14 +4,38 @@
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
 
-<h2>Zamow wizyte konsultacyjna</h2>
+@model IEnumerable<SWPappPro.Models.LEKARZ>
 
-@using (Html.BeginForm("ZamowWizyteKonsultacyjnaZatwierdz", "ZamowWizyteKonsultacyjna", FormMethod.Post))
-{
-    @Html.Label("Wybierz pacjenta:")  @Html.TextBox("Pacjent", "Lista pacjentow", new { @class = "form-control" })
-    @Html.Label("Wybierz date:")  @Html.TextBox("Data", "Lista dat", new { @class = "form-control" })
-    @Html.Label("Wybierz godzine:")  @Html.TextBox("Godzina", "Lista dostepnych godzin", new { @class = "form-control" })
-    @Html.Label("Cel:")  @Html.TextBox("Cel", "", new { @class = "form-control" })
-    @Html.Label("Dodatkowe uwagi:")  @Html.TextBox("Kodpocztowy", "", new { @class = "form-control" })
-    <button type="submit">Zamow</button>
-}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPECJALIZACJA)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SPECJALIZACJA)
+            </td>
+            <td>
+                @Html.ActionLink("Wybierz", "ZamowWizyteKonsultacyjnaData", new { id = item.LEKARZ_ID })
+            </td>
+        </tr>
+    }
+
+</table>

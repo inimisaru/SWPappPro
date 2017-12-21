@@ -1,20 +1,42 @@
-﻿
+﻿@model IEnumerable<SWPappPro.Models.PACJENT>
 @{
     ViewBag.Title = "PodepnijWynikiDoKartyPacjenta";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
 
-<h2>Podepnij wyniki do karty pacjenta:</h2>
+<h2>Wybierz pacjenta:</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAZWISKO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </th>
 
-@using (Html.BeginForm("PodepnijWynikiDoKartyPacjentaZatwierdz", "PodepnijWynikiDoKartyPacjenta", FormMethod.Post))
-{
+        <th></th>
+    </tr>
 
-    @Html.Label("Wybierz z poniższej listy pacjenta")
-    @Html.TextBox("Pacjent", "Pacjent", new { @class = "form-control" })
-    <br /> <br />
-    @Html.Label("Wybierz wyniki:")
-    @Html.TextBox("Badanie", "Badanie", new { @class = "form-control" })
-    <br /> <br />
-    <button type="submit">Podepnij</button>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAZWISKO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PESEL)
+            </td>
+            <td>
+                @Html.ActionLink("Podepnij wyniki", "PodepnijWynikiDoKartyPacjentaFormularz", new { id = item.PACJENT_ID })
+            </td>
+        </tr>
+    }
+
+</table>

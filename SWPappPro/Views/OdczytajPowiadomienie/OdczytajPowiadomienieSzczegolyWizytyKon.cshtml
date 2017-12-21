@@ -1,0 +1,76 @@
+﻿@model SWPappPro.Models.WIZYTA_KONSULTACYJNA
+@{
+    ViewBag.Title = "OdczytajPowiadomienieSzczegolyWizytyKon";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+
+<div>
+    <h4>Szczegoły wizyty:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DODATKOWE_UWAGI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DODATKOWE_UWAGI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GABINET.NR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GABINET.NR)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GABINET.BUDYNEK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GABINET.BUDYNEK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.IMIE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.NAZWISKO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TERMINARZ.DATA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TERMINARZ.DATA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TERMINARZ.GODZINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TERMINARZ.GODZINA)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót", "OdczytajPowiadomienie")
+</p>

@@ -1,0 +1,52 @@
+﻿@model SWPappPro.Models.POWIADOMIENIE
+
+@{
+    ViewBag.Title = "OdczytajPowiadomienieSzczegoly";
+    Layout = "~/Views/Shared/_PacjentLayout.cshtml";
+}
+<div>
+    <h4>POWIADOMIENIE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRESC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRESC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.IMIE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.NAZWISKO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LEKARZ.SPECJALIZACJA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEKARZ.SPECJALIZACJA)
+        </dd>
+        <dt>
+            Wizyta:
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Szczegóły", "OdczytajPowiadomienieSzczegolyWizyty", new { id = Model.NUMER_POWIADOMIENIA })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Powrót", "OdczytajPowiadomienie")
+</p>

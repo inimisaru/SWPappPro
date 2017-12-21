@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SWPappPro.Models.GABINET>
+@{
+    ViewBag.Title = "UmowWizyteKonWybierzGabinet";
+    Layout = "~/Views/Shared/_LekarzLayout.cshtml";
+}
+
+<h2>UmowWizyteKonWybierzGabinet</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BUDYNEK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RODZAJ)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUDYNEK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RODZAJ)
+            </td>
+            <td>
+                @Html.ActionLink("Wybierz", "UmowWizyteKonWybierzPacjenta", new { gabinet_id = item.GABINET_ID }) |
+            </td>
+        </tr>
+    }
+
+</table>

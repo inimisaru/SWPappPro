@@ -1,19 +1,43 @@
-﻿
+﻿@model SWPappPro.Models.KalendarzModel
 @{
-    ViewBag.Title = "UmowWizyteDom";
+    ViewBag.Title = "UmowWizyteDon";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
+<div>
+    <h2>Lista wolnych terminów:</h2>
 
-<h2>UmowWizyteDom</h2>
+    Strona wyświetla wstawione przez lekarza terminy w formie tabeli:
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
 
-@using (Html.BeginForm("UmowWizyteDomZatwierdz", "UmowWizyte", FormMethod.Post))
-{
-    @Html.Label("Wybierz pacjenta:")  @Html.TextBox("Pacjent", "Lista pacjentow", new { @class = "form-control" })
-    @Html.Label("Wybierz date:")  @Html.TextBox("Data", "Lista dat", new { @class = "form-control" })
-    @Html.Label("Wybierz godzine:")  @Html.TextBox("Godzina", "Lista dostepnych godzin", new { @class = "form-control" })
-    @Html.Label("Ulica:")  @Html.TextBox("Ulica", "", new { @class = "form-control" })
-    @Html.Label("Kod pocztowy:")  @Html.TextBox("Kodpocztowy", "", new { @class = "form-control" })
-    @Html.Label("Nr domu:")  @Html.TextBox("Nrdomu", "", new { @class = "form-control" })
-    @Html.Label("Miejscowosc:")  @Html.TextBox("Miejscowosc", "", new { @class = "form-control" })
-    <button type="submit">Umow</button>
-}
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null) { 
+            if (Model.Wizyta_domowaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GODZINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Umow wizyte", "UmowWizyteDomWybierzPacjenta", new { terminarz_id = item.TERMINARZ_ID })
+                    </td>
+
+                </tr>
+                    }
+                }
+        }
+    </table>
+</div>

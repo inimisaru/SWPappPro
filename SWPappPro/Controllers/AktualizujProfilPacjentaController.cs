@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SWPappPro.Models;
+using System.Data.Entity;
 
 namespace SWPappPro.Controllers
 { 
@@ -12,13 +14,16 @@ namespace SWPappPro.Controllers
     /// </summary>
     public class AktualizujProfilPacjentaController : Controller
     {
+        private SWPappDBEntities4 db = new SWPappDBEntities4();
         /// <summary>
         /// Glowna metoda kontrolera zwracajaca strone z formularzem do aktualizacji danych pacjenta
         /// </summary>
         /// <returns>strona AktualizujProfilPacjenta</returns>
         public ActionResult AktualizujProfilPacjenta()
         {
-            return View();
+            int id = (int)Session["id"];
+            PACJENT pACJENT = db.PACJENT.Find(id);
+            return View(pACJENT);
         }
         /// <summary>
         /// Metoda wywoływana metoda POST przez formularz na stronie AktualizujProfilPacjenta
@@ -26,9 +31,28 @@ namespace SWPappPro.Controllers
         /// Metoda zwraca strone AktualizujProfilPacjentaWynik na ktorej znajduje sie informacja o wyniku wykonania.
         /// </summary>
         /// <returns>strona AktualizujProfilPacjentaWynik</returns>
+        /*
         public ActionResult AktualizujProfilPacjentaZatwierdz()
         {
+
             return View("AktualizujProfilPacjentaWynik");
+
         }
+        */
+        [HttpPost]
+        public ActionResult AktualizujProfilPacjentaZatwierdz([Bind(Include = "PACJENT_ID,IMIE,NAZWISKO,PESEL,DATA_URODZENIA,MIEJSCE_URODZENIA,ULICA_ZAMIESZKANIA,MIEJSCOWOSC,KOD_POCZTOWY,ADRES_E_MAIL,NR_TELEFONU,HASLO")] PACJENT pACJENT)
+        {
+            if (ModelState.IsValid)
+            {
+                //oznacz jako zmienione
+                db.Entry(pACJENT).State = EntityState.Modified;
+                //zapisz zmiany
+                db.SaveChanges();
+                //zwrócenie widoku AktualizujSwojProfil
+                return View("AktualizujProfilPacjentaWynik");
+            }
+            return View("AktualizujProfilPacjenta");
+        }
+
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Net;
+using SWPappPro.Models;
 
 namespace SWPappPro.Controllers
 {/// <summary>
@@ -10,6 +13,7 @@ namespace SWPappPro.Controllers
 /// </summary>
     public class OcenLekarzaController : Controller
     {
+        private SWPappDBEntities4 db = new SWPappDBEntities4();
         // GET: OcenLekarza
         /// <summary>
         /// Funkcja służąca do zwracania widoku domyślnej strony.
@@ -17,7 +21,7 @@ namespace SWPappPro.Controllers
         /// <returns>widok strony Index</returns>
         public ActionResult Index()
         {
-            return View();
+            return View(db.LEKARZ.ToList());
         }
     }
 }

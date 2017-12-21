@@ -1,4 +1,4 @@
-﻿
+﻿@model SWPappPro.Models.PACJENT
 @{
     ViewBag.Title = "AktualizujProfilPacjenta";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
@@ -6,13 +6,66 @@
 
 <h2>Aktualizuj profil</h2>
 
+
 @using (Html.BeginForm("AktualizujProfilPacjentaZatwierdz", "AktualizujProfilPacjenta", FormMethod.Post))
 {
-  
-    @Html.Label("Ulica zamieszkania:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Nr domu:")  @Html.TextBox("Ulica:", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Miejscowosc:")  @Html.TextBox("Miejscowosc", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Adres e-mail:")  @Html.TextBox("Adres e-mail:", "Pobrany z profilu", new { @class = "form-control" })
-    @Html.Label("Nr telefonu:")  @Html.TextBox("Nr telefonu:", "Pobrany z profilu", new { @class = "form-control" })
-    <button type="submit">Aktualizuj</button>
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>PACJENT</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PACJENT_ID)
+        @Html.HiddenFor(model => model.IMIE)
+        @Html.HiddenFor(model => model.NAZWISKO)
+        @Html.HiddenFor(model => model.PESEL)
+        @Html.HiddenFor(model => model.MIEJSCE_URODZENIA)
+        @Html.HiddenFor(model => model.DATA_URODZENIA)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ULICA_ZAMIESZKANIA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ULICA_ZAMIESZKANIA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ULICA_ZAMIESZKANIA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MIEJSCOWOSC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MIEJSCOWOSC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MIEJSCOWOSC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KOD_POCZTOWY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KOD_POCZTOWY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KOD_POCZTOWY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADRES_E_MAIL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ADRES_E_MAIL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ADRES_E_MAIL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NR_TELEFONU, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NR_TELEFONU, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NR_TELEFONU, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HASLO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HASLO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HASLO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+        <div><button type="submit">Aktualizuj</button></div>
 }

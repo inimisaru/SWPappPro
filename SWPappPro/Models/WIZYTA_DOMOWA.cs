@@ -11,7 +11,9 @@ namespace SWPappPro.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class WIZYTA_DOMOWA
     {
         public int WIZYTA_DOMOWA_ID { get; set; }

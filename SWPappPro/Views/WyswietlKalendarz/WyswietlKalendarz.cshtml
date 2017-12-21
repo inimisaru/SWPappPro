@@ -15,16 +15,14 @@
             <th>
                 Godzina
             </th>
-            <th>
-                Gabinet / Nr budynku
-            </th>
-            <th>
-                Umowiona wizyta
-            </th>
         </tr>
 
         @foreach (var item in Model.Terminarz)
         {
+            if (Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null)
+            {
+                if (Model.Wizyta_domowaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() == null)
+                {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.DATA)
@@ -32,21 +30,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.GODZINA)
                 </td>
-                <td>
-                    @if(Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID) != null) { 
-                    foreach (var item_w in Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID==item.TERMINARZ_ID))
-                    {
-                        @item_w.GABINET.NR;
-                        @:/
-                        @item_w.GABINET.BUDYNEK;
-                        }
-                    }
-                </td>
-                <td>
-                    @Html.ActionLink("Szczegóły", "WyswietlKalendarz", new { wybor = item.TERMINARZ_ID })
-                </td>
-
             </tr>
+                }
+            }
         }
     </table>
 </div>

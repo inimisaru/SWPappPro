@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SWPappPro.Models.POWIADOMIENIE>
 @{
     ViewBag.Title = "OdczytajPowiadomienie";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
@@ -6,9 +6,29 @@
 
 <h2>Odczytaj powiadomienie</h2>
 
-@using (Html.BeginForm("OdczytajPowiadomienieZatwierdz", "OdczytajPowiadomienie", FormMethod.Post))
-{
-    @Html.Label("Wybierz wiadomosc:")  @Html.TextBox("Powiadomienie", "Lista nieodczytanych powiadomien", new { @class = "form-control" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+        </th>
+        <th></th>
+    </tr>
 
-    <button type="submit">Odczytaj</button>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LEKARZ.IMIE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LEKARZ.NAZWISKO)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegoly", "OdczytajPowiadomienieSzczegoly", new { id = item.POWIADOMIENIE_ID }) | @Html.ActionLink("Usun", "OdczytajPowiadomienieUsun", new { id = item.POWIADOMIENIE_ID })
+            </td>
+        </tr>
+    }
+    </table>

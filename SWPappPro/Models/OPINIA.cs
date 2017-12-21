@@ -11,7 +11,10 @@ namespace SWPappPro.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class OPINIA
     {
         public int OPINIA_ID { get; set; }
