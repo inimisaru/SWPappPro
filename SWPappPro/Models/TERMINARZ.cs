@@ -26,7 +26,8 @@ namespace SWPappPro.Models
         public int TERMINARZ_ID { get; set; }
         [Required]
         [Display(Description = "Data w formacie DD.MM.RRRR")]
-        [DataType(DataType.Date), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\.mm\.yyyy}")]
+        //[DataType(DataType.Date), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:yyyy\-MMM\-dd}")]
+        [DataType(DataType.Date), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\.MMM\.yyyy}")]
         public Nullable<System.DateTime> DATA { get; set; }
         [Required]
         [Display(Description = "Godzina w formacie GG:MM")]

@@ -3,15 +3,14 @@
     ViewBag.Title = "DodajWolnyTerminWizyty";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
-
-<h2>DodajWolnyTerminWizyty</h2>
-
+<br />
+<h3>Dodaj wolny termin wizyty:</h3>
+<br />
 @using (Html.BeginForm("DodajWolnyTerminWizytyZatwierdz", "DodajWolnyTerminWizyty", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>TERMINARZ</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
