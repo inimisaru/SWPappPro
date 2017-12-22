@@ -5,14 +5,15 @@
 }
 
 @model SWPappPro.Models.WIZYTA_DOMOWA
-
+<br />
+<h3>Szczegoły wizyty:</h3>
+<br />
 <div>
-    <h4>Wizyta domowa:</h4>
     <hr />
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+            Imię lekarza
         </dt>
 
         <dd>
@@ -20,21 +21,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+            Nazwisko lekarza
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.LEKARZ.NAZWISKO)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.MIEJSCOWOSC)
+            Miejscowość
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.MIEJSCOWOSC)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ULICA)
+            Ulica
         </dt>
 
         <dd>
@@ -42,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KOD_POCZTOWY)
+            Kod pocztowy
         </dt>
 
         <dd>
@@ -50,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NR_DOMU)
+            Numer domu
         </dt>
 
         <dd>
@@ -58,14 +59,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TERMINARZ.DATA)
+            Data
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TERMINARZ.DATA)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TERMINARZ.GODZINA)
+            Godzina
         </dt>
 
         <dd>

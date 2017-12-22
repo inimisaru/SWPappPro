@@ -34,7 +34,7 @@ namespace SWPappPro.Controllers
             //Załadowanie do Terminarza tabeli Terminarz
             viewModel.Terminarz = db.TERMINARZ
                 .Include(i => i.WIZYTA_KONSULTACYJNA)
-                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id);
+                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id).Where(w => w.DATA >= (DateTime?)System.DateTime.Now);
             //Załadowanie Tabeli wizyta konsultacyjna
             viewModel.Wizyta_konsultacyjnaStala = db.WIZYTA_KONSULTACYJNA;
             viewModel.Wizyta_domowaStala = db.WIZYTA_DOMOWA;

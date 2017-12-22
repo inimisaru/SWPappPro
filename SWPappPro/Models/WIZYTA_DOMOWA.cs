@@ -20,9 +20,14 @@ namespace SWPappPro.Models
         public Nullable<int> PACJENT_ID { get; set; }
         public Nullable<int> LEKARZ_ID { get; set; }
         public Nullable<int> TERMINARZ_ID { get; set; }
+        [Required]
         public string ULICA { get; set; }
+        [Required]
+        [RegularExpression(@"^([0-9]{2}\-[0-9]{3})$", ErrorMessage = "Z³y format: 00-000")]
         public string KOD_POCZTOWY { get; set; }
+        [Required]
         public string NR_DOMU { get; set; }
+        [Required]
         public string MIEJSCOWOSC { get; set; }
     
         public virtual LEKARZ LEKARZ { get; set; }

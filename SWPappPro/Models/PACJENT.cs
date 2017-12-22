@@ -13,6 +13,8 @@ namespace SWPappPro.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class PACJENT
     {
@@ -34,10 +36,18 @@ namespace SWPappPro.Models
         public Nullable<System.DateTime> DATA_URODZENIA { get; set; }
         public string MIEJSCE_URODZENIA { get; set; }
         public string ULICA_ZAMIESZKANIA { get; set; }
+        [Required]
         public string MIEJSCOWOSC { get; set; }
+        [Required]
+        [RegularExpression(@"^([0-9]{2}\-[0-9]{3})$", ErrorMessage = "Z³y format: 00-000")]
         public string KOD_POCZTOWY { get; set; }
+        [Required]
+        [RegularExpression(@"^.*@.*$", ErrorMessage = "Nieprawid³owy adres e-mail!")]
         public string ADRES_E_MAIL { get; set; }
+        [Required]
         public string NR_TELEFONU { get; set; }
+        [Required]
+        [MinLength(4,ErrorMessage ="Za krótkie has³o!")]
         public string HASLO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

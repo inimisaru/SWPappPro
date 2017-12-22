@@ -24,7 +24,7 @@ namespace SWPappPro.Controllers
         public ActionResult PowiadomOStatusieWizyty()
         {
             int id = (int)Session["id"];
-            var wIZYTA_KONSULTACYJNA = db.WIZYTA_KONSULTACYJNA.Where(w => w.LEKARZ_ID == id).Include(w => w.LEKARZ).Include(w => w.PACJENT).Include(w => w.TERMINARZ);
+            var wIZYTA_KONSULTACYJNA = db.WIZYTA_KONSULTACYJNA.Where(w => w.LEKARZ_ID == id).Include(w => w.LEKARZ).Include(w => w.PACJENT).Include(w => w.TERMINARZ).Where(w => w.TERMINARZ.DATA >= (DateTime?)System.DateTime.Now);
             return View(wIZYTA_KONSULTACYJNA.ToList());
         }
         /// <summary>

@@ -3,20 +3,19 @@
     ViewBag.Title = "WystawOpinieFormularz";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
-
-<h2>WystawOpinieFormularz</h2>
-
+<br />
+<h3>Uzupełnij dane:</h3>
+<br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>OPINIA</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TRESC, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Treść", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TRESC, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TRESC, "", new { @class = "text-danger" })
@@ -24,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OCENA, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ocena", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.OCENA, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OCENA, "", new { @class = "text-danger" })

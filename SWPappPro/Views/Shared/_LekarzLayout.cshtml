@@ -19,9 +19,8 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">     
                 <ul class="nav navbar-nav">
-
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                         <li>@Html.ActionLink("Wizyty", "Wizyty", "Lekarz")</li>
                         <!--<li>@Html.ActionLink("Konsultacje", "Konsultacje", "Lekarz")</li>-->
@@ -36,7 +35,7 @@
         <hr />
         <footer>
             <p>Zalogowany jako: @Session["login"]</p>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - SWPapp</p>
         </footer>
     </div>
 

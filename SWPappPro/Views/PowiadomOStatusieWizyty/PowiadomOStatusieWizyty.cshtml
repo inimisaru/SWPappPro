@@ -4,17 +4,22 @@
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
 
-<h2>Powiadom o statusie wizyty domowej:</h2>
+<br />
+<h3>Wybierz wizytę:</h3>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PACJENT.IMIE)
+            Imię
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PACJENT.NAZWISKO)
+            Nazwisko
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TERMINARZ.DATA)
+            Data
+        </th>
+        <th>
+            Godzina
         </th>
         <th></th>
     </tr>
@@ -30,6 +35,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TERMINARZ.DATA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TERMINARZ.GODZINA)
             </td>
             <td>
                 @Html.ActionLink("Powiadom", "PowiadomOStatusieWizytyFormularz", new { id = item.WIZYTA_KONSULTACYJNA_ID , id_p=item.PACJENT_ID })

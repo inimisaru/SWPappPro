@@ -4,12 +4,15 @@
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
 
+<br />
+<h3>Szczegoły wizyty:</h3>
+<br />
+
 <div>
-    <h4>Szczegoły wizyty:</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CEL)
+            Cel
         </dt>
 
         <dd>
@@ -17,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DODATKOWE_UWAGI)
+            Dodatkowe uwagi
         </dt>
 
         <dd>
@@ -25,14 +28,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GABINET.NR)
+            Numer gabinetu
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.GABINET.NR)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.GABINET.BUDYNEK)
+            Numer budynku
         </dt>
 
         <dd>
@@ -40,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+            Imie lekarza
         </dt>
 
         <dd>
@@ -48,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+            Nazwisko lekarza
         </dt>
 
         <dd>
@@ -56,14 +59,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TERMINARZ.DATA)
+            Data
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TERMINARZ.DATA)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TERMINARZ.GODZINA)
+            Godzina
         </dt>
 
         <dd>

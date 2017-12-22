@@ -1,13 +1,81 @@
-﻿
+﻿@model SWPappPro.Models.KalendarzModel
 @{
     ViewBag.Title = "PrzeplanujWizyte";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
+<br />
+<h3>Wybierz wizytę:</h3>
+<br />
+<div>
+    <h2>Umowione wizyty konsultacyjne:</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
 
-<h2>Wybierz wizyte:</h2>
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GODZINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Przeplanuj", "PrzeplanujWizyteKon", new { id = item.TERMINARZ_ID})
+                    </td>
 
-@using (Html.BeginForm("PrzeplanujWizyteWybor", "PrzeplanujWizyte", FormMethod.Post))
-{
-    @Html.Label("Wybierz wizyte:")  @Html.TextBox("Wizyta", "Lista wizyt pacjenta", new { @class = "form-control" })  
-    <button type="submit">Wybierz</button>
-}
+                </tr>
+
+            }
+        }
+    </table>
+</div>
+
+<div>
+    <h2>Umowione wizyty domowe:</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_domowaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GODZINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Przeplanuj", "PrzeplanujWizyteDom", new { id = item.TERMINARZ_ID})
+                    </td>
+
+                </tr>
+
+            }
+        }
+    </table>
+</div>

@@ -4,34 +4,36 @@
     ViewBag.Title = "OdczytajPowiadomienieSzczegoly";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
+<br />
+<h3>Szczegóły powiadomienia:</h3>
+<br />
 <div>
-    <h4>POWIADOMIENIE</h4>
     <hr />
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.TRESC)
+            Treść
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TRESC)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.IMIE)
+            Imię
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.LEKARZ.IMIE)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.NAZWISKO)
+            Nazwisko
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.LEKARZ.NAZWISKO)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LEKARZ.SPECJALIZACJA)
+            Specjalizacja
         </dt>
 
         <dd>

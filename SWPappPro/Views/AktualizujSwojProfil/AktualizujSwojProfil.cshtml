@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
 
-<h2>Aktualizuj profil</h2>
+<h3>Aktualizuj swoj profil:</h3>
 
 
 @using (Html.BeginForm("AktualizujSwojProfilZatwierdz", "AktualizujSwojProfil", FormMethod.Post))
@@ -13,7 +13,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>LEKARZ</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.LEKARZ_ID)
@@ -22,8 +21,9 @@
         @Html.HiddenFor(model => model.SPECJALIZACJA)
         @Html.HiddenFor(model => model.PESEL)
         @Html.HiddenFor(model => model.DATA_URODZENIA)
+
         <div class="form-group">
-            @Html.LabelFor(model => model.SPECJALIZACJA, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Specjalizacja", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SPECJALIZACJA, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SPECJALIZACJA, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NR_LICENCJI, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Numer licencji", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NR_LICENCJI, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NR_LICENCJI, "", new { @class = "text-danger" })
@@ -39,12 +39,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HASLO, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Hasło", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HASLO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HASLO, "", new { @class = "text-danger" })
             </div>
+            </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Zatwierdz</button>
+            </div>
         </div>
-        </div>
-        <div><button type="submit">Aktualizuj</button></div>
-        }
+            </div>
+ }

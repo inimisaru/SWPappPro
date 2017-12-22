@@ -28,7 +28,7 @@ namespace SWPappPro.Controllers
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowej()
         {
             int id = (int)Session["id"];
-            var wIZYTA_DOMOWA = db.WIZYTA_DOMOWA.Where(w => w.LEKARZ_ID == id).Include(w => w.LEKARZ).Include(w => w.PACJENT).Include(w => w.TERMINARZ);
+            var wIZYTA_DOMOWA = db.WIZYTA_DOMOWA.Where(w => w.LEKARZ_ID == id).Include(w => w.LEKARZ).Include(w => w.PACJENT).Include(w => w.TERMINARZ).Where(w => w.TERMINARZ.DATA >= (DateTime?)System.DateTime.Now);
             return View(wIZYTA_DOMOWA.ToList());
         }
         /// <summary>

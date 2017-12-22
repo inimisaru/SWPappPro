@@ -3,19 +3,21 @@
     ViewBag.Title = "ZamowWizyteDomowa";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
-
+<br />
+<h3>Wybierz lekarza:</h3>
+<br />
 @model IEnumerable<SWPappPro.Models.LEKARZ>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IMIE)
+            Imię
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NAZWISKO)
+            Nazwisko
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SPECJALIZACJA)
+            Specjalizacja
         </th>
         <th></th>
     </tr>

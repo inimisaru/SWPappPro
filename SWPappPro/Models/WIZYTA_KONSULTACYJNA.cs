@@ -11,7 +11,9 @@ namespace SWPappPro.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class WIZYTA_KONSULTACYJNA
     {
         public int WIZYTA_KONSULTACYJNA_ID { get; set; }
@@ -19,7 +21,9 @@ namespace SWPappPro.Models
         public Nullable<int> GABINET_ID { get; set; }
         public Nullable<int> LEKARZ_ID { get; set; }
         public Nullable<int> TERMINARZ_ID { get; set; }
+        [Required]
         public string CEL { get; set; }
+        
         public string DODATKOWE_UWAGI { get; set; }
     
         public virtual GABINET GABINET { get; set; }

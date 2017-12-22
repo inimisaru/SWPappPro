@@ -3,25 +3,22 @@
     ViewBag.Title = "WystawOpinie";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
-
-<h2>Wystaw opinie lekarzowi:</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<h3>Wybierz lekarza z listy:</h3>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IMIE)
+            Imie
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NAZWISKO)
+            Nazwisko
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SPECJALIZACJA)
+            Specjalizacja
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NR_LICENCJI)
+            Numer licenecji
         </th>
         <th></th>
     </tr>

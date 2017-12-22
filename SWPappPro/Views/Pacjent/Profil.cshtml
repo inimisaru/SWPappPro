@@ -3,8 +3,6 @@
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
-
-<h2>Profil</h2>
-
-@Html.ActionLink("Aktualizuj profil pacjenta", "AktualizujProfilPacjenta", "Pacjent", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Podejrzyj karte pacjenta", "PodejrzyjSwojaKartePacjenta", "Pacjent", new { @class = "btn btn-primary", @style = "color:white" })<br />
+<br />
+@Html.ActionLink("Aktualizuj profil pacjenta", "AktualizujProfilPacjenta", "Pacjent", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Podejrzyj karte pacjenta", "PodejrzyjSwojaKartePacjenta", "Pacjent", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />

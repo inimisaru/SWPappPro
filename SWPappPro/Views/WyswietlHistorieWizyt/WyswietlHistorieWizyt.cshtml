@@ -3,7 +3,185 @@
     ViewBag.Title = "WyswietlHistorieWizyt";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
+<br />
+<h3>Historia wizyt:</h3>
+<br/>
+@model SWPappPro.Models.KalendarzModel
 
-<h2>Historia wizyt:</h2>
+<div>
+    <h3>Umowione wizyty konsultacyjne:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
 
-<b>DATA | GODZINA | LEKARZ | RODZAJ | SZCZEGOŁY</b>
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_konsultacyjnaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GODZINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Szczegóły", "WyswietlHistorieWizyt", new { wiz_k = item.TERMINARZ_ID })
+                    </td>
+
+                </tr>
+
+            }
+        }
+    </table>
+</div>
+
+<div>
+    <h3>Umowione wizyty domowe:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Godzina
+            </th>
+            <th>
+                Umowiona wizyta
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Terminarz)
+        {
+            if (Model.Wizyta_domowaStala.Where(i => i.TERMINARZ_ID == item.TERMINARZ_ID).FirstOrDefault() != null)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GODZINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Szczegóły", "WyswietlHistorieWizyt", new { wiz_d = item.TERMINARZ_ID })
+                    </td>
+
+                </tr>
+
+            }
+        }
+    </table>
+</div>
+
+
+@if (Model.Wizyta_konsultacyjna != null)
+{
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Imię:
+                </th>
+                <th>
+                    Nazwisko:
+                </th>
+                <th>
+                    PESEL:
+                </th>
+                <th>
+                    Gabinet
+                </th>
+                <th>
+                    Budynek
+                </th>
+                <th>
+                    Cel wizyty:
+                </th>
+                <th>
+                    Dodatkowe uwagi:
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Wizyta_konsultacyjna)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.IMIE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.NAZWISKO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.PESEL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GABINET.NR);
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GABINET.BUDYNEK);
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CEL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DODATKOWE_UWAGI)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+@if (Model.Wizyta_domowa != null)
+{
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Imię:
+                </th>
+                <th>
+                    Nazwisko:
+                </th>
+                <th>
+                    PESEL:
+                </th>
+                <th>
+                    Miejscowosc:
+                </th>
+                <th>
+                    Ulica:
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Wizyta_domowa)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.IMIE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.NAZWISKO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PACJENT.PESEL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MIEJSCOWOSC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ULICA)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

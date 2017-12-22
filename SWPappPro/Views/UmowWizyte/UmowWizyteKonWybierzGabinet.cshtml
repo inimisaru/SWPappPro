@@ -3,19 +3,19 @@
     ViewBag.Title = "UmowWizyteKonWybierzGabinet";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
-
-<h2>UmowWizyteKonWybierzGabinet</h2>
-
+<br />
+<h3>Wybierz gabinet:</h3>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NR)
+            Numer gabinetu
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BUDYNEK)
+            Numer budynku
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RODZAJ)
+            Rodzaj gabinetu
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.RODZAJ)
             </td>
             <td>
-                @Html.ActionLink("Wybierz", "UmowWizyteKonWybierzPacjenta", new { gabinet_id = item.GABINET_ID }) |
+                @Html.ActionLink("Wybierz", "UmowWizyteKonWybierzPacjenta", new { gabinet_id = item.GABINET_ID })
             </td>
         </tr>
     }

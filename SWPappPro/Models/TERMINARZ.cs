@@ -11,7 +11,9 @@ namespace SWPappPro.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TERMINARZ
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +24,13 @@ namespace SWPappPro.Models
         }
     
         public int TERMINARZ_ID { get; set; }
+        [Required]
+        [Display(Description = "Data w formacie DD.MM.RRRR")]
+        [DataType(DataType.Date), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:dd\.mm\.yyyy}")]
         public Nullable<System.DateTime> DATA { get; set; }
+        [Required]
+        [Display(Description = "Godzina w formacie GG:MM")]
+        [DataType(DataType.Time), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public Nullable<System.TimeSpan> GODZINA { get; set; }
         public Nullable<int> LEKARZ_ID { get; set; }
     

@@ -1,36 +1,44 @@
 ﻿@model SWPappPro.Models.LEKARZ
 
 @{
-    ViewBag.Title = "LoginLekarz";
+    ViewBag.Title = "Zaloguj się!";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>LoginLekarz</h2>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
+    <title>Zaloguj się jako lekarz:</title>
 </head>
 <body>
-    @using (Html.BeginForm("LoginLekarz", "Home", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-        <h1>Logowanie</h1>
+    <center>
         <div>
-
-            @if (TempData["ErrorMSG"] != null)
-            {
-                <label style="color:maroon;"> @TempData["ErrorMSG"] </label>
-                <br /><br />
-            }
-
-            @Html.TextBoxFor(s => s.PESEL, new { @placeholder = "Username" })
-            <br /> <br />
-            @Html.PasswordFor(s => s.HASLO, new { @placeholder = "Password" })
-            <br /> <br />
-            <button type="submit">Login</button>
+            <img src="~/Obrazy/doc.jpg" class="img-rounded" alt="Cinque Terre">
         </div>
-    }
+    </center>
+
+    <div>
+        <center>
+            @using (Html.BeginForm("LoginLekarz", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                
+                <div>
+
+                    @if (TempData["ErrorMSG"] != null)
+                {
+                        <label style="color:maroon;"> @TempData["ErrorMSG"] </label>
+                        <br /><br />
+                    }
+                    @Html.TextBoxFor(s => s.PESEL, new { @placeholder = "Login" })
+                    <br /> <br />
+                    @Html.PasswordFor(s => s.HASLO, new { @placeholder = "Hasło" })
+                    <br /> <br />
+                    <button type="submit" class="btn btn-default" >Login</button>
+                </div>
+
+            }
+        </center>
+    </div>
 </body>

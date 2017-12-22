@@ -1,13 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "ZamowWizyteDomowa";
+    ViewBag.Title = "PrzeplanujWizyteDom";
     Layout = "~/Views/Shared/_PacjentLayout.cshtml";
 }
 <br />
-<h3>Wybierz termin wizyty:</h3>
+<h3>Wybierz nowy termin:</h3>
 <br />
 @model SWPappPro.Models.KalendarzModel
-
 <div>
     <table class="table">
         <tr>
@@ -17,9 +16,7 @@
             <th>
                 Godzina
             </th>
-            <th>
-                
-            </th>
+            <th></th>
         </tr>
 
         @foreach (var item in Model.Terminarz)
@@ -36,9 +33,8 @@
                             @Html.DisplayFor(modelItem => item.GODZINA)
                         </td>
                         <td>
-                            @Html.ActionLink("Wybierz", "ZamowWizyteDomowaFormularz", new { id = item.TERMINARZ_ID })
+                            @Html.ActionLink("Wybierz", "PrzeplanujWizyteDomFormularz", new { id = item.TERMINARZ_ID })
                         </td>
-
                     </tr>
                 }
             }

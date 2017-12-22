@@ -3,8 +3,7 @@
     ViewBag.Title = "Pacjenci";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
+<br />
+@Html.ActionLink("Wyswietl karte pacjenta", "WyswietlKartePacjenta", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Podepnij wyniki do karty pacjenta", "PodepnijWynikiDoKartyPacjenta", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
 
-<h2>Pacjenci</h2>
-
-@Html.ActionLink("Wyswietl karte pacjenta", "WyswietlKartePacjenta", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Podepnij wyniki do karty pacjenta", "PodepnijWynikiDoKartyPacjenta", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />

@@ -28,8 +28,8 @@ namespace SWPappPro.Controllers
                 .Include(i => i.WIZYTA_KONSULTACYJNA)
                 .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id);
             //Załadowanie Tabeli wizyta konsultacyjna
-            viewModel.Wizyta_konsultacyjnaStala = db.WIZYTA_KONSULTACYJNA;
-            viewModel.Wizyta_domowaStala = db.WIZYTA_DOMOWA;
+            viewModel.Wizyta_konsultacyjnaStala = db.WIZYTA_KONSULTACYJNA.Where(w=>w.LEKARZ_ID==id);
+            viewModel.Wizyta_domowaStala = db.WIZYTA_DOMOWA.Where(w => w.LEKARZ_ID == id);
 
             if (wiz_k != null)
             {

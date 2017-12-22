@@ -5,14 +5,16 @@
 }
 
 @model SWPappPro.Models.KartaBadanieModel
-
+<br />
+<h3>Szczegoły karty pacjenta:</h3>
+<br />
 @foreach (var item in Model.Karta_pacjenta)
 {
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(modelItem => item.NUMER_KARTY)
+            Numer karty:
         </dt>
 
         <dd>
@@ -20,7 +22,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(modelItem => item.DATA_ZALOZENIA)
+            Data zalożenia:
         </dt>
 
         <dd>

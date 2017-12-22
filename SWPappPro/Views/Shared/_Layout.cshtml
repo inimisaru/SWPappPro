@@ -24,7 +24,9 @@
                     
                     @if (@Session["login"] == null)
                         {
-                    <li>@Html.ActionLink("Strona logowania", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Strona głowna", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Logowanie lekarz", "LoginLekarz", "Home")</li>
+                    <li>@Html.ActionLink("Logowanie pacjent", "LoginPacjent", "Home")</li>
                     }
 
                 </ul>
@@ -35,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - SWPapp</p>
         </footer>
     </div>
 

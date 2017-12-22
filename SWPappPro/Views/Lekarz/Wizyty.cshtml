@@ -3,12 +3,10 @@
     ViewBag.Title = "Wizyty";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
-
-<h2>Wizyty</h2>
-
-@Html.ActionLink("Umow wizyte", "UmowWizyte", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Umowione wizyty", "WyswietlUmowioneWizyty", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Wolne terminy", "WyswietlKalendarz", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Dodaj nowy termin", "DodajWolnyTerminWizyty", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Powiadom o statusie wizyty", "PowiadomOStatusieWizyty", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
-@Html.ActionLink("Odpowiedz na wezwanie do wizyty domowej", "OdpowiedzNaWezwanieDoWizytyDomowej", "Lekarz", new { @class = "btn btn-primary", @style = "color:white" })<br />
+<br/>
+@Html.ActionLink("Umow wizyte", "UmowWizyte", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Umowione wizyty", "WyswietlUmowioneWizyty", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Wolne terminy", "WyswietlKalendarz", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Dodaj nowy termin", "DodajWolnyTerminWizyty", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Powiadom o statusie wizyty", "PowiadomOStatusieWizyty", "Lekarz", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />
+@Html.ActionLink("Odpowiedz na wezwanie do wizyty domowej", "OdpowiedzNaWezwanieDoWizytyDomowej", new { @class = "btn btn-primary btn-block btn-lg", @style = "color:white" })<br />

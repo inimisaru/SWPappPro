@@ -19,7 +19,10 @@ namespace SWPappPro.Models
     {
         public int OPINIA_ID { get; set; }
         public Nullable<int> NUMER_OPINII { get; set; }
+        [Required]
         public string TRESC { get; set; }
+        [Required]
+        [RegularExpression("^([0-9]|10)$", ErrorMessage = "Zakres ocen to: 0 - 10")]
         public Nullable<int> OCENA { get; set; }
         public Nullable<int> LEKARZ_ID { get; set; }
         public Nullable<int> PACJENT_ID { get; set; }

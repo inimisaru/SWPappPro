@@ -13,6 +13,8 @@ namespace SWPappPro.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class LEKARZ
     {
@@ -32,10 +34,13 @@ namespace SWPappPro.Models
         public int LEKARZ_ID { get; set; }
         public string IMIE { get; set; }
         public string NAZWISKO { get; set; }
+        [Required]
         public string SPECJALIZACJA { get; set; }
         public string PESEL { get; set; }
         public Nullable<System.DateTime> DATA_URODZENIA { get; set; }
         public string NR_LICENCJI { get; set; }
+        [Required]
+        [MinLength(4, ErrorMessage = "Za krótkie has³o!")]
         public string HASLO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

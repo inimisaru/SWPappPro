@@ -3,18 +3,19 @@
     ViewBag.Title = "WyswieltKartePacjenta";
     Layout = "~/Views/Shared/_LekarzLayout.cshtml";
 }
-
-Wybierz z poniższej listy pacjenta:
+<br />
+<h3>Wybierz pacjenta z poniższej listy:</h3>
+<br/>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IMIE)
+            Imię
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NAZWISKO)
+            Nazwisko
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PESEL)
+            PESEL
         </th>
         <th></th>
     </tr>
@@ -32,7 +33,7 @@ Wybierz z poniższej listy pacjenta:
                 @Html.DisplayFor(modelItem => item.PESEL)
             </td>
             <td>
-                @Html.ActionLink("Wyswietl karte", "WyswietlKartePacjentaWynik", new { id = item.PACJENT_ID }) |
+                @Html.ActionLink("Wyswietl karte", "WyswietlKartePacjentaWynik", new { id = item.PACJENT_ID })
             </td>
         </tr>
     }
