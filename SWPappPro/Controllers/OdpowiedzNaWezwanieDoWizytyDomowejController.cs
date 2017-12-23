@@ -28,6 +28,7 @@ namespace SWPappPro.Controllers
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowej()
         {
             int id = (int)Session["id"];
+            //Wyszukanie wizyt należącyh do lekarza które się jeszcze nei odbyły
             var wIZYTA_DOMOWA = db.WIZYTA_DOMOWA.Where(w => w.LEKARZ_ID == id).Include(w => w.LEKARZ).Include(w => w.PACJENT).Include(w => w.TERMINARZ).Where(w => w.TERMINARZ.DATA >= (DateTime?)System.DateTime.Now);
             return View(wIZYTA_DOMOWA.ToList());
         }
@@ -40,24 +41,32 @@ namespace SWPappPro.Controllers
         /// 
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowejFormularz(int? id_p,int? id_w)
         {
+            //Zapisanie identyfikatorów do zmiennych sesji
             Session["Pow_id_p"] = id_p;
             Session["Pow_id_w"] = id_w;
             return View();
         }
-
+        /// <summary>
+        /// Metoda wywoływana metodą POST zapisująca zmiany do bazy danych
+        /// </summary>
+        /// <param name="pOWIADOMIENIE">Obiekt z wypełnionymi danymi</param>
+        /// <returns>Widok strony OdpowiedzNaWezwanieDoWizytyDomowejWynik</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult OdpowiedzNaWezwanieDoWizytyDomowejFormularz([Bind(Include = "POWIADOMIENIE_ID,NUMER_POWIADOMIENIA,TRESC,PACJENT_ID,LEKARZ_ID,STATUS")] POWIADOMIENIE pOWIADOMIENIE)
         {
             if (ModelState.IsValid)
             {
+                //Wstawienie do obiektu wartośći zapisanych w zmiennych sesji
                 pOWIADOMIENIE.NUMER_POWIADOMIENIA = (int?)Session["Pow_id_w"];
                 pOWIADOMIENIE.LEKARZ_ID = (int?)Session["id"];
                 pOWIADOMIENIE.PACJENT_ID = (int?)Session["Pow_id_p"];
                 pOWIADOMIENIE.STATUS = "D";
                 pOWIADOMIENIE.TRESC = "Wizyta domowa nr: " + Session["Pow_id_w"].ToString() + " " + pOWIADOMIENIE.TRESC;
+                //Zapisz do bazy danych
                 db.POWIADOMIENIE.Add(pOWIADOMIENIE);
                 db.SaveChanges();
+                //Reset zmiennych sesji
                 Session["Pow_id_p"] = "";
                 Session["Pow_id_w"] = "";
                 return View("OdpowiedzNaWezwanieDoWizytyDomowejWynik");
@@ -66,12 +75,6 @@ namespace SWPappPro.Controllers
             ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", pOWIADOMIENIE.LEKARZ_ID);
             ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", pOWIADOMIENIE.PACJENT_ID);
             return View(pOWIADOMIENIE);
-        }
-
-        [HttpPost]
-        public ActionResult OdpowiedzNaWezwanieDoWizytyDomowejZatwierdz()
-        {
-            return View("OdpowiedzNaWezwanieDoWizytyDomowejWynik");
         }
 
     }

@@ -21,8 +21,11 @@ namespace SWPappPro.Controllers
         /// <returns>strona AktualizujProfilPacjenta</returns>
         public ActionResult AktualizujProfilPacjenta()
         {
+            //pobranie id pacjenta to zmiennej lokalnej ze zmiennej sesji
             int id = (int)Session["id"];
+            //utworzenie obiektu PACJENT a następnie wyszukanie w bazie danych danego rekordu
             PACJENT pACJENT = db.PACJENT.Find(id);
+            //zwrócenie widoku z obiektem PACJENT
             return View(pACJENT);
         }
         /// <summary>
@@ -31,14 +34,6 @@ namespace SWPappPro.Controllers
         /// Metoda zwraca strone AktualizujProfilPacjentaWynik na ktorej znajduje sie informacja o wyniku wykonania.
         /// </summary>
         /// <returns>strona AktualizujProfilPacjentaWynik</returns>
-        /*
-        public ActionResult AktualizujProfilPacjentaZatwierdz()
-        {
-
-            return View("AktualizujProfilPacjentaWynik");
-
-        }
-        */
         [HttpPost]
         public ActionResult AktualizujProfilPacjentaZatwierdz([Bind(Include = "PACJENT_ID,IMIE,NAZWISKO,PESEL,DATA_URODZENIA,MIEJSCE_URODZENIA,ULICA_ZAMIESZKANIA,MIEJSCOWOSC,KOD_POCZTOWY,ADRES_E_MAIL,NR_TELEFONU,HASLO")] PACJENT pACJENT)
         {

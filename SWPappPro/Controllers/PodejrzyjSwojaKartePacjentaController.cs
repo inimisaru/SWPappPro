@@ -26,13 +26,13 @@ namespace SWPappPro.Controllers
         public ActionResult PodejrzyjSwojaKartePacjenta()
         {
             int id = (int)Session["id"];
-
+            //Utwórz nowy model widoku
             var viewModel = new KartaBadanieModel();
-
+            //Dodaj do widoku Karte pacjenta należącą do zalogowanego pacjenta
             viewModel.Karta_pacjenta = db.KARTA_PACJENTA.Where(k => k.KARTA_PACJENTA_ID == id);
-
+            //Dodaj do widoku badania podpięte do karty
             viewModel.Badanie = db.BADANIE.Where(b => b.KARTA_PACJENTA_ID == id);
-
+            //Zwróc widok z modelem widoku
             return View(viewModel);
         }
     }

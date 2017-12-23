@@ -37,17 +37,24 @@ namespace SWPappPro.Controllers
             Session["Pow_id_p"] = id_p;
             return View();
         }
+        /// <summary>
+        /// Metoda typu POST zapisująca do bazy danych obiekt typu POWIADOMIENIE
+        /// </summary>
+        /// <param name="pOWIADOMIENIE">Obiekt utworzony przy wypelnianiu formularza</param>
+        /// <returns>Widok PowiadomOStatusieWizytyWynik</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PowiadomOStatusieWizytyFormularz([Bind(Include = "POWIADOMIENIE_ID,NUMER_POWIADOMIENIA,TRESC,PACJENT_ID,LEKARZ_ID,STATUS")] POWIADOMIENIE pOWIADOMIENIE)
         {
             if (ModelState.IsValid)
             {
+                //Uzupełnienie obiektu o atrybuty ze zmiennych sesji
                 pOWIADOMIENIE.NUMER_POWIADOMIENIA = (int?)Session["Pow_id_w"];
                 pOWIADOMIENIE.LEKARZ_ID = (int?)Session["id"];
                 pOWIADOMIENIE.PACJENT_ID = (int?)Session["Pow_id_p"];
                 pOWIADOMIENIE.STATUS = "K";
                 pOWIADOMIENIE.TRESC = "Wizyta konsultacyjna nr: "+Session["Pow_id_w"].ToString()+" "+pOWIADOMIENIE.TRESC;
+                //Zapisanie do bazy danych
                 db.POWIADOMIENIE.Add(pOWIADOMIENIE);
                 db.SaveChanges();
                 return View("PowiadomOStatusieWizytyWynik");

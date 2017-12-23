@@ -13,6 +13,7 @@ namespace SWPappPro.Controllers
 /// </summary>
     public class OcenLekarzaController : Controller
     {
+
         private SWPappDBEntities4 db = new SWPappDBEntities4();
         // GET: OcenLekarza
         /// <summary>

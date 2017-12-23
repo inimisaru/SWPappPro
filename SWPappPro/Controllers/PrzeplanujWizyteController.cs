@@ -39,6 +39,11 @@ namespace SWPappPro.Controllers
 
             return View(viewModel);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult PrzeplanujWizyteDom(int? id)
         {
             
