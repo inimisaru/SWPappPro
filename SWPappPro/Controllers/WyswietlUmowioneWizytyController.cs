@@ -12,10 +12,20 @@ using SWPappPro.Models;
 
 namespace SWPappPro.Controllers
 {
+    /// <summary>
+    /// Author:Bartłomiej Balak
+    /// Kontroler do sterowania pomiędzy stronami oraz komunikujący się z klasami danych (Models)
+    /// </summary>
     public class WyswietlUmowioneWizytyController : Controller
     {
         private SWPappDBEntities4 db = new SWPappDBEntities4();
         // GET: WyswietlUmowioneWizyty
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wiz_k"></param>
+        /// <param name="wiz_d"></param>
+        /// <returns></returns>
         public ActionResult WyswietlUmowioneWizyty(int? wiz_k, int? wiz_d)
         {
             int id = (int)Session["id"];

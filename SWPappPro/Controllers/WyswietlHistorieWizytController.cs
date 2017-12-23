@@ -17,12 +17,12 @@ namespace SWPappPro.Controllers
     {
         private SWPappDBEntities4 db = new SWPappDBEntities4();
         /// <summary>
-        /// Metoda służąca do zwracania widoku domyślnej strony.
+        /// Metoda służąca do zwracania widoku domyślnej strony, wyświetlającej historie wizyt pacjenta
         /// </summary>
         /// <returns>widok strony WyswietlHistorieWizyt</returns>
         public ActionResult WyswietlHistorieWizyt(int? wiz_k,int? wiz_d)
         {
-
+            //pobranie identyfikatora pacjenta ze zmiennych sesji
             int id = (int)Session["id"];
 
             //Stworzenie nowego obiektu modelu KalendarzModel

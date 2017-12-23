@@ -53,23 +53,42 @@ namespace SWPappPro.Controllers
 
             return View(viewModel);
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu terminu, który zostaje zapisany do zmiennych sesji.
+        /// </summary>
+        /// <param name="terminarz_id">Identyfikator wybranego terminu</param>
+        /// <returns>Zwraca widok z listą gabinetów podległych pod lekarza</returns>
         public ActionResult UmowWizyteKonWybierzGabinet(int? terminarz_id)
         {
             Session["terminarz_id"] = terminarz_id;
             var gABINET = db.GABINET.Include(g => g.LEKARZ);
             return View(gABINET.ToList());
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu gabinetu, który zostaje zapisany do zmiennych sesji.
+        /// </summary>
+        /// <param name="gabinet_id">Identyfikator wybranego gabinetu</param>
+        /// <returns>Zwraca widok z listą pacjentów </returns>
         public ActionResult UmowWizyteKonWybierzPacjenta(int? gabinet_id)
         {
             Session["gabinet_id"] = gabinet_id;
             return View(db.PACJENT.ToList());
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu pacjenta, który zostaje zapisany do zmiennych sesji.
+        /// </summary>
+        /// <param name="pacjent_id">Identyfikator wybranego terminu</param>
+        /// <returns>Zwraca widok z formualrzem końcowym</returns>
         public ActionResult UmowWizyteKonFormularz(int? pacjent_id)
         {
             Session["pacjent_id"] = pacjent_id;
             return View();
         }
-
+        /// <summary>
+        /// Metoda typu POST zatwierdzająca wprowadzone dane. Wszystkie wczesniejsze wybrane dane zostają zapisane do bazy danych.
+        /// </summary>
+        /// <param name="wIZYTA_KONSULTACYJNA">Obiekt zapisywany do bazy danych</param>
+        /// <returns>Widok UmowWizyteWynik</returns>
        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UmowWizyteKonFormularz([Bind(Include = "WIZYTA_KONSULTACYJNA_ID,PACJENT_ID,GABINET_ID,LEKARZ_ID,TERMINARZ_ID,CEL,DODATKOWE_UWAGI")] WIZYTA_KONSULTACYJNA wIZYTA_KONSULTACYJNA)
@@ -122,16 +141,31 @@ namespace SWPappPro.Controllers
 
             return View(viewModel);
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu terminu, który zostaje zapisany do zmiennych sesji.
+        /// </summary>
+        /// <param name="terminarz_id">Identyfikator wybranego terminu</param>
+        /// <returns>Zwraca widok z listą pacjentów </returns>
         public ActionResult UmowWizyteDomWybierzPacjenta(int? terminarz_id)
         {
             Session["terminarz_id"] = terminarz_id;
             return View(db.PACJENT.ToList());
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu pacjenta, który zostaje zapisany do zmiennych sesji.
+        /// </summary>
+        /// <param name="pacjent_id">Identyfikator wybranego terminu</param>
+        /// <returns>Zwraca widok z formualrzem końcowym</returns>
         public ActionResult UmowWizyteDomFormularz(int? pacjent_id)
         {
             Session["pacjent_id"] = pacjent_id;
             return View();
         }
+        /// <summary>
+        /// Metoda typu POST zatwierdzająca wprowadzone dane. Wszystkie wczesniejsze wybrane dane zostają zapisane do bazy danych.
+        /// </summary>
+        /// <param name="wIZYTA_DOMOWA">Obiekt zapisywany do bazy danych</param>
+        /// <returns>Widok UmowWizyteWynik</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UmowWizyteDomFormularz([Bind(Include = "WIZYTA_DOMOWA_ID,PACJENT_ID,LEKARZ_ID,TERMINARZ_ID,ULICA,KOD_POCZTOWY,NR_DOMU,MIEJSCOWOSC")] WIZYTA_DOMOWA wIZYTA_DOMOWA)
@@ -152,26 +186,6 @@ namespace SWPappPro.Controllers
             ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", wIZYTA_DOMOWA.PACJENT_ID);
             ViewBag.TERMINARZ_ID = new SelectList(db.TERMINARZ, "TERMINARZ_ID", "TERMINARZ_ID", wIZYTA_DOMOWA.TERMINARZ_ID);
             return View(wIZYTA_DOMOWA);
-        }
-
-
-        /// <summary>
-        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
-        /// </summary>
-        /// <returns>widok strony UmowWizyteWynik</returns>
-        [HttpPost]
-        public ActionResult UmowWizyteKonZatwierdz()
-        {
-            return View("UmowWizyteWynik");
-        }
-        /// <summary>
-        /// Funkcja formularza służąca do zwracania widoku strony podanej w argumencie.
-        /// </summary>
-        /// <returns>widok strony UmowWizyteWynik</returns>
-        [HttpPost]
-        public ActionResult UmowWizyteDomZatwierdz()
-        {
-            return View("UmowWizyteWynik");
         }
     }
 }

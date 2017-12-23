@@ -42,23 +42,11 @@ namespace SWPappPro.Controllers
         /// <returns>widok strony WyswietlKartePacjenta</returns>
         public ActionResult WyswietlKartePacjentaWynik(int? id)
         {
-            /*
-
-            KARTA_PACJENTA kARTA_PACJENTA = db.KARTA_PACJENTA.Find(id);
-            
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var bADANIE = db.BADANIE.Include(b => b.KARTA_PACJENTA).Include(b => b.LEKARZ).Where(b => b.KARTA_PACJENTA_ID==kARTA_PACJENTA.KARTA_PACJENTA_ID);
-            return View(bADANIE.ToList());
-            */
-            //Stworzenie nowego obiektu modelu KalendarzModel
-
+            //utworzenie nowego obiektu viewModel
             var viewModel = new KartaBadanieModel();
-
+            //wstawienie do obiektu viewModel obiektu typu karta_pacjenta o identyfikatorze id
             viewModel.Karta_pacjenta = db.KARTA_PACJENTA.Where(k => k.KARTA_PACJENTA_ID==id);
-
+            //wstawienie do obiektu viewModel obiektów typu badanie należących do karty pacjenta
             viewModel.Badanie = db.BADANIE.Where(b => b.KARTA_PACJENTA_ID == id);
 
             return View(viewModel);

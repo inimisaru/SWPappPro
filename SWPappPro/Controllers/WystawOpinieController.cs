@@ -27,16 +27,20 @@ namespace SWPappPro.Controllers
             //return View();
         }
         /// <summary>
-        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
+        /// Metoda zapisująca do zmiennych identyfikator lekarza i zwracająca widok z formularzem opinii.
+        /// <param name="id">Identyfikator lekarza</param>
         /// </summary>
-        /// <returns>widok strony WystawOpinieWynik</returns>
-
+        /// <returns>Widok WystawOpinieFormularz</returns>
         public ActionResult WystawOpinieFormularz(int? id)
         {
             Session["id_lek_opinia"] = id;
             return View();
         }
-
+        /// <summary>
+        /// Metoda typu POST zapisująca do bazy danych utworzony obiekt oPINIA, do obiektu wstawiane są wartości zmiennych sesji.
+        /// <param name="oPINIA">Obiekt OPINIA</param>
+        /// </summary>
+        /// <returns>Widok WystawOpinieWynik</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult WystawOpinieFormularz([Bind(Include = "OPINIA_ID,NUMER_OPINII,TRESC,OCENA,LEKARZ_ID,PACJENT_ID")] OPINIA oPINIA)

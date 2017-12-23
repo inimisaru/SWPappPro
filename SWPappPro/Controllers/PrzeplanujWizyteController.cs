@@ -40,10 +40,10 @@ namespace SWPappPro.Controllers
             return View(viewModel);
         }
         /// <summary>
-        /// 
+        /// Metoda wywoływana po wybraniu wizyty domowej do przeplanowania.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Identyfikator daty wizyty do przeplanowania</param>
+        /// <returns>Zwraca widok PrzeplanujWizyteDom z listą dostępnych terminów</returns>
         public ActionResult PrzeplanujWizyteDom(int? id)
         {
             
@@ -64,6 +64,11 @@ namespace SWPappPro.Controllers
 
             return View(viewModel);
         }
+        /// <summary>
+        /// Metoda wywoływana po wybraniu wizyty konsultacyjnej do przeplanowania.
+        /// </summary>
+        /// <param name="id">Identyfikator daty wizyty do przeplanowania</param>
+        /// <returns>Zwraca widok PrzeplanujWizyteDom z listą dostępnych terminów</returns>
         public ActionResult PrzeplanujWizyteKon(int? id)
         {
             WIZYTA_KONSULTACYJNA wIZYTA_KONSULTACYJNA = db.WIZYTA_KONSULTACYJNA.Where(w => w.TERMINARZ_ID == id).FirstOrDefault();
@@ -83,6 +88,11 @@ namespace SWPappPro.Controllers
 
             return View(viewModel);
         }
+        /// <summary>
+        /// Metoda zapisująca do bazy danych wprowadzone zmiany w wizycie domowej
+        /// </summary>
+        /// <param name="id">Identyfikator nowego terminu</param>
+        /// <returns>Zwraca widok PrzeplanujWizyte zawierający listę wszystkich wizyt</returns>
         public ActionResult PrzeplanujWizyteDomFormularz(int? id)
         {
             int? id_w = (int?)Session["id_w"];
@@ -102,6 +112,11 @@ namespace SWPappPro.Controllers
             ViewBag.TERMINARZ_ID = new SelectList(db.TERMINARZ, "TERMINARZ_ID", "TERMINARZ_ID", wIZYTA_DOMOWA.TERMINARZ_ID);
             return View(wIZYTA_DOMOWA);
         }
+        /// <summary>
+        /// Metoda zapisująca do bazy danych wprowadzone zmiany w wizycie konsultacyjnej
+        /// </summary>
+        /// <param name="id">Identyfikator nowego terminu</param>
+        /// <returns>Zwraca widok PrzeplanujWizyte zawierający listę wszystkich wizyt</returns>
         public ActionResult PrzeplanujWizyteKonFormularz(int? id)
         {
             int? id_w = (int?)Session["id_w"];
@@ -117,27 +132,6 @@ namespace SWPappPro.Controllers
                 return RedirectToAction("PrzeplanujWizyte");
             }
             return View(wIZYTA_KONSULTACYJNA);
-        }
-
-
-
-        /// <summary>
-        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
-        /// </summary>
-        /// <returns>widok strony PrzeplanujWizyteFormularz</returns>
-        [HttpPost]
-        public ActionResult PrzeplanujWizyteWybor()
-        {
-            return View("PrzeplanujWizyteFormularz");
-        }
-        /// <summary>
-        /// Metoda formularza służąca do zwracania widoku strony podanej w argumencie.
-        /// </summary>
-        /// <returns>widok strony PrzeplanujWizyteWynik</returns>
-        [HttpPost]
-        public ActionResult PrzeplanujWizyteZatwierdz()
-        {
-            return View("PrzeplanujWizyteWynik");
         }
     }
 }
