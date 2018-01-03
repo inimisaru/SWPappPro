@@ -23,7 +23,7 @@ namespace SWPappPro.Models
         [Required]
         public string ULICA { get; set; }
         [Required]
-        [RegularExpression(@"^([0-9]{2}\-[0-9]{3})$", ErrorMessage = "Z³y format: 00-000")]
+        //[RegularExpression(@"^([0-9]{2}\-[0-9]{3})$", ErrorMessage = "Z³y format: 00-000")]
         public string KOD_POCZTOWY { get; set; }
         [Required]
         public string NR_DOMU { get; set; }

@@ -57,7 +57,7 @@ namespace SWPappPro.Controllers
             //Załadowanie do Terminarza tabeli Terminarz
             viewModel.Terminarz = db.TERMINARZ
                 .Include(i => i.WIZYTA_KONSULTACYJNA)
-                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id_lek);
+                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id_lek).Where(w => w.DATA >= (DateTime?)System.DateTime.Now);
             //Załadowanie Tabeli wizyta konsultacyjna
             viewModel.Wizyta_konsultacyjnaStala = db.WIZYTA_KONSULTACYJNA;
             viewModel.Wizyta_domowaStala = db.WIZYTA_DOMOWA;
@@ -81,7 +81,7 @@ namespace SWPappPro.Controllers
             //Załadowanie do Terminarza tabeli Terminarz
             viewModel.Terminarz = db.TERMINARZ
                 .Include(i => i.WIZYTA_KONSULTACYJNA)
-                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id_lek);
+                .OrderBy(i => i.DATA).Where(w => w.LEKARZ_ID == id_lek).Where(w => w.DATA >= (DateTime?)System.DateTime.Now);
             //Załadowanie Tabeli wizyta konsultacyjna
             viewModel.Wizyta_konsultacyjnaStala = db.WIZYTA_KONSULTACYJNA;
             viewModel.Wizyta_domowaStala = db.WIZYTA_DOMOWA;
@@ -107,9 +107,6 @@ namespace SWPappPro.Controllers
                 db.SaveChanges();
                 return RedirectToAction("PrzeplanujWizyte");
             }
-            ViewBag.LEKARZ_ID = new SelectList(db.LEKARZ, "LEKARZ_ID", "IMIE", wIZYTA_DOMOWA.LEKARZ_ID);
-            ViewBag.PACJENT_ID = new SelectList(db.PACJENT, "PACJENT_ID", "IMIE", wIZYTA_DOMOWA.PACJENT_ID);
-            ViewBag.TERMINARZ_ID = new SelectList(db.TERMINARZ, "TERMINARZ_ID", "TERMINARZ_ID", wIZYTA_DOMOWA.TERMINARZ_ID);
             return View(wIZYTA_DOMOWA);
         }
         /// <summary>
